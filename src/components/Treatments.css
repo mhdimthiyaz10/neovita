@@ -1,0 +1,228 @@
+.treatments-section {
+  position: relative;
+  padding: 6rem 0 8rem;
+  background-image: url('/treatments-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.treatments-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.treatments-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.treatments-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-primary-purple-light);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.treatments-eyebrow .eyebrow-line {
+  display: inline-block;
+  width: 50px;
+  height: 1px;
+  background-color: rgba(142, 68, 173, 0.3);
+}
+
+.treatments-heading {
+  font-size: 3rem;
+  line-height: 1.2;
+  color: var(--color-primary-navy);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .treatments-heading {
+    font-size: 4rem;
+  }
+}
+
+.highlight-purple-gradient {
+  background: linear-gradient(90deg, #8E44AD 0%, #C06FE8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.treatments-description {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Grids */
+.treatments-grid-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .treatments-grid-top {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.treatments-grid-bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .treatments-grid-bottom {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .treatments-grid-bottom {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Cards Shared */
+.treatment-card {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.treatment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.treatment-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-primary-purple-light);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.treatment-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  line-height: 1.25;
+  color: var(--color-primary-navy);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.treatment-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.btn-learn-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary-purple);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: max-content;
+  transition: background-color 0.2s;
+  margin-top: auto;
+}
+
+.btn-learn-more:hover {
+  background-color: var(--color-primary-purple-light);
+}
+
+/* Top Cards Specific Layout */
+.top-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.treatment-icon-wrapper-large {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #F8EEF8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-purple);
+}
+
+.card-leaf-decoration {
+  position: absolute;
+  bottom: -10%;
+  right: -5%;
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(circle, rgba(142, 68, 173, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Bottom Cards Specific Layout */
+.bottom-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem; /* Less padding to give text more room */
+}
+
+.treatment-icon-wrapper-small {
+  margin-bottom: 1rem;
+  color: var(--color-primary-purple);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bottom-card .treatment-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.bottom-card .treatment-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}

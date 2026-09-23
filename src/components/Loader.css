@@ -1,0 +1,58 @@
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFFFFF;
+  z-index: 99999; /* Ensure it is above absolutely everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pulseLogo 2s infinite ease-in-out;
+}
+
+.loader-logo {
+  height: 65px; /* Matched roughly to navbar size or slightly larger */
+  margin-bottom: 5px;
+}
+
+.loader-tagline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #A0A0A0; /* Matches the navbar tagline style */
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+@keyframes pulseLogo {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(142, 68, 173, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--color-primary-purple);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
