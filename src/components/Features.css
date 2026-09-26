@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&display=swap');
+
+.features-section {
+  padding: 120px 20px;
+  background-image: url('../assets/features-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.features-container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  position: relative;
+}
+
+.features-subtitle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.features-line {
+  height: 1px;
+  width: 40px;
+  background-color: #b598d1;
+}
+
+.features-subtitle {
+  color: #724097;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.features-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #271f49; /* Deep navy/purple */
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.features-title .highlight {
+  color: #8339b6;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.features-description {
+  color: #6a7185;
+  max-width: 700px;
+  margin: 0 auto 60px auto;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.features-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  padding: 40px 30px;
+  width: 260px;
+  box-shadow: 0 15px 35px rgba(114, 64, 151, 0.05), inset 0 0 20px rgba(255,255,255,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(114, 64, 151, 0.08), inset 0 0 20px rgba(255,255,255,0.8);
+}
+
+.icon-wrapper {
+  background-color: #f6eafb;
+  color: #8339b6;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.feature-value {
+  font-family: 'Playfair Display', serif;
+  color: #3f2a63;
+  font-size: 3.2rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  line-height: 1;
+}
+
+.feature-divider {
+  height: 2px;
+  width: 40px;
+  background-color: #e2d1eb;
+  margin-bottom: 15px;
+}
+
+.feature-label {
+  color: #3b4256;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Subtle corner decorations for cards to mimic the leaves */
+.card-decoration-bottom {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(230,210,245,0.6) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+
+
+@media (max-width: 900px) {
+  .features-title {
+    font-size: 2.8rem;
+  }
+  .features-grid {
+    gap: 20px;
+  }
+  .feature-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .features-title {
+    font-size: 2.2rem;
+  }
+  .feature-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}

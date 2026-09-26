@@ -1,10 +1,10 @@
 import React from 'react';
-import { Microscope, User, HeartPulse, HeartHandshake } from 'lucide-react';
+import { Microscope, HeartHandshake, Dna, Award } from 'lucide-react';
 import './AboutUs.css';
 
 const AboutUs = () => {
   return (
-    <section className="about-section">
+    <section className="about-section" id="about">
       <div className="container about-container">
         
         {/* Left Content Column */}
@@ -15,8 +15,7 @@ const AboutUs = () => {
           </div>
           
           <h2 className="about-headline">
-            Empowering Transformations Through <br className="hidden md:block" />
-            <span className="highlight-purple">Personalized Care</span>
+            Experience The Best <span className="highlight-purple">IVF Centre In Kerala</span>
           </h2>
           
           <p className="about-text">
@@ -25,21 +24,26 @@ const AboutUs = () => {
           <p className="about-text">
             Neovita is the brain child of a few passionate fertility professionals who with their knowledge and experience, gained through years of working in many fertility centres inside and outside the country, wanted to initiate a facility in their home state that offers affordable yet scientifically advanced fertility treatment.
           </p>
+          <p className="about-text">
+            We aim to provide an affordable fertility treatment through the application of state-of-the-art advanced technologies, upholding highest grades of ethics and morality.
+          </p>
           
-          <div className="about-trust">
-            <div className="trust-item">
-              <div className="trust-icon-wrapper"><Microscope size={20} /></div>
-              <span>Advanced<br/>Technology</span>
+          <div className="about-pillars-grid">
+            <div className="pillar-card">
+              <div className="pillar-icon"><Microscope size={22} /></div>
+              <span className="pillar-title">Advanced In House Laboratory</span>
             </div>
-            <div className="trust-divider"></div>
-            <div className="trust-item">
-              <div className="trust-icon-wrapper"><User size={20} /></div>
-              <span>Personalised<br/>Treatment</span>
+            <div className="pillar-card">
+              <div className="pillar-icon"><HeartHandshake size={22} /></div>
+              <span className="pillar-title">World Class Patient Care</span>
             </div>
-            <div className="trust-divider"></div>
-            <div className="trust-item">
-              <div className="trust-icon-wrapper"><HeartPulse size={20} /></div>
-              <span>Higher<br/>Success Rates</span>
+            <div className="pillar-card">
+              <div className="pillar-icon"><Dna size={22} /></div>
+              <span className="pillar-title">Advanced Fertility techniques</span>
+            </div>
+            <div className="pillar-card">
+              <div className="pillar-icon"><Award size={22} /></div>
+              <span className="pillar-title">Exceptional Quality Services</span>
             </div>
           </div>
         </div>
@@ -47,7 +51,9 @@ const AboutUs = () => {
         {/* Right Visual Column */}
         <div className="about-visual">
           <div className="about-blob-bg"></div>
-          <img src="/about-couple.jpg" alt="Happy couple expecting a baby" className="about-image" />
+          <div className="about-image-wrapper">
+            <img src="/about-baby-hands.jpg" alt="Baby feet in loving hands" className="about-image" />
+          </div>
           
           {/* Floating Badge */}
           <div className="about-floating-badge">

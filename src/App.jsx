@@ -5,9 +5,14 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import Treatments from './components/Treatments';
+import Features from './components/Features';
+import Testimonials from './components/Testimonials';
+import FAQPage from './components/FAQPage';
+import AboutUsPage from './components/AboutUsPage';
 
 function App() {
   const [framesLoaded, setFramesLoaded] = useState(false);
+  const [currentView, setCurrentView] = useState('home');
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -37,12 +42,21 @@ function App() {
   return (
     <div className="app">
       <Loader framesLoaded={framesLoaded} />
-      <Navbar />
-      <main>
-        <Hero onFramesLoaded={() => setFramesLoaded(true)} />
-        <AboutUs />
-        <Treatments />
-      </main>
+      <Navbar onNavigate={setCurrentView} currentView={currentView} />
+      
+      {currentView === 'about' ? (
+        <AboutUsPage onNavigate={setCurrentView} />
+      ) : currentView === 'faq' ? (
+        <FAQPage onNavigate={setCurrentView} />
+      ) : (
+        <main>
+          <Hero onFramesLoaded={() => setFramesLoaded(true)} />
+          <AboutUs />
+          <Treatments />
+          <Features />
+          <Testimonials />
+        </main>
+      )}
     </div>
   );
 }
