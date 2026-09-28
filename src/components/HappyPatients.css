@@ -1,0 +1,250 @@
+/* =======================================
+   Our Happy Patients Testimonials Section
+   ======================================= */
+.happy-patients-section {
+  background: linear-gradient(135deg, #7c0099 0%, #8a00b0 50%, #680080 100%);
+  padding: 85px 0 75px 0;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background subtle ambient glows */
+.happy-patients-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.happy-patients-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.happy-patients-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.happy-patients-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.happy-patients-eyebrow {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.happy-patients-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Carousel Outer Wrapper */
+.happy-patients-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Side Arrows */
+.carousel-arrow {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  z-index: 10;
+}
+
+.carousel-arrow-left {
+  left: -22px;
+}
+
+.carousel-arrow-right {
+  right: -22px;
+}
+
+.carousel-arrow:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+/* Cards 3-Column Grid */
+.happy-patients-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  width: 100%;
+}
+
+/* Individual Card */
+.patient-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 38px 32px 34px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 310px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+.patient-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+}
+
+/* Card Top Row */
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.star-rating-group {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.star-icon {
+  filter: drop-shadow(0 2px 4px rgba(255, 180, 0, 0.3));
+}
+
+.card-quote-icon {
+  color: #e5d5f2;
+}
+
+/* Card Paragraph Text */
+.patient-card-text {
+  font-size: 0.98rem;
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 28px;
+  font-weight: 400;
+  flex-grow: 1;
+}
+
+/* Card Author Box */
+.patient-card-author-box {
+  border-top: 1px solid #f3f4f6;
+  padding-top: 18px;
+}
+
+.patient-card-author {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.patient-card-details {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.role-dot {
+  color: #9ca3af;
+}
+
+/* Pagination Dots */
+.happy-patients-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 45px;
+}
+
+.pagination-dot {
+  border: none;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.35s ease;
+  padding: 0;
+}
+
+.pagination-dot:hover {
+  background: #ffffff;
+  transform: scale(1.2);
+}
+
+.pagination-dot.active-dot {
+  width: 28px;
+  height: 10px;
+  border-radius: 999px;
+  background: #ff6b00; /* Vibrant Orange accent from the exact design screenshot */
+  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .happy-patients-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .happy-patients-section {
+    padding: 60px 0 50px 0;
+  }
+  .happy-patients-title {
+    font-size: 2.3rem;
+  }
+  .happy-patients-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .patient-card {
+    min-height: auto;
+    padding: 28px 24px;
+  }
+}

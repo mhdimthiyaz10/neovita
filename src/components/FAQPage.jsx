@@ -1,135 +1,162 @@
-import React, { useState } from 'react';
-import { Search, ChevronDown, HelpCircle, MessageCircle, ArrowLeft, PhoneCall, Sparkles, CheckCircle2 } from 'lucide-react';
-import './FAQPage.css';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Search, ChevronDown, HelpCircle, PhoneCall, Calendar, MessageCircle, ArrowLeft, Sparkles, CheckCircle2 } from 'lucide-react';
+import './FaqPage.css';
 
 const faqCategories = [
   { id: 'all', label: 'All Questions' },
-  { id: 'ivf', label: 'IVF & Treatments' },
-  { id: 'care', label: 'Cost & Patient Care' },
-  { id: 'general', label: 'General & Facility' },
-  { id: 'international', label: 'International Patients' }
+  { id: 'general', label: 'General & IVF' },
+  { id: 'treatment', label: 'Treatments & Care' },
+  { id: 'success', label: 'Success Rates' },
+  { id: 'international', label: 'International Patients' },
+  { id: 'costs', label: 'Costs & Consultation' },
 ];
 
 const faqData = [
   {
     id: 1,
     category: 'general',
-    question: "What makes Neovita Fertility Centre the preferred choice in Kerala?",
-    answer: "Neovita Fertility Centre combines state-of-the-art in-house embryology laboratories, compassionate patient-centric care, and exceptional success rates. Established in Kollam by passionate fertility professionals, we deliver world-class care upholding highest ethics and morality."
+    categoryLabel: 'General & IVF',
+    question: "What is IVF and how does the treatment process work at Neovita?",
+    answer: "In Vitro Fertilization (IVF) is a specialized procedure where eggs are retrieved from the ovaries and fertilized with sperm in our state-of-the-art laboratory. At Neovita, the process begins with personalized ovulation stimulation, followed by precise egg retrieval, fertilization, embryo culture in our advanced incubator systems, and finally gentle embryo transfer into the uterus."
   },
   {
     id: 2,
     category: 'general',
-    question: "Where is Neovita Fertility Centre located?",
-    answer: "We are conveniently located near Guru Mandiram, Ayathil Junction in Kollam, Kerala. Our central location makes us easily accessible for patients across Kerala as well as international visitors."
+    categoryLabel: 'General & IVF',
+    question: "When should a couple consider consulting a fertility specialist?",
+    answer: "We recommend consulting a fertility doctor if you have been trying to conceive naturally for 12 months (or 6 months if the female partner is over 35 years old). Early consultation helps identify any underlying issues promptly and provides peace of mind with tailored guidance."
   },
   {
     id: 3,
-    category: 'ivf',
-    question: "What is the success rate of IVF treatments at Neovita?",
-    answer: "Our clinical success rates rank among the highest in the region. By utilizing advanced embryo culture incubators, ICSI technology, and personalized treatment protocols customized for each couple, we maximize the probability of a healthy pregnancy."
+    category: 'success',
+    categoryLabel: 'Success Rates',
+    question: "What are Neovita's IVF success rates?",
+    answer: "Neovita Fertility Centre maintains world-class success rates that rival top global fertility centers. Our individualized treatment protocols, advanced blastocyst culture, embryo freezing, and experienced embryology team allow us to achieve high pregnancy rates across various age groups and complex cases."
   },
   {
     id: 4,
-    category: 'ivf',
-    question: "How long does a complete IVF cycle take?",
-    answer: "A standard IVF cycle typically spans about 3 to 4 weeks, starting from controlled ovarian stimulation, egg retrieval, fertilization in our advanced lab, and ending with embryo transfer. Our specialists guide you at every step."
+    category: 'treatment',
+    categoryLabel: 'Treatments & Care',
+    question: "How long does a typical IVF cycle take from start to finish?",
+    answer: "A single IVF cycle usually takes around 3 to 4 weeks from the start of ovarian stimulation to the embryo transfer. However, diagnostic workups prior to the cycle may take 1 to 2 weeks, and frozen embryo transfers (FET) may follow a personalized timeline for optimal uterine readiness."
   },
   {
     id: 5,
-    category: 'ivf',
-    question: "Are ICSI, IUI, and Blastocyst Culture performed in-house?",
-    answer: "Yes! Our fully equipped in-house laboratory performs ICSI (Intracytoplasmic Sperm Injection), IUI (Intrauterine Insemination), extended Blastocyst culture, Laser-Assisted Hatching, and Cryopreservation under strict quality standards."
+    category: 'treatment',
+    categoryLabel: 'Treatments & Care',
+    question: "Is IVF treatment painful or uncomfortable?",
+    answer: "Most steps of IVF involve minimal discomfort. Ovarian stimulation involves mild self-administered injections. The egg retrieval procedure is performed under light sedation so you won't feel pain. Embryo transfer is quick and painless, similar to a routine pap smear."
   },
   {
     id: 6,
-    category: 'care',
-    question: "Is fertility treatment at Neovita affordable?",
-    answer: "Yes. Founded with the mission to offer scientifically advanced fertility treatments at accessible costs, we maintain transparent, clear pricing packages with no hidden charges or unexpected fees."
+    category: 'international',
+    categoryLabel: 'International Patients',
+    question: "What dedicated services are provided for international patients?",
+    answer: "We offer end-to-end concierge support for overseas patients, including online video consultations before travel, medical visa assistance, airport pickups, localized accommodation recommendations near Kollam/Ayathil Junction, translation support, and prioritized appointment scheduling to minimize stay duration."
   },
   {
     id: 7,
-    category: 'care',
-    question: "What emotional and medical support is provided during treatment?",
-    answer: "We treat every couple like our only clients. Our team, led by Dr. Anju Madhavan and senior specialists, offers dedicated emotional support, 24/7 helpline guidance, and compassionate one-on-one attention throughout your journey."
+    category: 'costs',
+    categoryLabel: 'Costs & Consultation',
+    question: "How transparent and affordable are treatment costs at Neovita?",
+    answer: "Neovita was founded with the core mission of providing world-class fertility treatments at ethical and affordable prices. We provide complete financial transparency before starting any treatment with no hidden fees or surprise charges. Customized installment options and package details are discussed during initial consultation."
   },
   {
     id: 8,
-    category: 'international',
-    question: "Do you offer guidance for international patients?",
-    answer: "Yes! We regularly welcome international patients (including from the Philippines, Gulf countries, and Europe). We offer online tele-consultations, customized travel timeline planning, local stay assistance, and dedicated coordination."
+    category: 'treatment',
+    categoryLabel: 'Treatments & Care',
+    question: "What male fertility treatments are offered at Neovita?",
+    answer: "We offer comprehensive male fertility solutions including advanced semen analysis, sperm DNA fragmentation testing, ICSI (Intracytoplasmic Sperm Injection), IMSI, TESA/PESA surgical sperm retrieval, and specialized lifestyle/medication regimens for sperm quality enhancement."
   },
   {
     id: 9,
     category: 'general',
-    question: "How do I book an initial consultation with the specialist?",
-    answer: "Booking is simple! You can click the 'Book Consultation' button on our website, call our patient helpline directly, or send us a message on WhatsApp. Our patient relations desk will assist you right away."
+    categoryLabel: 'General & IVF',
+    question: "What is egg freezing (fertility preservation) and who is it for?",
+    answer: "Egg freezing allows women to preserve their mature eggs for future use. It is ideal for career-focused women, individuals planning to delay pregnancy, or patients undergoing medical treatments (such as chemotherapy) that could affect future fertility."
+  },
+  {
+    id: 10,
+    category: 'costs',
+    categoryLabel: 'Costs & Consultation',
+    question: "Can I schedule a virtual video consultation before visiting the clinic?",
+    answer: "Yes! You can schedule an online video consultation with Dr. Anju Madhavan and our senior fertility team from the comfort of your home. We review your medical history, reports, and answer initial questions to prepare a preliminary roadmap before your physical clinic visit."
   }
 ];
 
-const FAQPage = ({ onNavigate }) => {
+const FaqPage = ({ onNavigateBack, onBookConsultation }) => {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [openId, setOpenId] = useState(1);
-  const [feedback, setFeedback] = useState({});
-
-  const filteredFaqs = faqData.filter(faq => {
-    const matchesCategory = activeCategory === 'all' || faq.category === activeCategory;
-    const matchesSearch = faq.question.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [openFaqId, setOpenFaqId] = useState(1); // Default open first item
 
   const toggleFaq = (id) => {
-    setOpenId(openId === id ? null : id);
+    setOpenFaqId(prevId => (prevId === id ? null : id));
   };
 
-  const handleFeedback = (id, isHelpful) => {
-    setFeedback(prev => ({ ...prev, [id]: isHelpful }));
-  };
+  const filteredFaqs = useMemo(() => {
+    return faqData.filter((item) => {
+      const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+      const matchesSearch = 
+        item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.answer.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchTerm]);
 
   return (
     <div className="faq-page-wrapper">
-      {/* Hero Header */}
+      {/* Hero Header Section */}
       <section className="faq-hero-section">
-        <div className="faq-hero-glow"></div>
-        <div className="container faq-hero-container">
-          <div className="faq-hero-badge">
-            <Sparkles size={16} /> FAQ & Knowledge Base
+        <div className="container">
+          <div className="faq-hero-top">
+            <button className="faq-back-btn" onClick={onNavigateBack}>
+              <ArrowLeft size={18} />
+              <span>Back to Home</span>
+            </button>
+            <div className="faq-badge">
+              <Sparkles size={16} />
+              <span>HELP & KNOWLEDGE BASE</span>
+            </div>
           </div>
+
           <h1 className="faq-hero-title">
-            Frequently Asked <span className="highlight-purple">Questions</span>
+            Frequently Asked <span className="highlight">Questions</span>
           </h1>
           <p className="faq-hero-subtitle">
-            Everything you need to know about your fertility journey, treatments, lab technologies, and patient care at Neovita.
+            Have questions about fertility treatments, IVF cycles, success rates, or visiting Neovita?<br/>
+            We have compiled clear, reassuring answers to guide you with complete confidence.
           </p>
 
-          {/* Search Bar */}
-          <div className="faq-search-wrapper">
-            <Search size={20} className="faq-search-icon" />
+          {/* Search Box */}
+          <div className="faq-search-box">
+            <Search className="search-icon" size={20} />
             <input 
               type="text" 
+              placeholder="Search for answers (e.g. IVF duration, success rates, costs)..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="faq-search-input"
-              placeholder="Search your questions (e.g. success rate, IVF duration, cost)..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
             />
-            {searchQuery && (
-              <button className="faq-search-clear" onClick={() => setSearchQuery('')}>Clear</button>
+            {searchTerm && (
+              <button className="clear-search-btn" onClick={() => setSearchTerm('')}>
+                Clear
+              </button>
             )}
           </div>
         </div>
       </section>
 
-      {/* Main FAQ Content */}
-      <section className="faq-main-section">
+      {/* Main FAQ Content Section */}
+      <section className="faq-content-section">
         <div className="container">
-          {/* Category Filter Pills */}
-          <div className="faq-categories">
-            {faqCategories.map(cat => (
+          
+          {/* Category Tabs */}
+          <div className="faq-tabs-container">
+            {faqCategories.map((cat) => (
               <button
                 key={cat.id}
-                className={`faq-cat-pill ${activeCategory === cat.id ? 'active' : ''}`}
+                className={`faq-tab-btn ${activeCategory === cat.id ? 'active' : ''}`}
                 onClick={() => setActiveCategory(cat.id)}
               >
                 {cat.label}
@@ -141,75 +168,90 @@ const FAQPage = ({ onNavigate }) => {
           <div className="faq-accordion-list">
             {filteredFaqs.length > 0 ? (
               filteredFaqs.map((faq) => {
-                const isOpen = openId === faq.id;
+                const isOpen = openFaqId === faq.id;
                 return (
                   <div 
                     key={faq.id} 
                     className={`faq-card ${isOpen ? 'open' : ''}`}
                   >
-                    <div 
-                      className="faq-question-bar"
+                    <button 
+                      className="faq-card-header" 
                       onClick={() => toggleFaq(faq.id)}
+                      aria-expanded={isOpen}
                     >
-                      <div className="faq-question-left">
-                        <span className="faq-q-icon"><HelpCircle size={20} /></span>
+                      <div className="faq-question-meta">
+                        <span className="faq-category-tag">{faq.categoryLabel}</span>
                         <h3 className="faq-question-text">{faq.question}</h3>
                       </div>
-                      <div className={`faq-chevron ${isOpen ? 'rotate' : ''}`}>
+                      <div className={`faq-chevron-icon ${isOpen ? 'rotated' : ''}`}>
                         <ChevronDown size={20} />
                       </div>
-                    </div>
+                    </button>
 
-                    {isOpen && (
-                      <div className="faq-answer-body">
-                        <p className="faq-answer-text">{faq.answer}</p>
-                        
-                        {/* Helpfulness Feedback */}
-                        <div className="faq-feedback-bar">
-                          <span>Was this answer helpful?</span>
-                          {feedback[faq.id] !== undefined ? (
-                            <span className="feedback-thankyou">
-                              <CheckCircle2 size={16} /> Thank you for your feedback!
-                            </span>
-                          ) : (
-                            <div className="feedback-buttons">
-                              <button onClick={() => handleFeedback(faq.id, true)}>👍 Yes</button>
-                              <button onClick={() => handleFeedback(faq.id, false)}>👎 No</button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key="content"
+                          initial="collapsed"
+                          animate="open"
+                          exit="collapsed"
+                          variants={{
+                            open: { opacity: 1, height: "auto" },
+                            collapsed: { opacity: 0, height: 0 }
+                          }}
+                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                          className="faq-card-body-wrapper"
+                        >
+                          <div className="faq-card-body">
+                            <p className="faq-answer-text">{faq.answer}</p>
+                            <div className="faq-answer-footer">
+                              <span className="trust-verified">
+                                <CheckCircle2 size={16} color="#8339b6" /> Medically reviewed by Neovita Care Team
+                              </span>
+                              <button className="faq-ask-more-link" onClick={onBookConsultation}>
+                                Speak to a specialist &rarr;
+                              </button>
                             </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })
             ) : (
               <div className="faq-empty-state">
                 <HelpCircle size={48} className="empty-icon" />
-                <h3>No questions found matching "{searchQuery}"</h3>
-                <p>Try searching with different keywords or browse our categories above.</p>
-                <button className="faq-reset-btn" onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}>
-                  Reset Search
+                <h3>No matching questions found</h3>
+                <p>Try refining your search terms or browse across all categories.</p>
+                <button className="reset-search-btn" onClick={() => { setSearchTerm(''); setActiveCategory('all'); }}>
+                  Reset Filters
                 </button>
               </div>
             )}
           </div>
 
-          {/* Bottom Consultation Banner */}
+          {/* Still Have Questions Banner */}
           <div className="faq-cta-banner">
-            <div className="cta-left">
-              <div className="cta-icon-badge">
-                <MessageCircle size={28} />
-              </div>
-              <div>
-                <h3 className="cta-title">Still have questions?</h3>
-                <p className="cta-desc">Our dedicated medical care team is available to answer all your queries and support your dream.</p>
-              </div>
+            <div className="cta-banner-content">
+              <h2 className="cta-title">Still Have Questions?</h2>
+              <p className="cta-description">
+                Our compassionate fertility counselors and doctors are here to listen, guide, and support you every step of the way.
+              </p>
             </div>
-            <div className="cta-actions">
-              <button className="cta-btn-primary" onClick={() => onNavigate('home')}>
-                <PhoneCall size={18} /> Book Free Consultation
+            <div className="cta-banner-actions">
+              <button className="cta-btn primary-cta" onClick={onBookConsultation}>
+                <Calendar size={18} />
+                <span>Book Consultation</span>
               </button>
+              <a href="tel:+919447000000" className="cta-btn secondary-cta">
+                <PhoneCall size={18} />
+                <span>Call +91 9447 000 000</span>
+              </a>
+              <a href="https://wa.me/919447000000" target="_blank" rel="noreferrer" className="cta-btn whatsapp-cta">
+                <MessageCircle size={18} />
+                <span>WhatsApp Us</span>
+              </a>
             </div>
           </div>
 
@@ -219,4 +261,4 @@ const FAQPage = ({ onNavigate }) => {
   );
 };
 
-export default FAQPage;
+export default FaqPage;

@@ -7,12 +7,12 @@ import AboutUs from './components/AboutUs';
 import Treatments from './components/Treatments';
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
-import FAQPage from './components/FAQPage';
+import FaqPage from './components/FaqPage';
 import AboutUsPage from './components/AboutUsPage';
 
 function App() {
   const [framesLoaded, setFramesLoaded] = useState(false);
-  const [currentView, setCurrentView] = useState('home');
+  const [activePage, setActivePage] = useState('home'); // 'home' | 'about' | 'faq'
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -39,24 +39,65 @@ function App() {
     };
   }, []);
 
+  const handleNavigate = (page, targetHref) => {
+    setActivePage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (page === 'home' && targetHref && targetHref.startsWith('#')) {
+      setTimeout(() => {
+        const element = document.querySelector(targetHref);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
+  const handleBookConsultation = () => {
+    const contactElement = document.querySelector('#testimonials') || document.querySelector('footer');
+    if (activePage !== 'home') {
+      setActivePage('home');
+      setTimeout(() => {
+        if (contactElement) contactElement.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else if (contactElement) {
+      contactElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="app">
       <Loader framesLoaded={framesLoaded} />
-      <Navbar onNavigate={setCurrentView} currentView={currentView} />
-      
-      {currentView === 'about' ? (
-        <AboutUsPage onNavigate={setCurrentView} />
-      ) : currentView === 'faq' ? (
-        <FAQPage onNavigate={setCurrentView} />
-      ) : (
-        <main>
-          <Hero onFramesLoaded={() => setFramesLoaded(true)} />
-          <AboutUs />
-          <Treatments />
-          <Features />
-          <Testimonials />
-        </main>
-      )}
+      <Navbar 
+        activePage={activePage} 
+        onNavigate={handleNavigate} 
+        onBookConsultation={handleBookConsultation} 
+      />
+      <main>
+        {activePage === 'home' && (
+          <>
+            <Hero onFramesLoaded={() => setFramesLoaded(true)} />
+            <div id="about"><AboutUs /></div>
+            <div id="treatments"><Treatments /></div>
+            <div id="features"><Features /></div>
+            <div id="testimonials"><Testimonials /></div>
+          </>
+        )}
+
+        {activePage === 'about' && (
+          <AboutUsPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'faq' && (
+          <FaqPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+      </main>
     </div>
   );
 }
