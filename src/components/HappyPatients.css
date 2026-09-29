@@ -1,35 +1,46 @@
 /* =======================================
    Our Happy Patients Testimonials Section
+   Matching exact screenshot design
    ======================================= */
+
 .happy-patients-section {
-  background: linear-gradient(135deg, #7c0099 0%, #8a00b0 50%, #680080 100%);
-  padding: 85px 0 75px 0;
-  color: #ffffff;
+  background: #FAF7F2;
+  padding: 95px 0 85px 0;
+  color: #231834;
   position: relative;
   overflow: hidden;
 }
 
-/* Background subtle ambient glows */
-.happy-patients-section::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
-  pointer-events: none;
+.happy-patients-section.standalone-page {
+  padding-top: 130px;
+  min-height: 100vh;
 }
 
-.happy-patients-section::after {
-  content: '';
+/* Background Floral & Wave SVG Overlays */
+.bg-decor-flower-top-left {
   position: absolute;
-  bottom: -100px;
-  right: -100px;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  top: -20px;
+  left: -20px;
   pointer-events: none;
+  z-index: 1;
+}
+
+.bg-decor-lineart-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-decor-wave-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 1;
+  line-height: 0;
 }
 
 .happy-patients-container {
@@ -40,28 +51,81 @@
   z-index: 2;
 }
 
+/* Back Button for Standalone Page mode */
+.standalone-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e5d9ed;
+  color: #7c2d92;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(124, 45, 146, 0.06);
+}
+
+.standalone-back-btn:hover {
+  background: #7c2d92;
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
 /* Header */
 .happy-patients-header {
   text-align: center;
   margin-bottom: 50px;
 }
 
+.eyebrow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.eyebrow-line {
+  width: 55px;
+  height: 1px;
+  background: #c6b8d6;
+}
+
 .happy-patients-eyebrow {
-  display: block;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #7c6a96;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
 }
 
 .happy-patients-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.4rem;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0;
+  color: #1e162d;
+  margin: 0 0 14px 0;
   letter-spacing: -0.5px;
+}
+
+.title-italic-purple {
+  font-style: italic;
+  font-weight: 500;
+  color: #8b32a8;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.happy-patients-subtitle {
+  font-size: 1.05rem;
+  color: #665c78;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 /* Carousel Outer Wrapper */
@@ -69,14 +133,13 @@
   position: relative;
   display: flex;
   align-items: center;
+  margin-top: 45px;
 }
 
 /* Side Arrows */
 .carousel-arrow {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #9b75b9;
+  border: none;
   color: #ffffff;
   width: 44px;
   height: 44px;
@@ -85,6 +148,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0 6px 20px rgba(155, 117, 185, 0.35);
   transition: all 0.3s ease;
   position: absolute;
   z-index: 10;
@@ -99,8 +163,9 @@
 }
 
 .carousel-arrow:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: #845aa4;
   transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(132, 90, 164, 0.45);
 }
 
 /* Cards 3-Column Grid */
@@ -114,20 +179,32 @@
 /* Individual Card */
 .patient-card {
   background: #ffffff;
-  border-radius: 28px;
-  padding: 38px 32px 34px 32px;
+  border-radius: 22px;
+  padding: 36px 30px 30px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 310px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  min-height: 320px;
+  border: 1.5px solid #f0e6f5;
+  box-shadow: 0 10px 30px rgba(130, 90, 160, 0.04);
+  transition: all 0.35s ease;
   position: relative;
 }
 
 .patient-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 38px rgba(130, 90, 160, 0.12);
+}
+
+/* Middle Active Featured Card (Matches exact purple border highlight in screenshot) */
+.patient-card-featured {
+  border: 2.5px solid #bd70eb;
+  box-shadow: 0 16px 42px rgba(189, 112, 235, 0.18), inset 0 0 0 1px rgba(189, 112, 235, 0.1);
+}
+
+.patient-card-featured:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(189, 112, 235, 0.24);
 }
 
 /* Card Top Row */
@@ -135,28 +212,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .star-rating-group {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 
 .star-icon {
-  filter: drop-shadow(0 2px 4px rgba(255, 180, 0, 0.3));
+  filter: drop-shadow(0 2px 4px rgba(255, 180, 0, 0.25));
 }
 
 .card-quote-icon {
-  color: #e5d5f2;
+  color: #d8b4fe;
+  opacity: 0.9;
 }
 
 /* Card Paragraph Text */
 .patient-card-text {
-  font-size: 0.98rem;
-  color: #374151;
-  line-height: 1.75;
+  font-size: 0.95rem;
+  color: #433952;
+  line-height: 1.7;
   margin-bottom: 28px;
   font-weight: 400;
   flex-grow: 1;
@@ -164,29 +242,31 @@
 
 /* Card Author Box */
 .patient-card-author-box {
-  border-top: 1px solid #f3f4f6;
-  padding-top: 18px;
+  border-top: 1px solid #f2ebf7;
+  padding-top: 20px;
 }
 
 .patient-card-author {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #111827;
-  margin: 0 0 4px 0;
-  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #231735;
+  margin: 0 0 5px 0;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .patient-card-details {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  color: #6b7280;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #7a708a;
   font-weight: 500;
 }
 
 .role-dot {
-  color: #9ca3af;
+  color: #a89cb8;
 }
 
 /* Pagination Dots */
@@ -194,7 +274,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   margin-top: 45px;
 }
 
@@ -204,22 +284,21 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  transition: all 0.35s ease;
+  background: #dcd0e5;
+  transition: all 0.3s ease;
   padding: 0;
 }
 
 .pagination-dot:hover {
-  background: #ffffff;
-  transform: scale(1.2);
+  background: #b698d4;
+  transform: scale(1.15);
 }
 
 .pagination-dot.active-dot {
-  width: 28px;
-  height: 10px;
-  border-radius: 999px;
-  background: #ff6b00; /* Vibrant Orange accent from the exact design screenshot */
-  box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+  width: 12px;
+  height: 12px;
+  background: #7c2d92;
+  box-shadow: 0 0 0 3px rgba(124, 45, 146, 0.2);
 }
 
 /* Responsive Breakpoints */
@@ -230,14 +309,17 @@
   .carousel-arrow {
     display: none;
   }
+  .happy-patients-title {
+    font-size: 2.8rem;
+  }
 }
 
 @media (max-width: 768px) {
   .happy-patients-section {
-    padding: 60px 0 50px 0;
+    padding: 65px 0 55px 0;
   }
   .happy-patients-title {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
   }
   .happy-patients-cards-grid {
     grid-template-columns: 1fr;
@@ -245,6 +327,7 @@
   }
   .patient-card {
     min-height: auto;
-    padding: 28px 24px;
+    padding: 28px 22px;
   }
 }
+

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, Globe, Search, ArrowRight, HelpCircle, UserCheck, Compass, Sparkles, Stethoscope, Heart, Baby, Plane } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Search, ArrowRight, HelpCircle, UserCheck, Compass, Sparkles, Stethoscope, Heart, Baby, Plane, Monitor, TestTube, Activity, Zap, Snowflake, Shield, Dna, HeartHandshake } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
@@ -37,26 +37,32 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       href: '#about', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'About Us', page: 'about', href: '#about', icon: UserCheck, desc: 'Our journey, clinic story & team' },
-        { name: 'FAQ', page: 'faq', href: '#faq', icon: HelpCircle, desc: 'Frequently asked fertility questions' },
+        { name: 'About Us', page: 'about', href: '#about', desc: 'Our journey, clinic story & team' },
+        { name: 'FAQ', page: 'faq', href: '#faq', desc: 'Frequently asked fertility questions' },
       ]
     },
     { name: 'Our Team', page: 'home', href: '#about', hasDropdown: false },
     { name: 'Events', page: 'home', href: '#features', hasDropdown: false },
-    { name: 'Contact', page: 'home', href: '#testimonials', hasDropdown: false },
+    { name: 'Contact', page: 'contact', href: '#contact', hasDropdown: false },
     { 
       name: 'Services', 
       page: 'home', 
       href: '#treatments', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'IVF & IUI Treatment', page: 'home', href: '#treatments', icon: Stethoscope, desc: 'Advanced assisted reproduction' },
-        { name: 'Egg & Embryo Freezing', page: 'home', href: '#treatments', icon: Heart, desc: 'Fertility preservation options' },
-        { name: 'Male Fertility Care', page: 'home', href: '#treatments', icon: Baby, desc: 'ICSI & sperm analysis services' },
-        { name: 'International Services', page: 'home', href: '#treatments', icon: Plane, desc: 'Concierge travel & medical care' },
+        { name: 'Pre conceptional counselling', page: 'pre-conceptional', href: '#pre-conceptional' },
+        { name: 'Evaluation of infertility', page: 'home', href: '#treatments' },
+        { name: 'Follicular Monitoring', page: 'home', href: '#treatments' },
+        { name: 'Semen Analysis', page: 'home', href: '#treatments' },
+        { name: 'Intra Uterine Insemination (IUI)', page: 'home', href: '#treatments' },
+        { name: 'IVF/ICSI', page: 'home', href: '#treatments' },
+        { name: 'Laser Assisted Hatching', page: 'home', href: '#treatments' },
+        { name: 'Embryo freezing', page: 'home', href: '#treatments' },
+        { name: 'Egg & sperm and embryo freezing', page: 'home', href: '#treatments' },
+        { name: 'PGS/PGD', page: 'home', href: '#treatments' },
       ]
     },
-    { name: 'International Patient Service', page: 'home', href: '#features', hasDropdown: false },
+    { name: 'International Patient Service', page: 'international', href: '#international', hasDropdown: false },
   ];
 
   const handleLinkClick = (e, link) => {
@@ -145,7 +151,6 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
                       <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                         <div className="dropdown-menu-inner">
                           {link.dropdownItems.map((item, idx) => {
-                            const IconComponent = item.icon;
                             return (
                               <a
                                 key={idx}
@@ -153,15 +158,8 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
                                 className={`dropdown-item ${activePage === item.page && ((item.name === 'FAQ' && activePage === 'faq') || (item.name === 'About Us' && activePage === 'about')) ? 'active-item' : ''}`}
                                 onClick={(e) => handleDropdownItemClick(e, item)}
                               >
-                                {IconComponent && (
-                                  <div className="dropdown-item-icon">
-                                    <IconComponent size={18} />
-                                  </div>
-                                )}
-                                <div className="dropdown-item-text">
-                                  <span className="item-title">{item.name}</span>
-                                  {item.desc && <span className="item-desc">{item.desc}</span>}
-                                </div>
+                                <span className="item-title">{item.name}</span>
+                                {item.desc && <span className="item-desc">{item.desc}</span>}
                               </a>
                             );
                           })}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Users, ShieldCheck, HeartPulse, MapPin, Target, Flower2, Sparkles, EyeOff, CheckCircle2, Calendar, ArrowRight, PhoneCall, MessageCircle } from 'lucide-react';
+import { Heart, Users, ShieldCheck, HeartPulse, MapPin, Target, Flower2, Sparkles, EyeOff, CheckCircle2, Calendar, ArrowRight, PhoneCall, MessageCircle, Eye } from 'lucide-react';
 import HappyPatients from './HappyPatients';
 import './AboutUsPage.css';
 
@@ -190,14 +190,107 @@ const AboutUsPage = ({ onNavigateBack, onBookConsultation }) => {
         </div>
       </section>
 
-      {/* Exact Get Medical Consultation Section */}
-      <section className="medical-consultation-exact-image-section">
-        <div className="full-width-exact-container">
-          <img 
-            src="/get-medical-consultation-exact.png" 
-            alt="Get Medical Consultation - Our Vision & Our Mission" 
-            className="medical-consultation-exact-img"
-          />
+      {/* Fully Responsive Glassmorphism Get Medical Consultation Section */}
+      <section className="purpose-consultation-section">
+        {/* Ambient Glow Effects */}
+        <div className="glass-ambient-orb orb-top-left"></div>
+        <div className="glass-ambient-orb orb-bottom-right"></div>
+
+        <div className="purpose-container">
+          
+          {/* Header */}
+          <div className="purpose-header">
+            <div className="purpose-eyebrow">
+              <span className="eyebrow-line-left"></span>
+              <Sparkles size={14} className="eyebrow-sparkle" />
+              OUR PURPOSE
+              <Sparkles size={14} className="eyebrow-sparkle" />
+              <span className="eyebrow-line-right"></span>
+            </div>
+            <h2 className="purpose-title">
+              Get Medical <span className="highlight-purple-gradient">Consultation</span>
+            </h2>
+            <p className="purpose-subtitle">Expert guidance. Better decisions. A healthier tomorrow.</p>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="purpose-cards-grid">
+
+            {/* Left Card: OUR VISION (Light Glass Card) */}
+            <div className="purpose-card vision-card glass-card-light">
+              <div className="glass-reflection-overlay"></div>
+              
+              <div className="card-top-row">
+                <div className="card-icon-wrapper vision-icon-glow">
+                  <Eye className="card-icon vision-icon" size={28} />
+                </div>
+                <div className="card-heading-group">
+                  <span className="card-label vision-label">OUR VISION</span>
+                  <h3 className="card-headline vision-headline">Building a Healthier Tomorrow</h3>
+                </div>
+              </div>
+
+              <p className="card-description vision-description">
+                To be one of the most successful Fertility Treatment Centre in India, by helping couples who are unable to naturally conceive, in experiencing parenthood by offering affordable, effective and modern solutions to its customers.
+              </p>
+
+              {/* Feature Pills Footer */}
+              <div className="glass-pills-footer">
+                <span className="glass-pill pill-light">
+                  <Sparkles size={13} /> Modern Solutions
+                </span>
+                <span className="glass-pill pill-light">
+                  <Heart size={13} /> Affordable Care
+                </span>
+                <span className="glass-pill pill-light">
+                  <ShieldCheck size={13} /> Proven Results
+                </span>
+              </div>
+
+              <div className="card-bottom-accent vision-accent"></div>
+            </div>
+
+            {/* Right Card: OUR MISSION (Dark Luxury Glass Card) */}
+            <div className="purpose-card mission-card glass-card-dark">
+              <div className="glass-reflection-overlay"></div>
+              
+              <div className="card-top-row">
+                <div className="card-icon-wrapper mission-icon-glow">
+                  <Target className="card-icon mission-icon" size={28} />
+                </div>
+                <div className="card-heading-group">
+                  <span className="card-label mission-label">OUR MISSION</span>
+                  <h3 className="card-headline mission-headline">Hope, Support and Parenthood</h3>
+                </div>
+              </div>
+
+              <p className="card-description mission-description">
+                To give hope to infertile couples in experiencing parenthood, one of the greatest miracles in life and spread happiness by helping them fulfil their dreams of conceiving a child.
+              </p>
+
+              {/* Feature Pills Footer */}
+              <div className="glass-pills-footer">
+                <span className="glass-pill pill-dark">
+                  <Flower2 size={13} /> Spreading Hope
+                </span>
+                <span className="glass-pill pill-dark">
+                  <Heart size={13} /> Fulfilling Dreams
+                </span>
+                <span className="glass-pill pill-dark">
+                  <Users size={13} /> Compassionate Care
+                </span>
+              </div>
+
+              <div className="card-bottom-accent mission-accent"></div>
+
+              {/* Decorative Corner Leaf */}
+              <div className="mission-corner-leaf">
+                <Flower2 size={70} color="rgba(192, 132, 252, 0.2)" />
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 

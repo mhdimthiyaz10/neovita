@@ -9,10 +9,15 @@ import Features from './components/Features';
 import Testimonials from './components/Testimonials';
 import FaqPage from './components/FaqPage';
 import AboutUsPage from './components/AboutUsPage';
+import HappyPatients from './components/HappyPatients';
+import ContactSection from './components/ContactSection';
+import InternationalPatientPage from './components/InternationalPatientPage';
+import PreConceptionalPage from './components/PreConceptionalPage';
 
 function App() {
   const [framesLoaded, setFramesLoaded] = useState(false);
-  const [activePage, setActivePage] = useState('home'); // 'home' | 'about' | 'faq'
+  const [activePage, setActivePage] = useState('home'); // 'home' | 'about' | 'faq' | 'happy-patients' | 'contact' | 'international' | 'pre-conceptional'
+
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -54,7 +59,7 @@ function App() {
   };
 
   const handleBookConsultation = () => {
-    const contactElement = document.querySelector('#testimonials') || document.querySelector('footer');
+    const contactElement = document.querySelector('#contact') || document.querySelector('#testimonials') || document.querySelector('footer');
     if (activePage !== 'home') {
       setActivePage('home');
       setTimeout(() => {
@@ -80,6 +85,7 @@ function App() {
             <div id="about"><AboutUs /></div>
             <div id="treatments"><Treatments /></div>
             <div id="features"><Features /></div>
+            <div id="contact"><ContactSection /></div>
             <div id="testimonials"><Testimonials /></div>
           </>
         )}
@@ -91,8 +97,37 @@ function App() {
           />
         )}
 
+        {activePage === 'happy-patients' && (
+          <HappyPatients 
+            isStandalonePage={true} 
+            onNavigateBack={() => handleNavigate('home')} 
+          />
+        )}
+
         {activePage === 'faq' && (
           <FaqPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'contact' && (
+          <ContactSection 
+            isStandalonePage={true} 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'international' && (
+          <InternationalPatientPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'pre-conceptional' && (
+          <PreConceptionalPage 
             onNavigateBack={() => handleNavigate('home')} 
             onBookConsultation={handleBookConsultation} 
           />
