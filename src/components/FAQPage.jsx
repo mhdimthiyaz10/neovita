@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, ChevronDown, HelpCircle, PhoneCall, Calendar, MessageCircle, ArrowLeft, Sparkles, CheckCircle2 } from 'lucide-react';
-import './FaqPage.css';
+import './FAQPage.css';
 
 const faqCategories = [
   { id: 'all', label: 'All Questions' },
