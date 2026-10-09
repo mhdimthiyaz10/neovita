@@ -1,0 +1,367 @@
+/* =========================================================
+   Luxury Editorial Fertility Page - Recreating Reference Image
+   Font Standard: Cormorant Garamond & Plus Jakarta Sans
+   ========================================================= */
+
+.eval-infertility-page {
+  position: relative;
+  background-color: #F8F5F0;
+  color: #211B45;
+  overflow: hidden;
+  padding-bottom: 90px;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+/* Back Navigation Container */
+.eval-back-container {
+  padding-top: 130px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.eval-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #5F5B7D;
+  border: 1px solid rgba(138, 79, 199, 0.2);
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.eval-back-btn:hover {
+  background: #8A4FC7;
+  color: #ffffff;
+  border-color: #8A4FC7;
+}
+
+/* SECTION 1 — MAIN HERO CONTENT (2 Columns: ~52% Left, ~48% Right) */
+.eval-hero-section {
+  position: relative;
+  padding: 20px 0 70px 0;
+  z-index: 3;
+}
+
+.eval-hero-grid {
+  display: grid;
+  grid-template-columns: 52% 48%;
+  gap: 45px;
+  align-items: center;
+}
+
+/* LEFT COLUMN: Exact Reference Violet Nurse Graphic */
+.eval-hero-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eval-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  justify-content: center;
+}
+
+.eval-reference-img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 15px 35px rgba(138, 79, 199, 0.08));
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.eval-reference-img:hover {
+  transform: scale(1.02);
+}
+
+/* RIGHT COLUMN: Editorial Content with Cormorant Garamond Font Standard */
+.eval-hero-right {
+  position: relative;
+  z-index: 3;
+}
+
+.eval-philosophy-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #8A4FC7;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.eyebrow-line-right {
+  width: 45px;
+  height: 1px;
+  background: rgba(138, 79, 199, 0.4);
+}
+
+.eval-headline {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 3.8rem;
+  line-height: 1.12;
+  color: #211B45;
+  font-weight: 600;
+  margin-bottom: 22px;
+  letter-spacing: -0.5px;
+}
+
+.eval-intro-text {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #4A4665;
+  margin-bottom: 22px;
+  max-width: 520px;
+}
+
+.eval-bullets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+  list-style: none;
+  padding: 0;
+}
+
+.eval-bullets-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4A4665;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.bullet-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8A4FC7;
+  margin-top: 9px;
+  flex-shrink: 0;
+}
+
+.eval-hero-cta-wrap {
+  margin-top: 10px;
+}
+
+.btn-editorial-purple {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #211B45;
+  color: #ffffff;
+  border: 1px solid #8A4FC7;
+  padding: 14px 30px;
+  border-radius: 99px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(33, 27, 69, 0.15);
+}
+
+.btn-editorial-purple:hover {
+  background: #8A4FC7;
+  border-color: #8A4FC7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(138, 79, 199, 0.25);
+}
+
+/* SECTION 2 — THE SERVICES (Centered 3 Columns) */
+.eval-services-section {
+  padding: 80px 0 90px 0;
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(138, 79, 199, 0.12);
+}
+
+.eval-services-header {
+  margin-bottom: 50px;
+}
+
+.services-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #8A4FC7;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.eyebrow-line-flank {
+  width: 40px;
+  height: 1px;
+  background: rgba(138, 79, 199, 0.35);
+}
+
+.services-heading {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 3.2rem;
+  color: #211B45;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.heading-italic-lavender {
+  font-style: italic;
+  color: #8A4FC7;
+  font-weight: 400;
+}
+
+.eval-services-grid {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.service-col-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 30px;
+}
+
+.col-divider {
+  width: 1px;
+  background: rgba(138, 79, 199, 0.15);
+  margin: 10px 0;
+  flex-shrink: 0;
+}
+
+.service-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(239, 230, 248, 0.6);
+  color: #8A4FC7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  border: 1px solid rgba(138, 79, 199, 0.18);
+  transition: all 0.3s ease;
+}
+
+.service-col-card:hover .service-icon-circle {
+  background: #8A4FC7;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(138, 79, 199, 0.25);
+}
+
+.service-card-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #211B45;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.service-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #5F5B7D;
+  margin-bottom: 24px;
+  max-width: 290px;
+}
+
+.service-explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #8A4FC7;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: auto;
+  transition: all 0.25s ease;
+}
+
+.service-explore-link:hover {
+  color: #211B45;
+  transform: translateX(3px);
+}
+
+/* Bottom Waves */
+.eval-bottom-wave-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at bottom left, rgba(239, 230, 248, 0.8) 0%, rgba(248, 245, 240, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.eval-bottom-wave-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle at bottom right, rgba(239, 230, 248, 0.7) 0%, rgba(248, 245, 240, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .eval-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .eval-headline {
+    font-size: 2.8rem;
+  }
+
+  .eval-services-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .col-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .eval-headline {
+    font-size: 2.2rem;
+  }
+
+  .services-heading {
+    font-size: 2.2rem;
+  }
+}

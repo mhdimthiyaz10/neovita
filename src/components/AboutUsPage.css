@@ -6,7 +6,7 @@
   font-family: 'Inter', sans-serif;
   color: #1a1532;
   padding-top: 90px;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* =======================================
@@ -398,26 +398,179 @@
 /* =======================================
    Exact Why Choose Us Image Section
    ======================================= */
-.why-choose-exact-image-section {
-  padding: 60px 0 100px 0;
-  background-color: #fcfbfa;
+/* Interactive Sticky Stacked Why Choose Us Section */
+.why-choose-stacked-section {
+  position: relative;
+  width: 100%;
+  background-color: #F8F8F6;
+  margin: 40px 0;
+}
+
+.why-choose-stacked-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.why-choose-stacked-card {
+  position: sticky;
+  top: 70px;
+  height: calc(100vh - 70px);
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  background-color: #F8F8F6;
+  box-shadow: 0 -20px 45px rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 60px 24px 60px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.why-choose-stacked-content {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.why-choose-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.why-choose-section-eyebrow {
+  color: #74358F;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.why-choose-section-eyebrow .eyebrow-dash {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.why-choose-number-badge {
+  font-size: 3.8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(116, 53, 143, 0.35);
+  margin-bottom: 12px;
+  letter-spacing: -2px;
+}
+
+.why-choose-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #74358F;
+  margin: 0 0 16px 0;
+}
+
+.why-choose-quote {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+  color: #1a1532;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  border-left: 3px solid #74358F;
+  padding-left: 16px;
+}
+
+.why-choose-desc {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0 0 24px 0;
+  font-weight: 400;
+  max-width: 520px;
+}
+
+.why-choose-cta-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111111;
+  text-decoration: none;
+  border-bottom: 1.5px solid #111111;
+  padding-bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.why-choose-cta-link:hover {
+  gap: 14px;
+  color: #74358F;
+  border-bottom-color: #74358F;
+}
+
+.why-choose-right-col {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.why-choose-exact-container {
-  max-width: 1200px;
+.why-choose-img-wrapper {
   width: 100%;
-  text-align: center;
-  padding: 0 20px;
+  height: 380px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(9, 17, 51, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.why-choose-exact-img {
+.why-choose-team-img {
   width: 100%;
-  height: auto;
-  border-radius: 28px;
-  box-shadow: 0 20px 50px rgba(9, 17, 51, 0.08);
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   display: block;
+}
+
+.why-choose-arrow {
+  display: flex;
+  justify-content: flex-end;
+  color: #111111;
+  padding-top: 15px;
+}
+
+.why-choose-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: #999999;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 16px;
+  text-transform: uppercase;
 }
 /* =======================================
    Exact Get Medical Consultation Image Section (Full Page Width)

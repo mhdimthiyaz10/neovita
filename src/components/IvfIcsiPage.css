@@ -1,0 +1,515 @@
+/* IVF / ICSI Luxury Editorial Section CSS */
+
+.ivf-icsi-page {
+  background-color: #F5F1EC;
+  color: #30263A;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+.ivf-back-container {
+  padding-top: 32px;
+  padding-bottom: 16px;
+}
+
+.ivf-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #654477;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.ivf-back-btn:hover {
+  background: rgba(101, 68, 119, 0.08);
+  transform: translateX(-3px);
+}
+
+/* TOP HERO SECTION: 3-COLUMN LAYOUT */
+.ivf-top-hero-section {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.ivf-hero-grid {
+  display: grid;
+  grid-template-columns: 44% 33% 23%;
+  gap: 36px;
+  align-items: stretch;
+}
+
+/* COLUMN 1: LEFT HERO IMAGE WITH OVERLAY */
+.ivf-hero-left-image-col {
+  width: 100%;
+}
+
+.ivf-hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 540px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(67, 36, 81, 0.12);
+}
+
+.ivf-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ivf-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    170deg,
+    rgba(55, 29, 68, 0.78) 0%,
+    rgba(67, 36, 81, 0.65) 45%,
+    rgba(32, 21, 42, 0.85) 100%
+  );
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FFFFFF;
+}
+
+.ivf-hero-overlay-top {
+  max-width: 90%;
+}
+
+.ivf-hero-overlay-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.ivf-hero-overlay-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.ivf-hero-overlay-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.ivf-hero-overlay-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.ivf-mother-baby-icon {
+  width: 44px;
+  height: 44px;
+  opacity: 0.85;
+}
+
+/* COLUMN 2: CENTER EDITORIAL PHILOSOPHY */
+.ivf-hero-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 12px;
+}
+
+.ivf-philosophy-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #654477;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ivf-philosophy-divider {
+  width: 40px;
+  height: 1px;
+  background: #C8B7D5;
+  margin-bottom: 28px;
+}
+
+.ivf-center-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  line-height: 1.18;
+  font-weight: 600;
+  color: #30263A;
+  margin-bottom: 28px;
+}
+
+.ivf-center-headline .italic-purple {
+  font-style: italic;
+  color: #654477;
+  font-weight: 500;
+}
+
+.ivf-center-body {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: #6D6670;
+  margin-bottom: 36px;
+}
+
+.ivf-cta-wrapper {
+  margin-top: auto;
+}
+
+.ivf-procedure-cta {
+  background: transparent;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #432451;
+  text-transform: uppercase;
+  padding: 0 0 6px 0;
+  border-bottom: 1.5px solid #654477;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25 ease;
+}
+
+.ivf-procedure-cta:hover {
+  color: #654477;
+  border-bottom-color: #432451;
+  padding-bottom: 4px;
+}
+
+.arrow-symbol {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.ivf-procedure-cta:hover .arrow-symbol {
+  transform: translateX(4px);
+}
+
+/* COLUMN 3: RIGHT INDICATIONS COLUMN */
+.ivf-hero-right-col {
+  border-left: 1px solid #C8B7D5;
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 12px;
+}
+
+.ivf-indications-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #432451;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+.ivf-indications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ivf-indications-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4A4250;
+}
+
+.bullet-dot {
+  color: #654477;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.ivf-indications-footer-text {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #6D6670;
+  margin-top: auto;
+}
+
+/* HORIZONTAL DIVIDER LINE */
+.ivf-horizontal-line {
+  width: 100%;
+  height: 1px;
+  background: #C8B7D5;
+  margin: 40px 0 60px 0;
+  opacity: 0.7;
+}
+
+/* IVF PROCEDURE SECTION */
+.ivf-procedure-section {
+  padding-bottom: 70px;
+}
+
+.ivf-procedure-main-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #432451;
+  margin-bottom: 48px;
+  line-height: 1.25;
+}
+
+.ivf-timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 960px;
+}
+
+.ivf-timeline-item {
+  display: flex;
+  gap: 28px;
+  position: relative;
+  padding-bottom: 36px;
+}
+
+.ivf-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.ivf-timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ivf-number-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #654477;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(101, 68, 119, 0.25);
+  z-index: 2;
+}
+
+.ivf-timeline-connector {
+  width: 1.5px;
+  background-color: #C8B7D5;
+  flex: 1;
+  margin-top: 6px;
+}
+
+.ivf-timeline-content {
+  padding-top: 4px;
+}
+
+.ivf-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #30263A;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.ivf-step-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #6D6670;
+  max-width: 780px;
+}
+
+/* CONSULTATION / APPOINTMENT CARD */
+.ivf-consultation-section {
+  padding-top: 20px;
+}
+
+.ivf-consultation-card {
+  background: #FFFFFF;
+  border: 1px solid #E4DCED;
+  border-radius: 8px;
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(67, 36, 81, 0.05);
+}
+
+.ivf-card-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #654477;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ivf-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: #30263A;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.ivf-card-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6D6670;
+}
+
+.ivf-consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ivf-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #F9F7F4;
+  border: 1px solid #DDD5E7;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #30263A;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.ivf-input:focus {
+  border-color: #654477;
+  background: #FFFFFF;
+}
+
+.ivf-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #654477;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 4px;
+}
+
+.ivf-submit-btn:hover {
+  background: #432451;
+}
+
+.ivf-consultation-success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F4EFF8;
+  border: 1px solid #C8B7D5;
+  padding: 20px;
+  border-radius: 6px;
+  color: #432451;
+  font-weight: 500;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
+  .ivf-hero-grid {
+    grid-template-columns: 42% 33% 25%;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  .ivf-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ivf-hero-image-wrapper {
+    min-height: 420px;
+  }
+
+  .ivf-hero-right-col {
+    border-left: none;
+    border-top: 1px solid #C8B7D5;
+    padding-left: 0;
+    padding-top: 32px;
+  }
+
+  .ivf-consultation-card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ivf-hero-overlay {
+    padding: 24px 20px;
+  }
+
+  .ivf-hero-overlay-title {
+    font-size: 1.3rem;
+  }
+
+  .ivf-hero-overlay-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .ivf-center-headline {
+    font-size: 2rem;
+  }
+
+  .ivf-procedure-main-heading {
+    font-size: 1.75rem;
+  }
+
+  .ivf-timeline-item {
+    gap: 16px;
+  }
+
+  .ivf-number-badge {
+    width: 32px;
+    height: 32px;
+    font-size: 0.78rem;
+  }
+
+  .ivf-step-title {
+    font-size: 1.15rem;
+  }
+}

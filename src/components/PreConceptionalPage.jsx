@@ -1,134 +1,137 @@
 import React from 'react';
-import { 
-  ArrowLeft, 
-  ArrowRight, 
-  Calendar, 
-  Apple, 
-  ShieldCheck, 
-  Users, 
-  Flower2
-} from 'lucide-react';
-import { RadialBackground } from '@/components/ui/light-theme-tailwind-css-background-snippet';
+import { ArrowLeft } from 'lucide-react';
 import './PreConceptionalPage.css';
-
-const carePillars = [
-  {
-    id: 'timing',
-    icon: Calendar,
-    title: 'Right Timing',
-    desc: 'The doctor will help you understand the best time to conceive and plan accordingly for a healthier journey.'
-  },
-  {
-    id: 'nutrition',
-    icon: Apple,
-    title: 'Supplements & Nutrition',
-    desc: 'Guidance on essential supplements and nutrition to support fertility and overall well-being.'
-  },
-  {
-    id: 'health',
-    icon: ShieldCheck,
-    title: 'Health Optimization',
-    desc: 'Assessment and optimization of any existing medical conditions to ensure a safer pregnancy and healthier baby.'
-  }
-];
 
 const PreConceptionalPage = ({ onNavigateBack, onBookConsultation }) => {
   return (
-    <div className="preconceptional-page">
-      <RadialBackground />
+    <section className="preconceptional-section">
+      {/* Top Back Navigation (Visible when loaded standalone) */}
+      {onNavigateBack && (
+        <div className="preconceptional-top-bar">
+          <button className="preconceptional-back-btn" onClick={onNavigateBack}>
+            <ArrowLeft size={16} /> Back to Home
+          </button>
+        </div>
+      )}
 
-      {/* Leaf Background Decor */}
-      <svg className="preconcept-bg-leaf" viewBox="0 0 200 200" fill="none">
-        <path d="M 50 150 C 80 80, 150 50, 180 20 C 130 90, 80 120, 50 150 Z" stroke="#5e239d" strokeWidth="2" fill="none" opacity="0.4" />
-        <path d="M 90 110 C 110 90, 140 70, 170 60" stroke="#5e239d" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.3" />
-      </svg>
+      <div className="preconceptional-container">
+        <div className="preconceptional-grid">
+          
+          {/* LEFT COLUMN: Large Portrait Photograph */}
+          <div className="preconceptional-image-col">
+            <div className="preconceptional-image-frame">
+              <img 
+                src="/preconceptional_consultation.jpg" 
+                alt="Pre Conceptional Counselling - Doctor Consultation with Couple" 
+                className="preconceptional-img"
+              />
+            </div>
+          </div>
 
-      {/* Back Navigation Bar */}
-      <div className="container preconcept-back-container">
-        <button className="preconcept-back-btn" onClick={onNavigateBack}>
-          <ArrowLeft size={18} /> Back to Home
-        </button>
-      </div>
-
-      {/* Hero Section */}
-      <section className="preconcept-hero-section">
-        <div className="container">
-          <div className="preconcept-hero-grid">
+          {/* RIGHT COLUMN: Eyebrow, Title, 5 Info Rows */}
+          <div className="preconceptional-content-col">
             
-            {/* Left Column Content */}
-            <div className="preconcept-hero-content">
-              <div className="preconcept-eyebrow">
-                <div className="preconcept-eyebrow-icon">
-                  <Flower2 size={14} />
-                </div>
-                <span>PRE CONCEPTIONAL CARE</span>
-                <span className="preconcept-eyebrow-line"></span>
-              </div>
+            {/* Eyebrow */}
+            <div className="preconceptional-eyebrow-wrapper">
+              <span className="preconceptional-eyebrow">OUR SERVICES</span>
+              <div className="preconceptional-eyebrow-line"></div>
+            </div>
 
-              <h1 className="preconcept-hero-title">
-                Pre Conceptional <span className="title-accent">Counselling</span>
-              </h1>
+            {/* Main Title */}
+            <h1 className="preconceptional-title">
+              Pre Conceptional<br />
+              Counselling
+            </h1>
 
-              <p className="preconcept-hero-subtitle">
-                Pre pregnancy counselling includes a discussion between the couple and the doctor to learn about the essential matters to be addressed before getting pregnant.
-              </p>
+            {/* 5 Information Rows */}
+            <div className="preconceptional-rows">
               
-              <div className="preconcept-subtitle-bar"></div>
-
-              {/* Doctor & Couple Highlight Card */}
-              <div className="preconcept-highlight-box">
-                <div className="highlight-box-icon">
-                  <Users size={24} />
+              {/* Row 1 */}
+              <div className="preconceptional-row">
+                <div className="preconceptional-icon-circle">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#81318F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    <circle cx="9" cy="11.5" r="1" fill="#81318F" />
+                    <circle cx="12" cy="11.5" r="1" fill="#81318F" />
+                    <circle cx="15" cy="11.5" r="1" fill="#81318F" />
+                  </svg>
                 </div>
-                <div className="highlight-box-text">
-                  This includes the right time of conception, the supplements to be taken pre conceptionally and the optimization of medical conditions if any.
-                </div>
+                <p className="preconceptional-row-text">
+                  Pre pregnancy counselling includes a discussion between the couple and the doctor to learn about the essential matters to be addressed before getting pregnant.
+                </p>
               </div>
 
-              <button className="btn-purple-pill" onClick={onBookConsultation}>
-                Book a Consultation <ArrowRight size={18} className="btn-arrow" />
-              </button>
-            </div>
-
-            {/* Right Media Column - Custom Organic Arch Frame */}
-            <div className="preconcept-hero-media">
-              <div className="preconcept-arch-container">
-                <div className="preconcept-purple-wave-accent"></div>
-                <div className="preconcept-arch-frame">
-                  <img 
-                    src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=85" 
-                    alt="Neovita Doctor Pre-Conceptional Consultation with Couple" 
-                    className="preconcept-arch-img"
-                  />
+              {/* Row 2 */}
+              <div className="preconceptional-row">
+                <div className="preconceptional-icon-circle">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#81318F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="17" rx="2.5" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="9" x2="21" y2="9" />
+                    <circle cx="7.5" cy="13" r="1" fill="#81318F" />
+                    <circle cx="12" cy="13" r="1" fill="#81318F" />
+                    <circle cx="16.5" cy="13" r="1" fill="#81318F" />
+                    <circle cx="7.5" cy="17" r="1" fill="#81318F" />
+                    <circle cx="12" cy="17" r="1" fill="#81318F" />
+                  </svg>
                 </div>
+                <p className="preconceptional-row-text">
+                  This includes the right time of conception, the supplements to be taken pre conceptually and the optimization of medical conditions if any.
+                </p>
               </div>
+
+              {/* Row 3 */}
+              <div className="preconceptional-row">
+                <div className="preconceptional-icon-circle">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#81318F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                    <rect x="8" y="2" width="8" height="4" rx="1" />
+                    <path d="M12 11.5c-1.5-1.5-3-1-3.5 0s0 2.5 3.5 4.5c3.5-2 4-3.5 3.5-4.5s-2-1.5-3.5 0z" fill="none" stroke="#81318F" strokeWidth="1.5" />
+                    <line x1="8" y1="18" x2="16" y2="18" />
+                  </svg>
+                </div>
+                <p className="preconceptional-row-text">
+                  During this consultation the doctor will get a detailed history from both partners to know about any factors that can affect the health of the mother as well as the unborn baby.
+                </p>
+              </div>
+
+              {/* Row 4 */}
+              <div className="preconceptional-row">
+                <div className="preconceptional-icon-circle">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#81318F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 3v13a3 3 0 0 0 6 0V3" />
+                    <path d="M7 3h10" />
+                    <path d="M9 10h6" />
+                    <line x1="12" y1="12" x2="12" y2="15" strokeDasharray="1 1" />
+                  </svg>
+                </div>
+                <p className="preconceptional-row-text">
+                  The doctor may also ask to do some blood tests to rule out any medical illness that need to be addressed before getting pregnant or to know the status of the already known medical condition.
+                </p>
+              </div>
+
+              {/* Row 5 */}
+              <div className="preconceptional-row">
+                <div className="preconceptional-icon-circle">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#81318F" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 7.5c-1.5-1.5-3-1-3.5 0s0 2.5 3.5 4.5c3.5-2 4-3.5 3.5-4.5s-2-1.5-3.5 0z" fill="none" />
+                    <circle cx="12" cy="16" r="1.5" />
+                  </svg>
+                </div>
+                <p className="preconceptional-row-text">
+                  Pre conceptional counselling must be given due importance as it identifies any problems that needs to be addressed beforehand which ensures that the mother has a healthy and smooth pregnancy journey and ultimately helps to take home a healthy baby.
+                </p>
+              </div>
+
             </div>
 
           </div>
-        </div>
-      </section>
 
-      {/* 3 Pillars Grid (Exact Match to Image) */}
-      <section className="preconcept-pillars-section">
-        <div className="container">
-          <div className="preconcept-pillars-grid">
-            {carePillars.map((pillar) => {
-              const IconComp = pillar.icon;
-              return (
-                <div className="preconcept-pillar-card" key={pillar.id}>
-                  <div className="pillar-icon-wrapper-purple">
-                    <IconComp size={30} />
-                  </div>
-                  <h3 className="preconcept-pillar-title">{pillar.title}</h3>
-                  <p className="preconcept-pillar-desc">{pillar.desc}</p>
-                </div>
-              );
-            })}
-          </div>
         </div>
-      </section>
-
-    </div>
+      </div>
+    </section>
   );
 };
 

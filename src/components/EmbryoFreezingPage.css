@@ -1,0 +1,383 @@
+/* Embryo Freezing Luxury Editorial Section CSS */
+
+.ef-page {
+  background-color: #F5F1EC;
+  color: #40364A;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+.ef-back-container {
+  padding-top: 32px;
+  padding-bottom: 16px;
+}
+
+.ef-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #765080;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.ef-back-btn:hover {
+  background: rgba(118, 80, 128, 0.08);
+  transform: translateX(-3px);
+}
+
+/* HERO SECTION: 2-COLUMN GRID (~48% LEFT IMAGE, ~52% RIGHT CONTENT) */
+.ef-hero-section {
+  padding-top: 16px;
+  padding-bottom: 60px;
+}
+
+.ef-hero-grid {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* LEFT COLUMN: LARGE PORTRAIT IMAGE WITH OVERLAY TITLE */
+.ef-hero-left-col {
+  width: 100%;
+}
+
+.ef-hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  min-height: 560px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(64, 54, 74, 0.1);
+}
+
+.ef-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ef-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    170deg,
+    rgba(50, 26, 62, 0.72) 0%,
+    rgba(64, 36, 74, 0.45) 45%,
+    rgba(32, 18, 40, 0.75) 100%
+  );
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.ef-hero-overlay-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* RIGHT COLUMN: EDITORIAL CONTENT & EMBRYO THUMBNAIL */
+.ef-hero-right-col {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+}
+
+.ef-philosophy-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #765080;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ef-philosophy-line {
+  width: 40px;
+  height: 1px;
+  background-color: #765080;
+  margin-bottom: 24px;
+}
+
+/* TOP ROW: HEADLINE & EMBRYO THUMBNAIL */
+.ef-headline-thumb-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.ef-headline-wrapper {
+  flex: 1;
+}
+
+.ef-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  line-height: 1.18;
+  font-weight: 600;
+  color: #40364A;
+  margin: 0;
+}
+
+.ef-headline .italic-purple {
+  font-style: italic;
+  color: #765080;
+  font-weight: 500;
+}
+
+.ef-thumb-wrapper {
+  flex-shrink: 0;
+}
+
+.ef-embryo-thumb-img {
+  width: 190px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(64, 54, 74, 0.12);
+  border: 1px solid rgba(228, 220, 237, 0.6);
+  display: block;
+}
+
+/* BODY PARAGRAPH */
+.ef-main-body {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: #6F6875;
+  margin-bottom: 32px;
+  max-width: 620px;
+}
+
+/* SUBHEADING */
+.ef-section-subheading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #765080;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+/* NUMBERED EDITORIAL LIST */
+.ef-numbered-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.ef-numbered-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ef-number-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #765080;
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 4px 10px rgba(118, 80, 128, 0.2);
+}
+
+.ef-item-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #40364A;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* FINAL PARAGRAPH */
+.ef-final-paragraph {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #6F6875;
+  max-width: 620px;
+}
+
+/* SUBTLE SECTION DIVIDER */
+.ef-section-divider {
+  width: 100%;
+  height: 1px;
+  background: #DDD5E7;
+  margin: 20px 0 60px 0;
+  opacity: 0.6;
+}
+
+/* CONSULTATION CARD */
+.ef-consultation-section {
+  padding-bottom: 40px;
+}
+
+.ef-consultation-card {
+  background: #FFFFFF;
+  border: 1px solid #E4DCED;
+  border-radius: 6px;
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(64, 54, 74, 0.04);
+}
+
+.ef-card-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #765080;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ef-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: #40364A;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.ef-card-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6F6875;
+}
+
+.ef-consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ef-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #F9F7F4;
+  border: 1px solid #DDD5E7;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #40364A;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.ef-input:focus {
+  border-color: #765080;
+  background: #FFFFFF;
+}
+
+.ef-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #765080;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 4px;
+}
+
+.ef-submit-btn:hover {
+  background: #40364A;
+}
+
+.ef-consultation-success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F4EFF8;
+  border: 1px solid #C8B7D5;
+  padding: 20px;
+  border-radius: 6px;
+  color: #40364A;
+  font-weight: 500;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 992px) {
+  .ef-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .ef-hero-image-wrapper {
+    min-height: 420px;
+  }
+
+  .ef-headline-thumb-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ef-embryo-thumb-img {
+    width: 100%;
+    max-width: 280px;
+    height: 160px;
+  }
+
+  .ef-consultation-card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ef-hero-overlay {
+    padding: 24px 20px;
+  }
+
+  .ef-hero-overlay-title {
+    font-size: 2rem;
+  }
+
+  .ef-headline {
+    font-size: 2rem;
+  }
+
+  .ef-section-subheading {
+    font-size: 1.3rem;
+  }
+
+  .ef-item-text {
+    font-size: 0.88rem;
+  }
+}

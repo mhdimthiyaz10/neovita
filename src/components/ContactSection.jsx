@@ -70,7 +70,7 @@ const ContactSection = ({ isStandalonePage = false, onNavigateBack, onBookConsul
         {/* Office Cards Grid */}
         <div className="contact-cards-grid">
           {officeLocations.map((office) => (
-            <div className="contact-office-card" key={office.id}>
+            <div className="contact-office-card" id={office.id} key={office.id}>
               
               {/* Dedicated Image Holder Space */}
               <div className="card-image-holder">

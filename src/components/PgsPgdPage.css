@@ -1,0 +1,206 @@
+/* Page Base Styling */
+.pgs-pgd-page {
+  background-color: #F5F1EC;
+  min-height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  color: #6F6875;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Return to Home Bar */
+.pgs-back-container {
+  margin-bottom: 30px;
+}
+
+.pgs-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(118, 80, 128, 0.2);
+  color: #765080;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.pgs-back-btn:hover {
+  background: #765080;
+  color: #FFFFFF;
+  border-color: #765080;
+  transform: translateX(-3px);
+}
+
+/* Master Section Layout */
+.pgs-master-section {
+  padding: 20px 0 60px 0;
+}
+
+.pgs-master-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: center;
+}
+
+/* Left Image Container (Master Specification) */
+.pgs-left-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 580px;
+  overflow: hidden;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  margin: 0 auto;
+}
+
+.pgs-left-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Photographic Purple Overlay (Desaturated Lavender Tint) */
+.pgs-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(82, 58, 92, 0.52), rgba(52, 40, 62, 0.48));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Title Over Left Image */
+.pgs-left-title {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin: 0;
+  z-index: 2;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Right Content Column */
+.pgs-right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 10px;
+}
+
+/* Eyebrow Header */
+.pgs-eyebrow-wrapper {
+  margin-bottom: 28px;
+}
+
+.pgs-eyebrow-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #765080;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.pgs-eyebrow-line {
+  width: 56px;
+  height: 1px;
+  background-color: #B9A9C5;
+}
+
+/* Top Content Row with Baby Feet Image */
+.pgs-right-top-row {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.pgs-body-p1 {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #6F6875;
+  margin: 0;
+}
+
+.pgs-baby-image-wrapper {
+  flex: 0 0 230px;
+  width: 230px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.pgs-baby-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.35 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+
+/* Paragraph 2 */
+.pgs-body-p2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #6F6875;
+  margin-bottom: 36px;
+}
+
+/* Paragraph 3 - Large Elegant Serif */
+.pgs-body-p3 {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.48;
+  color: #40364A;
+  margin: 0;
+}
+
+/* Responsive Rules */
+@media (max-width: 992px) {
+  .pgs-master-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .pgs-left-container {
+    max-width: 100%;
+  }
+
+  .pgs-left-title {
+    font-size: 28px;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+  }
+
+  .pgs-right-top-row {
+    flex-direction: column-reverse;
+  }
+
+  .pgs-baby-image-wrapper {
+    width: 100%;
+    max-width: 320px;
+  }
+}

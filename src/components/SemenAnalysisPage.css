@@ -1,0 +1,214 @@
+/* =========================================================
+   Luxury Editorial Semen Analysis Styling
+   Font Standard: Cormorant Garamond & Plus Jakarta Sans
+   ========================================================= */
+
+.semen-page {
+  position: relative;
+  background-color: #F8F5F0;
+  color: #171642;
+  overflow: hidden;
+  padding-bottom: 90px;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+/* Back Navigation Container */
+.semen-back-container {
+  padding-top: 130px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 10;
+}
+
+.semen-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #56618A;
+  border: 1px solid #DCD3E8;
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.semen-back-btn:hover {
+  background: #8A4FC7;
+  color: #ffffff;
+  border-color: #8A4FC7;
+}
+
+/* SECTION 1 — MAIN HERO CONTENT (2 Columns: ~58% Left, ~42% Right) */
+.semen-hero-section {
+  position: relative;
+  padding: 30px 0 75px 0;
+  z-index: 3;
+}
+
+.semen-hero-grid {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  gap: 75px;
+  align-items: center;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* LEFT COLUMN: Organic Specialist Lab Graphic */
+.semen-hero-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.semen-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  justify-content: center;
+}
+
+.semen-reference-img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 15px 35px rgba(138, 79, 199, 0.08));
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.semen-reference-img:hover {
+  transform: scale(1.02);
+}
+
+/* RIGHT COLUMN: Editorial Content */
+.semen-hero-right {
+  position: relative;
+  z-index: 3;
+}
+
+.semen-philosophy-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #8A4FC7;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.eyebrow-line-right {
+  width: 45px;
+  height: 1px;
+  background: #DCD3E8;
+}
+
+.semen-headline {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 3.8rem;
+  line-height: 1.05;
+  color: #171642;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+/* Body Content Paragraph Structure */
+.semen-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.semen-body-content p {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #56618A;
+  margin: 0;
+}
+
+.semen-hero-cta-wrap {
+  margin-top: 10px;
+}
+
+.btn-editorial-purple {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #171642;
+  color: #ffffff;
+  border: 1px solid #8A4FC7;
+  padding: 14px 30px;
+  border-radius: 99px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(23, 22, 66, 0.15);
+}
+
+.btn-editorial-purple:hover {
+  background: #8A4FC7;
+  border-color: #8A4FC7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(138, 79, 199, 0.25);
+}
+
+/* Bottom Decorative Wave Shapes */
+.semen-bottom-wave-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at bottom left, rgba(238, 229, 248, 0.8) 0%, rgba(248, 245, 240, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.semen-bottom-wave-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle at bottom right, rgba(238, 229, 248, 0.7) 0%, rgba(248, 245, 240, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1280px) {
+  .semen-hero-grid {
+    gap: 45px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .semen-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .semen-headline {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .semen-headline {
+    font-size: 2.2rem;
+  }
+}

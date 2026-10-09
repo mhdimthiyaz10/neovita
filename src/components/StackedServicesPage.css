@@ -1,0 +1,310 @@
+/* Stacked Services Overlapping Scroll Page Styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+.stacked-page {
+  background-color: #F8F8F6;
+  color: #111111;
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Fixed Top Header Bar */
+.stacked-top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(248, 248, 246, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.stacked-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #111111;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.stacked-back-btn:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+.stacked-header-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #666666;
+  text-transform: uppercase;
+}
+
+.stacked-book-btn {
+  background-color: #2e1052;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.stacked-book-btn:hover {
+  background-color: #3f1770;
+  transform: translateY(-1px);
+}
+
+/* STACKED CARDS WRAPPER */
+.stacked-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 70px; /* offset header height */
+}
+
+/* INDIVIDUAL STICKY FULL-SCREEN STACKED CARD */
+.stacked-card {
+  position: sticky;
+  top: 70px;
+  height: calc(100vh - 70px);
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  background-color: #F8F8F6;
+  box-shadow: 0 -20px 45px rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 60px 24px 60px;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Inner Grid Layout */
+.stacked-card-content {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  flex-grow: 1;
+  padding: 10px 0;
+}
+
+.why-choose-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.why-choose-section-eyebrow {
+  color: #74358F;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.why-choose-section-eyebrow .eyebrow-dash {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.why-choose-number-badge {
+  font-size: 3.8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(116, 53, 143, 0.35);
+  margin-bottom: 12px;
+  letter-spacing: -2px;
+}
+
+.why-choose-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #74358F;
+  margin: 0 0 16px 0;
+}
+
+.why-choose-quote {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+  color: #1a1532;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  border-left: 3px solid #74358F;
+  padding-left: 16px;
+}
+
+.why-choose-desc {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0 0 24px 0;
+  font-weight: 400;
+  max-width: 520px;
+}
+
+.why-choose-cta-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111111;
+  text-decoration: none;
+  border-bottom: 1.5px solid #111111;
+  padding-bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.why-choose-cta-link:hover {
+  gap: 14px;
+  color: #74358F;
+  border-bottom-color: #74358F;
+}
+
+.why-choose-right-col {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-choose-img-wrapper {
+  width: 100%;
+  height: 380px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(9, 17, 51, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.why-choose-team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Footer Indicator Line inside Card */
+.stacked-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: #999999;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 16px;
+  text-transform: uppercase;
+}
+
+/* RESPONSIVE STYLING */
+@media (max-width: 1100px) {
+  .stacked-card {
+    padding: 30px 40px 20px 40px;
+  }
+
+  .stacked-card-content {
+    grid-template-columns: 160px 1fr 60px;
+  }
+
+  .stacked-number {
+    font-size: 6.5rem;
+  }
+
+  .stacked-title {
+    font-size: 2.2rem;
+  }
+
+  .stacked-image-holder {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stacked-top-header {
+    padding: 0 20px;
+  }
+
+  .stacked-header-title {
+    display: none;
+  }
+
+  .stacked-card {
+    padding: 24px 20px 16px 20px;
+  }
+
+  .stacked-card-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stacked-number {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .stacked-right-arrow {
+    display: none;
+  }
+
+  .stacked-center-body {
+    max-width: 100%;
+  }
+
+  .stacked-title {
+    font-size: 1.8rem;
+  }
+
+  .stacked-image-holder {
+    height: 180px;
+  }
+
+  .stacked-card-footer {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}

@@ -37,12 +37,14 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       href: '#about', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'About Us', page: 'about', href: '#about', desc: 'Our journey, clinic story & team' },
+        { name: 'About Us', page: 'about', href: '#about', desc: 'Our journey, clinic story & mission' },
+        { name: 'Why Choose Us', page: 'why-choose-us', href: '#why-choose-us', desc: 'Interactive stacked services & features' },
+        { name: 'Our Team', page: 'about', href: '#about', desc: 'Expert fertility specialists & team' },
         { name: 'FAQ', page: 'faq', href: '#faq', desc: 'Frequently asked fertility questions' },
       ]
     },
-    { name: 'Our Team', page: 'home', href: '#about', hasDropdown: false },
-    { name: 'Events', page: 'home', href: '#features', hasDropdown: false },
+    { name: 'Our Team', page: 'about', href: '#about', hasDropdown: false },
+    { name: 'Events', page: 'home', href: '#events', hasDropdown: false },
     { name: 'Contact', page: 'contact', href: '#contact', hasDropdown: false },
     { 
       name: 'Services', 
@@ -51,18 +53,36 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'Pre conceptional counselling', page: 'pre-conceptional', href: '#pre-conceptional' },
-        { name: 'Evaluation of infertility', page: 'home', href: '#treatments' },
-        { name: 'Follicular Monitoring', page: 'home', href: '#treatments' },
-        { name: 'Semen Analysis', page: 'home', href: '#treatments' },
-        { name: 'Intra Uterine Insemination (IUI)', page: 'home', href: '#treatments' },
-        { name: 'IVF/ICSI', page: 'home', href: '#treatments' },
-        { name: 'Laser Assisted Hatching', page: 'home', href: '#treatments' },
-        { name: 'Embryo freezing', page: 'home', href: '#treatments' },
-        { name: 'Egg & sperm and embryo freezing', page: 'home', href: '#treatments' },
-        { name: 'PGS/PGD', page: 'home', href: '#treatments' },
+        { name: 'Evaluation of infertility', page: 'evaluation-infertility', href: '#evaluation-infertility' },
+        { name: 'Follicular Monitoring', page: 'follicular-monitoring', href: '#follicular-monitoring' },
+        { name: 'Semen Analysis', page: 'semen-analysis', href: '#semen-analysis' },
+        { name: 'Intra Uterine Insemination (IUI)', page: 'iui', href: '#iui' },
+        { name: 'IVF/ICSI', page: 'ivf-icsi', href: '#ivf-icsi' },
+        { name: 'Laser Assisted Hatching', page: 'laser-assisted-hatching', href: '#laser-assisted-hatching' },
+        { name: 'Embryo freezing', page: 'embryo-freezing', href: '#embryo-freezing' },
+        { name: 'Egg & sperm and embryo freezing', page: 'egg-sperm-embryo-freezing', href: '#egg-sperm-embryo-freezing' },
+        { name: 'PGS/PGD', page: 'pgs-pgd', href: '#pgs-pgd' },
       ]
     },
     { name: 'International Patient Service', page: 'international', href: '#international', hasDropdown: false },
+    { 
+      name: 'Fertility Preservation Program', 
+      page: 'egg-sperm-embryo-freezing', 
+      href: '#egg-sperm-embryo-freezing', 
+      hasDropdown: false,
+      isSpecial: true 
+    },
+    { 
+      name: 'Our Locations', 
+      page: 'contact', 
+      href: '#contact', 
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Kollam Clinic', page: 'contact', href: '#kollam', desc: 'Ayathil, Kallumthazham, Kollam' },
+        { name: 'Trivandrum Clinic', page: 'contact', href: '#trivandrum', desc: 'Varkala, Trivandrum' },
+        { name: 'Aleppy Clinic', page: 'contact', href: '#aleppy', desc: 'Kattanam, Alappuzha' },
+      ]
+    },
   ];
 
   const handleLinkClick = (e, link) => {
@@ -127,8 +147,16 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
               {navLinks.map((link) => {
                 const isDropdownOpen = openDropdown === link.name;
                 const isCurrentActive = 
-                  (link.page === activePage && !link.hasDropdown) || 
-                  (link.name === 'About' && (activePage === 'about' || activePage === 'faq'));
+                  (link.name === 'Home' && activePage === 'home') ||
+                  (link.name === 'About' && (activePage === 'about' || activePage === 'faq' || activePage === 'why-choose-us' || activePage === 'stacked-services')) ||
+                  (link.name === 'Our Team' && activePage === 'our-team') ||
+                  (link.name === 'Events' && activePage === 'events') ||
+                  (link.name === 'Contact' && activePage === 'contact') ||
+                  (link.name === 'Services' && (activePage === 'services' || activePage === 'treatments')) ||
+                  (link.name === 'International Patient Service' && activePage === 'international') ||
+                  (link.name === 'Fertility Preservation Program' && activePage === 'egg-sperm-embryo-freezing') ||
+                  (link.name === 'Our Locations' && activePage === 'locations');
+                const isSpecial = link.isSpecial || link.name === 'Fertility Preservation Program';
 
                 return (
                   <li 
@@ -139,7 +167,7 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
                   >
                     <a 
                       href={link.href} 
-                      className={`nav-link-anchor ${isCurrentActive ? 'active' : ''}`}
+                      className={`nav-link-anchor ${isCurrentActive ? 'active' : ''} ${isSpecial ? 'special-preservation-link' : ''}`}
                       onClick={(e) => handleLinkClick(e, link)}
                     >
                       <span>{link.name}</span>

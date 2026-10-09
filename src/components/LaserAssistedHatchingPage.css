@@ -1,0 +1,290 @@
+/* Laser Assisted Hatching Luxury Editorial Section CSS */
+
+.lah-page {
+  background-color: #F5F1EC;
+  color: #40364A;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+.lah-back-container {
+  padding-top: 32px;
+  padding-bottom: 16px;
+}
+
+.lah-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #765080;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.lah-back-btn:hover {
+  background: rgba(118, 80, 128, 0.08);
+  transform: translateX(-3px);
+}
+
+/* HERO SECTION: 2-COLUMN LAYOUT (~52% LEFT IMAGE, ~48% RIGHT CONTENT) */
+.lah-hero-section {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.lah-hero-grid {
+  display: grid;
+  grid-template-columns: 52% 48%;
+  gap: 56px;
+  align-items: center;
+}
+
+/* LEFT COLUMN: LARGE RECTANGULAR PORTRAIT IMAGE */
+.lah-hero-left {
+  width: 100%;
+}
+
+.lah-image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  max-height: 640px;
+  overflow: hidden;
+  position: relative;
+}
+
+.lah-reference-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.02) saturate(0.96);
+}
+
+/* RIGHT COLUMN: EDITORIAL CONTENT */
+.lah-hero-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.lah-philosophy-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #765080;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.lah-philosophy-line {
+  width: 40px;
+  height: 1px;
+  background-color: #765080;
+  margin-bottom: 28px;
+}
+
+.lah-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.75rem;
+  line-height: 1.18;
+  font-weight: 600;
+  color: #40364A;
+  margin-bottom: 28px;
+}
+
+.lah-headline .italic-purple {
+  font-style: italic;
+  color: #765080;
+  font-weight: 500;
+}
+
+.lah-body-content p {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #6F6875;
+  margin-bottom: 36px;
+  max-width: 580px;
+}
+
+.lah-cta-container {
+  margin-top: 8px;
+}
+
+.lah-cta-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #40364A;
+  text-transform: uppercase;
+  padding: 0 0 6px 0;
+  border-bottom: 1.5px solid #765080;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.lah-cta-btn:hover {
+  color: #765080;
+  border-bottom-color: #40364A;
+  padding-bottom: 4px;
+}
+
+.arrow-symbol {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.lah-cta-btn:hover .arrow-symbol {
+  transform: translateX(4px);
+}
+
+/* SUBTLE SECTION DIVIDER */
+.lah-section-divider {
+  width: 100%;
+  height: 1px;
+  background: #DDD5E7;
+  margin: 20px 0 60px 0;
+  opacity: 0.6;
+}
+
+/* CONSULTATION CARD */
+.lah-consultation-section {
+  padding-bottom: 40px;
+}
+
+.lah-consultation-card {
+  background: #FFFFFF;
+  border: 1px solid #E4DCED;
+  border-radius: 6px;
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(64, 54, 74, 0.04);
+}
+
+.lah-card-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #765080;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.lah-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  color: #40364A;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.lah-card-subtitle {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6F6875;
+}
+
+.lah-consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lah-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #F9F7F4;
+  border: 1px solid #DDD5E7;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #40364A;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.lah-input:focus {
+  border-color: #765080;
+  background: #FFFFFF;
+}
+
+.lah-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #765080;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 4px;
+}
+
+.lah-submit-btn:hover {
+  background: #40364A;
+}
+
+.lah-consultation-success {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F4EFF8;
+  border: 1px solid #C8B7D5;
+  padding: 20px;
+  border-radius: 6px;
+  color: #40364A;
+  font-weight: 500;
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 992px) {
+  .lah-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .lah-image-wrapper {
+    max-height: 480px;
+  }
+
+  .lah-hero-right {
+    padding-left: 0;
+  }
+
+  .lah-consultation-card {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .lah-headline {
+    font-size: 2.1rem;
+  }
+
+  .lah-body-content p {
+    font-size: 0.92rem;
+  }
+}

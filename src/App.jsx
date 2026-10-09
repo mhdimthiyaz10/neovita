@@ -13,10 +13,22 @@ import HappyPatients from './components/HappyPatients';
 import ContactSection from './components/ContactSection';
 import InternationalPatientPage from './components/InternationalPatientPage';
 import PreConceptionalPage from './components/PreConceptionalPage';
+import EvaluationInfertilityPage from './components/EvaluationInfertilityPage';
+import FollicularMonitoringPage from './components/FollicularMonitoringPage';
+import SemenAnalysisPage from './components/SemenAnalysisPage';
+import IuiPage from './components/IuiPage';
+import IvfIcsiPage from './components/IvfIcsiPage';
+import LaserAssistedHatchingPage from './components/LaserAssistedHatchingPage';
+import EmbryoFreezingPage from './components/EmbryoFreezingPage';
+import EggSpermEmbryoFreezingPage from './components/EggSpermEmbryoFreezingPage';
+import FertilityPreservationPage from './components/FertilityPreservationPage';
+import StackedServicesPage from './components/StackedServicesPage';
+import PgsPgdPage from './components/PgsPgdPage';
+import OurTeamPage from './components/OurTeamPage';
 
 function App() {
   const [framesLoaded, setFramesLoaded] = useState(false);
-  const [activePage, setActivePage] = useState('home'); // 'home' | 'about' | 'faq' | 'happy-patients' | 'contact' | 'international' | 'pre-conceptional'
+  const [activePage, setActivePage] = useState('home'); // 'home' | 'about' | 'faq' | 'happy-patients' | 'contact' | 'international' | 'pre-conceptional' | 'evaluation-infertility' | 'follicular-monitoring' | 'semen-analysis' | 'iui' | 'ivf-icsi' | 'laser-assisted-hatching' | 'embryo-freezing' | 'egg-sperm-embryo-freezing' | 'pgs-pgd'
 
 
   useEffect(() => {
@@ -48,26 +60,19 @@ function App() {
     setActivePage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    if (page === 'home' && targetHref && targetHref.startsWith('#')) {
+    if (targetHref && targetHref.startsWith('#') && targetHref !== '#') {
       setTimeout(() => {
         const element = document.querySelector(targetHref);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-      }, 100);
+      }, 150);
     }
   };
 
   const handleBookConsultation = () => {
-    const contactElement = document.querySelector('#contact') || document.querySelector('#testimonials') || document.querySelector('footer');
-    if (activePage !== 'home') {
-      setActivePage('home');
-      setTimeout(() => {
-        if (contactElement) contactElement.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
-    } else if (contactElement) {
-      contactElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    setActivePage('contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -83,9 +88,8 @@ function App() {
           <>
             <Hero onFramesLoaded={() => setFramesLoaded(true)} />
             <div id="about"><AboutUs /></div>
-            <div id="treatments"><Treatments /></div>
+            <div id="treatments"><Treatments onNavigate={handleNavigate} /></div>
             <div id="features"><Features /></div>
-            <div id="contact"><ContactSection /></div>
             <div id="testimonials"><Testimonials /></div>
           </>
         )}
@@ -94,6 +98,12 @@ function App() {
           <AboutUsPage 
             onNavigateBack={() => handleNavigate('home')} 
             onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'our-team' && (
+          <OurTeamPage 
+            onNavigateBack={() => handleNavigate('home')} 
           />
         )}
 
@@ -129,6 +139,78 @@ function App() {
         {activePage === 'pre-conceptional' && (
           <PreConceptionalPage 
             onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'evaluation-infertility' && (
+          <EvaluationInfertilityPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'follicular-monitoring' && (
+          <FollicularMonitoringPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'semen-analysis' && (
+          <SemenAnalysisPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'iui' && (
+          <IuiPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'ivf-icsi' && (
+          <IvfIcsiPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'laser-assisted-hatching' && (
+          <LaserAssistedHatchingPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'embryo-freezing' && (
+          <EmbryoFreezingPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {(activePage === 'egg-sperm-embryo-freezing' || activePage === 'fertility-preservation') && (
+          <FertilityPreservationPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {activePage === 'pgs-pgd' && (
+          <PgsPgdPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {(activePage === 'stacked-services' || activePage === 'why-choose-us') && (
+          <StackedServicesPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onNavigate={handleNavigate}
             onBookConsultation={handleBookConsultation} 
           />
         )}
