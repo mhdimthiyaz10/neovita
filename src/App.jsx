@@ -7,7 +7,7 @@ import AboutUs from './components/AboutUs';
 import Treatments from './components/Treatments';
 import Features from './components/Features';
 import Testimonials from './components/Testimonials';
-import FaqPage from './components/FaqPage';
+import FaqPage from './components/FAQPage';
 import AboutUsPage from './components/AboutUsPage';
 import HappyPatients from './components/HappyPatients';
 import ContactSection from './components/ContactSection';
