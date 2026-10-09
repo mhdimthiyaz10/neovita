@@ -39,11 +39,11 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       dropdownItems: [
         { name: 'About Us', page: 'about', href: '#about', desc: 'Our journey, clinic story & mission' },
         { name: 'Why Choose Us', page: 'why-choose-us', href: '#why-choose-us', desc: 'Interactive stacked services & features' },
-        { name: 'Our Team', page: 'about', href: '#about', desc: 'Expert fertility specialists & team' },
+        { name: 'Our Team', page: 'our-team', href: '#our-team', desc: 'Expert fertility specialists & team' },
         { name: 'FAQ', page: 'faq', href: '#faq', desc: 'Frequently asked fertility questions' },
       ]
     },
-    { name: 'Our Team', page: 'about', href: '#about', hasDropdown: false },
+    { name: 'Our Team', page: 'our-team', href: '#our-team', hasDropdown: false },
     { name: 'Events', page: 'home', href: '#events', hasDropdown: false },
     { name: 'Contact', page: 'contact', href: '#contact', hasDropdown: false },
     { 

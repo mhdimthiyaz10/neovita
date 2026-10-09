@@ -47,4 +47,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.team-photo-stack-section {
+  width: 100%;
+  padding: 2.5rem 0 3.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
