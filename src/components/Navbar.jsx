@@ -138,7 +138,7 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
           <div className="navbar-logo">
             <a href="#" onClick={(e) => { e.preventDefault(); setOpenDropdown(null); setIsPinned(false); if(onNavigate) onNavigate('home'); }}>
               <img src="/logo.png" alt="Neovita" className="logo-img" />
-              <div className="logo-tagline">FERTILITY FOR TOMORROW</div>
+              <div className="logo-tagline">THE FERTILITY EXPERTS</div>
             </a>
           </div>
 

@@ -29,7 +29,7 @@ const Loader = () => {
     <div className={`loader-overlay ${fading ? 'fade-out' : ''}`}>
       <div className="loader-content">
         <img src="/logo.png" alt="Neovita Logo" className="loader-logo" />
-        <div className="loader-tagline">FERTILITY FOR TOMORROW</div>
+        <div className="loader-tagline">THE FERTILITY EXPERTS</div>
         <div className="loading-spinner"></div>
       </div>
     </div>
