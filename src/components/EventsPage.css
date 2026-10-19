@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Neovita Events Page Styling - Clean Image Gallery Only
+   ========================================================================== */
+
+.events-page {
+  background-color: var(--color-bg-ivory, #FCFBFA);
+  min-height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+  color: var(--color-text-dark, #1A1A1A);
+  overflow-x: hidden;
+}
+
+/* Top Back Navigation Bar */
+.events-top-bar {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(94, 35, 157, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 1rem;
+}
+
+.events-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-purple, #5E239D);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(94, 35, 157, 0.06);
+  border: 1px solid rgba(94, 35, 157, 0.15);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.events-back-btn:hover {
+  background: var(--color-primary-purple, #5E239D);
+  color: #ffffff;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(94, 35, 157, 0.25);
+}
+
+.events-main-gallery {
+  width: 100%;
+}

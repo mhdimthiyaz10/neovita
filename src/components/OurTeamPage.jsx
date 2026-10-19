@@ -1,51 +1,67 @@
 import React from 'react';
-import { ArrowLeft, Sparkles, Microchip, Beaker } from 'lucide-react';
+import { ArrowLeft, Sparkles, Microchip, Beaker, HeartPulse } from 'lucide-react';
 import { InteractivePhotoStack } from '@/components/ui/photo-stack';
 import './OurTeamPage.css';
 
 const teamPhotoItems = [
   {
-    src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Sarah Anuns",
+    src: "/team/dr_anju_madhavan.png",
+    name: "Dr Anju Madhavan",
+    role: "Clinical Director, Senior Gynaecologist & Infertility Specialist, Laproscopic Surgeon",
+    experience: "MBBS, MS, DGO, MRCOG- UK, Fellowship In Reproductive Medicine",
   },
   {
-    src: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Michael Chen",
+    src: "/team/dr_antony_tobin.png",
+    name: "Dr Antony Tobin Thomas",
+    role: "Scientific Director and Chief Embryologist",
+    experience: "MSc Clinical Embryology (KMC, Manipal)",
   },
   {
-    src: "https://images.unsplash.com/photo-1594824813572-c2c31e98d9ed?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Elena Rostova",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Marcus Vance",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Ananya Sharma",
+    src: "/team/ms_greeshma_v_john.png",
+    name: "Ms Greeshma V John",
+    role: "Embryologist",
+    experience: "Clinical Embryology",
   },
 ];
 
 const embryologyPhotoItems = [
   {
-    src: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. James Miller",
+    src: "/team/mrs_shalu_thomas.png",
+    name: "Mrs. Shalu Thomas",
+    role: "IVF Nurse",
   },
   {
-    src: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Clara Bennett",
+    src: "/team/mrs_bindhu_joseph.png",
+    name: "Mrs. Bindhu Joseph",
+    role: "IVF Nurse",
   },
   {
-    src: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. David Kim",
+    src: "/team/mr_jeeva_viswanathan.png",
+    name: "Mr. Jeeva Viswanathan",
+    role: "Clinic Manager – Operations & Promotions",
   },
   {
-    src: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Priya Nair",
+    src: "/team/ms_hajara_beevi.png",
+    name: "Ms. Hajara Beevi B.",
+    role: "Andrology Technician",
+  },
+];
+
+const patientCarePhotoItems = [
+  {
+    src: "/team/mrs_aleesha_s.png",
+    name: "Mrs. Aleesha S.",
+    role: "Pharmacist",
   },
   {
-    src: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80",
-    name: "Dr. Robert Vance",
+    src: "/team/ms_jishna_jayakumar.png",
+    name: "Ms. Jishna Jayakumar",
+    role: "Receptionist",
+  },
+  {
+    src: "/team/mrs_shalini_v.png",
+    name: "Mrs. Shalini V.",
+    role: "Janitor",
   },
 ];
 
@@ -66,50 +82,63 @@ const OurTeamPage = ({ onNavigateBack }) => {
       {/* Main Content */}
       <main className="our-team-main-content">
         
-        {/* Section 1: Senior Medical Specialists Photo Stack */}
-        <section className="team-photo-stack-section">
-          <div className="container flex flex-col items-center justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold uppercase tracking-widest mb-4 border border-purple-100">
-              <Sparkles size={14} /> Meet Our Experts
-            </div>
-            
-            <InteractivePhotoStack
-              items={teamPhotoItems}
-              title={
-                <span className="text-3xl md:text-4xl font-serif font-medium text-slate-900">
-                  Our Dedicated <span className="italic text-purple-700">Specialists</span>
-                </span>
-              }
-              className="my-6"
-            />
-            
-            <p className="text-slate-500 text-sm md:text-base max-w-lg text-center mt-2">
-              Hover over the card stack to expand portraits, click any card to bring a specialist to the front.
-            </p>
+        {/* Page Hero Header */}
+        <header className="team-hero-header">
+          <div className="team-hero-badge">
+            <Sparkles size={13} className="text-[#853BC0]" />
+            <span>World-Class Fertility Specialists</span>
           </div>
+          <h1 className="team-hero-title">
+            World-Class Medical Expertise, Devoted to <span className="accent-violet">Your Miracle</span>
+          </h1>
+          <p className="team-hero-subtitle">
+            At Neovita, pioneering reproductive science is guided by profound compassion. Meet the distinguished physicians, embryologists, specialized nurses, and patient coordinators dedicated to turning your hope into new life.
+          </p>
+        </header>
+
+        {/* Section 1: Clinical Leadership & Directors */}
+        <section className="team-photo-stack-section">
+          <div className="team-section-badge">
+            <Sparkles size={13} className="text-[#853BC0]" />
+            <span>CLINICAL LEADERSHIP & DIRECTORS</span>
+          </div>
+          
+          <InteractivePhotoStack
+            items={teamPhotoItems}
+            className="my-2"
+          />
         </section>
 
-        {/* Section 2: Clinical & Lab Embryologists Photo Stack */}
-        <section className="team-photo-stack-section border-t border-slate-200/60 pt-16">
-          <div className="container flex flex-col items-center justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold uppercase tracking-widest mb-4 border border-emerald-100">
-              <Beaker size={14} /> EMBRYOLOGY & LAB TEAM
-            </div>
-            
-            <InteractivePhotoStack
-              items={embryologyPhotoItems}
-              title={
-                <span className="text-3xl md:text-4xl font-serif font-medium text-slate-900">
-                  Clinical & Lab <span className="italic text-emerald-700">Embryologists</span>
-                </span>
-              }
-              className="my-6"
-            />
-            
-            <p className="text-slate-500 text-sm md:text-base max-w-lg text-center mt-2">
-              Our certified embryology and IVF lab directors leading state-of-the-art reproductive science.
-            </p>
+        {/* Minimal Divider */}
+        <div className="team-section-divider" />
+
+        {/* Section 2: Clinical Operations & IVF Nursing */}
+        <section className="team-photo-stack-section">
+          <div className="team-section-badge">
+            <Beaker size={13} className="text-[#853BC0]" />
+            <span>CLINICAL OPERATIONS & IVF NURSING</span>
           </div>
+          
+          <InteractivePhotoStack
+            items={embryologyPhotoItems}
+            className="my-2"
+          />
+        </section>
+
+        {/* Minimal Divider */}
+        <div className="team-section-divider" />
+
+        {/* Section 3: Patient Care & Hospital Support */}
+        <section className="team-photo-stack-section">
+          <div className="team-section-badge">
+            <HeartPulse size={13} className="text-[#853BC0]" />
+            <span>PATIENT CARE & HOSPITAL SUPPORT</span>
+          </div>
+          
+          <InteractivePhotoStack
+            items={patientCarePhotoItems}
+            className="my-2"
+          />
         </section>
         
       </main>

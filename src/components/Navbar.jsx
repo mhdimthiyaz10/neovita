@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, Globe, Search, ArrowRight, HelpCircle, UserCheck, Compass, Sparkles, Stethoscope, Heart, Baby, Plane, Monitor, TestTube, Activity, Zap, Snowflake, Shield, Dna, HeartHandshake } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
@@ -38,13 +38,11 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'About Us', page: 'about', href: '#about', desc: 'Our journey, clinic story & mission' },
-        { name: 'Why Choose Us', page: 'why-choose-us', href: '#why-choose-us', desc: 'Interactive stacked services & features' },
-        { name: 'Our Team', page: 'our-team', href: '#our-team', desc: 'Expert fertility specialists & team' },
         { name: 'FAQ', page: 'faq', href: '#faq', desc: 'Frequently asked fertility questions' },
       ]
     },
     { name: 'Our Team', page: 'our-team', href: '#our-team', hasDropdown: false },
-    { name: 'Events', page: 'home', href: '#events', hasDropdown: false },
+    { name: 'Events', page: 'events', href: '#events', hasDropdown: false },
     { name: 'Contact', page: 'contact', href: '#contact', hasDropdown: false },
     { 
       name: 'Services', 
@@ -73,6 +71,13 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       isSpecial: true 
     },
     { 
+      name: 'Academy', 
+      page: 'academy', 
+      href: 'https://tobinembryologist.com', 
+      isExternal: true, 
+      hasDropdown: false 
+    },
+    { 
       name: 'Our Locations', 
       page: 'contact', 
       href: '#contact', 
@@ -86,6 +91,12 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
   ];
 
   const handleLinkClick = (e, link) => {
+    if (link.isExternal) {
+      setOpenDropdown(null);
+      setIsPinned(false);
+      setIsMobileMenuOpen(false);
+      return;
+    }
     if (link.hasDropdown) {
       e.preventDefault();
       e.stopPropagation();
@@ -138,7 +149,7 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
           <div className="navbar-logo">
             <a href="#" onClick={(e) => { e.preventDefault(); setOpenDropdown(null); setIsPinned(false); if(onNavigate) onNavigate('home'); }}>
               <img src="/logo.png" alt="Neovita" className="logo-img" />
-              <div className="logo-tagline">THE FERTILITY EXPERTS</div>
+              <div className="logo-tagline">THE FERTILITY EXPERT</div>
             </a>
           </div>
 
@@ -155,6 +166,7 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
                   (link.name === 'Services' && (activePage === 'services' || activePage === 'treatments')) ||
                   (link.name === 'International Patient Service' && activePage === 'international') ||
                   (link.name === 'Fertility Preservation Program' && activePage === 'egg-sperm-embryo-freezing') ||
+                  (link.name === 'Academy' && activePage === 'academy') ||
                   (link.name === 'Our Locations' && activePage === 'locations');
                 const isSpecial = link.isSpecial || link.name === 'Fertility Preservation Program';
 
@@ -167,6 +179,8 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
                   >
                     <a 
                       href={link.href} 
+                      target={link.isExternal ? '_blank' : undefined}
+                      rel={link.isExternal ? 'noopener noreferrer' : undefined}
                       className={`nav-link-anchor ${isCurrentActive ? 'active' : ''} ${isSpecial ? 'special-preservation-link' : ''}`}
                       onClick={(e) => handleLinkClick(e, link)}
                     >
@@ -200,22 +214,6 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
             </ul>
           </nav>
 
-          <div className="navbar-right">
-            <div className="navbar-utils">
-              <button className="util-btn lang-btn" aria-label="Language selector">
-                <Globe size={18} />
-                <span>EN</span>
-              </button>
-              <div className="util-divider"></div>
-              <button className="util-btn" aria-label="Search FAQ and Services" onClick={() => { setOpenDropdown(null); setIsPinned(false); onNavigate && onNavigate('faq'); }}>
-                <Search size={18} />
-              </button>
-            </div>
-            
-            <button className="navbar-btn-gradient" onClick={() => { setOpenDropdown(null); setIsPinned(false); onBookConsultation && onBookConsultation(); }}>
-              Book Consultation <ArrowRight size={16} className="btn-icon-svg" />
-            </button>
-          </div>
 
           <button 
             className="mobile-menu-toggle" 

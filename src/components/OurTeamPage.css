@@ -1,60 +1,234 @@
-.our-team-page {
-  width: 100%;
-  min-height: 100vh;
-  background-color: #F4F5F7;
-  padding-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* ==========================================================================
+   Neovita Fertility Hospital - Medical Team Page
+   Premium Healthcare Editorial Aesthetics
+   ========================================================================== */
+
+:root {
+  --neo-bg-ivory: #FAF8F6;
+  --neo-bg-lavender: #F2ECF8;
+  --neo-bg-white: #FFFFFF;
+  --neo-navy-dark: #10182B;
+  --neo-violet-accent: #853BC0;
+  --neo-violet-light: #F8F4FD;
+  --neo-lavender-border: #E6DCF5;
+  --neo-text-body: #5A6679;
+  --neo-text-muted: #7E8B9E;
+  --neo-font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --neo-font-sans: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.our-team-top-bar {
+/* Page Root Canvas */
+.our-team-page {
+  position: relative;
   width: 100%;
-  padding: 1.5rem 0 0 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: 5rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: var(--neo-bg-ivory);
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--neo-bg-lavender) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 45% at 90% 30%, rgba(242, 236, 248, 0.75) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 45% at 10% 60%, rgba(242, 236, 248, 0.65) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 40% at 50% 100%, rgba(245, 239, 251, 0.8) 0%, transparent 70%);
+  color: var(--neo-navy-dark);
+  font-family: var(--neo-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Top Navigation Bar */
+.our-team-top-bar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 1.25rem 0 0 0;
 }
 
 .our-team-top-bar .container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 .our-team-back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: #111827;
-  padding: 0.55rem 1.2rem;
-  border-radius: 30px;
+  gap: 0.6rem;
+  background: var(--neo-bg-white);
+  border: 1px solid var(--neo-lavender-border);
+  color: var(--neo-navy-dark);
+  padding: 0.55rem 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--neo-font-sans);
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(16, 24, 43, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .our-team-back-btn:hover {
-  background-color: #F9FAFB;
+  background: var(--neo-violet-light);
+  color: var(--neo-violet-accent);
+  border-color: rgba(133, 59, 192, 0.3);
   transform: translateX(-3px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(133, 59, 192, 0.08);
 }
 
+/* Main Content Area */
 .our-team-main-content {
+  position: relative;
+  z-index: 1;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
-.team-photo-stack-section {
+/* Hero Section */
+.team-hero-header {
+  position: relative;
   width: 100%;
-  padding: 2.5rem 0 3.5rem 0;
+  max-width: 800px;
+  margin: 2rem auto 2.5rem auto;
+  text-align: center;
+}
+
+.team-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 1.15rem;
+  border-radius: 9999px;
+  background: var(--neo-violet-light);
+  border: 1px solid var(--neo-lavender-border);
+  color: var(--neo-violet-accent);
+  font-family: var(--neo-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 6px rgba(133, 59, 192, 0.04);
+}
+
+.team-hero-title {
+  font-family: var(--neo-font-serif);
+  font-size: clamp(2.35rem, 4.5vw, 3.5rem);
+  font-weight: 500;
+  color: var(--neo-navy-dark);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  margin: 0 auto 1.25rem auto;
+  max-width: 780px;
+}
+
+.team-hero-title .accent-violet {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--neo-violet-accent);
+}
+
+.team-hero-subtitle {
+  font-family: var(--neo-font-sans);
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-weight: 400;
+  color: var(--neo-text-body);
+  line-height: 1.7;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Individual Section Container */
+.team-photo-stack-section {
+  position: relative;
+  width: 100%;
+  padding: 1.25rem 0 1.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+/* Section Eyebrow Badges */
+.team-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 1.05rem;
+  border-radius: 9999px;
+  font-family: var(--neo-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  background: var(--neo-violet-light);
+  border: 1px solid var(--neo-lavender-border);
+  color: var(--neo-violet-accent);
+  box-shadow: 0 2px 6px rgba(133, 59, 192, 0.03);
+}
+
+/* Section Headings Below Stack */
+.team-section-title {
+  font-family: var(--neo-font-serif);
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  font-weight: 500;
+  color: var(--neo-navy-dark);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  text-align: center;
+  margin: 0;
+}
+
+.team-section-title .accent-violet {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--neo-violet-accent);
+}
+
+.team-section-subtitle {
+  font-family: var(--neo-font-sans);
+  color: var(--neo-text-body);
+  font-size: clamp(0.925rem, 1.1vw, 1rem);
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 650px;
+  text-align: center;
+  margin: 0.85rem auto 0 auto;
+  padding: 0 1rem;
+}
+
+/* Minimal Refined Section Separator */
+.team-section-divider {
+  width: 100%;
+  max-width: 240px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(133, 59, 192, 0.2), transparent);
+  margin: 1.5rem auto;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .our-team-page {
+    padding-top: 4.5rem;
+    padding-bottom: 4rem;
+  }
+  
+  .team-hero-header {
+    margin: 1.25rem auto 1.75rem auto;
+  }
+  
+  .team-photo-stack-section {
+    padding: 1.5rem 0 2rem 0;
+  }
 }

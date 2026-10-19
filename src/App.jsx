@@ -25,6 +25,8 @@ import FertilityPreservationPage from './components/FertilityPreservationPage';
 import StackedServicesPage from './components/StackedServicesPage';
 import PgsPgdPage from './components/PgsPgdPage';
 import OurTeamPage from './components/OurTeamPage';
+import AcademyPage from './components/AcademyPage';
+import EventsPage from './components/EventsPage';
 
 function App() {
   const [framesLoaded, setFramesLoaded] = useState(false);
@@ -54,6 +56,22 @@ function App() {
     return () => {
       lenis.destroy();
     };
+  }, []);
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash === '#our-team') {
+        setActivePage('our-team');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#events') {
+        setActivePage('events');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
   const handleNavigate = (page, targetHref) => {
@@ -211,6 +229,20 @@ function App() {
           <StackedServicesPage 
             onNavigateBack={() => handleNavigate('home')} 
             onNavigate={handleNavigate}
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'academy' && (
+          <AcademyPage 
+            onNavigateBack={() => handleNavigate('home')} 
+            onBookConsultation={handleBookConsultation} 
+          />
+        )}
+
+        {activePage === 'events' && (
+          <EventsPage 
+            onNavigateBack={() => handleNavigate('home')} 
             onBookConsultation={handleBookConsultation} 
           />
         )}
