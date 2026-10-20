@@ -84,7 +84,7 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'Kollam Clinic', page: 'contact', href: '#kollam', desc: 'Ayathil, Kallumthazham, Kollam' },
-        { name: 'Trivandrum Clinic', page: 'contact', href: '#trivandrum', desc: 'Varkala, Trivandrum' },
+        { name: 'Ochira Clinic', page: 'contact', href: '#ochira', desc: 'RCPM Hospital, Ochira' },
         { name: 'Aleppy Clinic', page: 'contact', href: '#aleppy', desc: 'Kattanam, Alappuzha' },
       ]
     },
