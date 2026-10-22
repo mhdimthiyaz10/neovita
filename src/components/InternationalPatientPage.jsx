@@ -5,7 +5,6 @@ import {
   FileText, 
   Home, 
   ArrowRight, 
-  ArrowLeft, 
   Globe, 
   ShieldCheck, 
   CheckCircle2, 
@@ -108,7 +107,7 @@ const patientJourneySteps = [
   }
 ];
 
-const InternationalPatientPage = ({ onNavigateBack, onBookConsultation }) => {
+const InternationalPatientPage = ({ onNavigateBack: _onNavigateBack, onBookConsultation: _onBookConsultation }) => {
   const [activePillarId, setActivePillarId] = useState('travel');
   const [showSupportModal, setShowSupportModal] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -150,27 +149,20 @@ const InternationalPatientPage = ({ onNavigateBack, onBookConsultation }) => {
         <svg className="intl-flight-path-svg" viewBox="0 0 320 200" fill="none">
           <path 
             d="M 10 180 Q 150 40 300 20" 
-            stroke="#b8860b" 
+            stroke="#853BC0" 
             strokeWidth="1.5" 
             strokeDasharray="4 6" 
-            opacity="0.35" 
+            opacity="0.25" 
           />
           <g className="intl-animated-plane">
-            <Plane size={20} color="#b8860b" transform="translate(290, 10) rotate(-15)" />
+            <Plane size={20} color="#853BC0" transform="translate(290, 10) rotate(-15)" />
           </g>
         </svg>
 
-        <svg className="intl-world-map-svg" viewBox="0 0 1000 500" fill="none" opacity="0.04">
-          <circle cx="500" cy="250" r="200" stroke="#091133" strokeWidth="2" strokeDasharray="5 5" />
-          <circle cx="500" cy="250" r="350" stroke="#091133" strokeWidth="1.5" strokeDasharray="8 8" />
+        <svg className="intl-world-map-svg" viewBox="0 0 1000 500" fill="none" opacity="0.03">
+          <circle cx="500" cy="250" r="200" stroke="#10182B" strokeWidth="2" strokeDasharray="5 5" />
+          <circle cx="500" cy="250" r="350" stroke="#10182B" strokeWidth="1.5" strokeDasharray="8 8" />
         </svg>
-      </div>
-
-      {/* Back Navigation Bar */}
-      <div className="container international-back-container">
-        <button className="international-back-btn" onClick={onNavigateBack}>
-          <ArrowLeft size={18} /> Back to Home
-        </button>
       </div>
 
       {/* Hero Section */}
@@ -180,12 +172,9 @@ const InternationalPatientPage = ({ onNavigateBack, onBookConsultation }) => {
             
             {/* Left Content Column */}
             <div className="intl-hero-content">
-              <div className="intl-eyebrow-container">
-                <span className="intl-eyebrow-line-gold"></span>
-                <div className="intl-globe-badge">
-                  <Globe size={14} />
-                </div>
-                <span className="intl-eyebrow-text">INTERNATIONAL PATIENT SERVICE</span>
+              <div className="intl-hero-badge">
+                <Globe size={13} className="text-[#853BC0]" />
+                <span>GLOBAL PATIENT CONCIERGE</span>
               </div>
 
               <h1 className="intl-hero-title">
@@ -201,15 +190,14 @@ const InternationalPatientPage = ({ onNavigateBack, onBookConsultation }) => {
                   Plan Your Visit <ArrowRight size={18} className="btn-arrow" />
                 </button>
                 <button className="btn-glass-pill" onClick={() => setShowSupportModal(true)}>
-                  <Users size={18} style={{ color: '#b8860b' }} /> Contact Our International Team
+                  <Users size={18} style={{ color: '#853BC0' }} /> Contact Our International Team
                 </button>
               </div>
             </div>
 
-            {/* Right Media Column - Custom Asymmetric Arch Frame */}
+            {/* Right Media Column - Modern Rounded Frame */}
             <div className="intl-hero-media">
               <div className="intl-arch-frame-wrapper">
-                <div className="intl-arch-contour"></div>
                 <div className="intl-arch-image-box">
                   <img 
                     src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=85" 
@@ -395,7 +383,7 @@ const InternationalPatientPage = ({ onNavigateBack, onBookConsultation }) => {
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.1)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px auto' }}>
                   <CheckCircle2 size={36} />
                 </div>
-                <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.8rem', color: '#091133', marginBottom: '10px' }}>
+                <h3 style={{ fontFamily: 'var(--intl-font-standard, "Plus Jakarta Sans", sans-serif)', fontSize: '1.8rem', color: '#10182B', fontWeight: 700, marginBottom: '10px' }}>
                   Inquiry Received Successfully!
                 </h3>
                 <p style={{ color: '#666666', maxWidth: '500px', margin: '0 auto 25px auto' }}>
@@ -523,13 +511,13 @@ const InternationalPatientPage = ({ onNavigateBack, onBookConsultation }) => {
             </button>
 
             <div style={{ textAlign: 'center', marginBottom: '25px' }}>
-              <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#fdf8ed', color: '#b8860b', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px auto', border: '1px solid rgba(184, 134, 11, 0.3)' }}>
+              <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: '#F8F4FD', color: '#853BC0', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 15px auto', border: '1px solid #E8DEF2' }}>
                 <Headphones size={28} />
               </div>
-              <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.6rem', color: '#091133', marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: 'var(--intl-font-standard, "Plus Jakarta Sans", sans-serif)', fontSize: '1.5rem', fontWeight: 700, color: '#10182B', marginBottom: '8px' }}>
                 International Concierge Support
               </h3>
-              <p style={{ color: '#666666', fontSize: '0.92rem' }}>
+              <p style={{ color: '#5A6679', fontSize: '0.92rem' }}>
                 Connect directly with our international desk via phone, WhatsApp, or instant email callback.
               </p>
             </div>
@@ -557,7 +545,7 @@ const InternationalPatientPage = ({ onNavigateBack, onBookConsultation }) => {
                 href="mailto:international@neovita.in" 
                 style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 20px', borderRadius: '16px', background: '#f8fafc', color: '#091133', fontWeight: '600', border: '1px solid #e2e8f0', textDecoration: 'none' }}
               >
-                <Mail size={22} color="#b8860b" />
+                <Mail size={22} color="#853BC0" />
                 <span>Email: international@neovita.in</span>
               </a>
             </div>

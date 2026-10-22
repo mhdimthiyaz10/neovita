@@ -62,7 +62,7 @@ const ContactSection = ({ isStandalonePage = false, onNavigateBack }) => {
           </div>
           
           <h1 className="contact-title">
-            Find Your <span className="highlight-emerald-text">Care Centre</span>
+            Find Your <span className="highlight-violet-text">Care Centre</span>
           </h1>
           
           <p className="contact-subtitle">

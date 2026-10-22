@@ -1,9 +1,10 @@
-import React from 'react';
-import { ArrowLeft, Sparkles, Microchip, Beaker, HeartPulse } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useInView } from 'motion/react';
+import { Sparkles, Beaker, HeartPulse } from 'lucide-react';
 import { InteractivePhotoStack } from '@/components/ui/photo-stack';
 import './OurTeamPage.css';
 
-const teamPhotoItems = [
+const priorityLeadershipItems = [
   {
     src: "/team/dr_anju_madhavan.png",
     name: "Dr Anju Madhavan",
@@ -16,6 +17,9 @@ const teamPhotoItems = [
     role: "Scientific Director and Chief Embryologist",
     experience: "MSc Clinical Embryology (KMC, Manipal)",
   },
+];
+
+const remainingLeadershipItems = [
   {
     src: "/team/ms_greeshma_v_john.png",
     name: "Ms Greeshma V John",
@@ -65,48 +69,185 @@ const patientCarePhotoItems = [
   },
 ];
 
-const OurTeamPage = ({ onNavigateBack }) => {
+const OurTeamPage = ({ onNavigateBack: _onNavigateBack }) => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.08 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="our-team-page">
-      {/* Back Navigation Bar */}
-      {onNavigateBack && (
-        <div className="our-team-top-bar">
-          <div className="container">
-            <button className="our-team-back-btn" onClick={onNavigateBack}>
-              <ArrowLeft size={16} /> Back to Home
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* Main Content */}
       <main className="our-team-main-content">
         
         {/* Page Hero Header */}
-        <header className="team-hero-header">
-          <div className="team-hero-badge">
+        <motion.header
+          className="team-hero-header"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Luminous Ambient Glow */}
+          <div className="hero-ambient-glow" aria-hidden="true" />
+
+          {/* Eyebrow Badge */}
+          <motion.div
+            className="team-hero-badge"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <Sparkles size={13} className="text-[#853BC0]" />
-            <span>World-Class Fertility Specialists</span>
-          </div>
-          <h1 className="team-hero-title">
-            World-Class Medical Expertise, Devoted to <span className="accent-violet">Your Miracle</span>
-          </h1>
-          <p className="team-hero-subtitle">
-            At Neovita, pioneering reproductive science is guided by profound compassion. Meet the distinguished physicians, embryologists, specialized nurses, and patient coordinators dedicated to turning your hope into new life.
-          </p>
-        </header>
+            <span>CLINICAL EXCELLENCE & CARE</span>
+          </motion.div>
+
+          {/* Concise High-Impact Heading */}
+          <motion.h1
+            className="team-hero-title"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Meet Our <span className="hero-gradient-text">Specialists</span>
+          </motion.h1>
+        </motion.header>
 
         {/* Section 1: Clinical Leadership & Directors */}
-        <section className="team-photo-stack-section">
-          <div className="team-section-badge">
+        <section ref={sectionRef} className="team-leadership-section">
+          <motion.div
+            className="team-section-badge"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          >
             <Sparkles size={13} className="text-[#853BC0]" />
             <span>CLINICAL LEADERSHIP & DIRECTORS</span>
-          </div>
+          </motion.div>
           
-          <InteractivePhotoStack
-            items={teamPhotoItems}
-            className="my-2"
-          />
+          {/* Upper Tier: 2 Priority Leadership Cards Sweeping In From Two Different Sides */}
+          <div className="leadership-priority-grid">
+            {priorityLeadershipItems.map((item, index) => {
+              const isLeftCard = index === 0; // Dr Anju (Left side) vs Dr Antony (Right side)
+              const offsetDistance = isMobile ? 130 : 230;
+
+              return (
+                <motion.div
+                  key={item.name}
+                  className="leadership-card leadership-card--priority"
+                  initial={{
+                    opacity: 0,
+                    x: isLeftCard ? -offsetDistance : offsetDistance,
+                    y: 20,
+                    scale: 0.91,
+                    rotate: isLeftCard ? -3.5 : 3.5,
+                  }}
+                  animate={
+                    isInView
+                      ? {
+                          opacity: 1,
+                          x: 0,
+                          y: 0,
+                          scale: 1,
+                          rotate: 0,
+                        }
+                      : {
+                          opacity: 0,
+                          x: isLeftCard ? -offsetDistance : offsetDistance,
+                          y: 20,
+                          scale: 0.91,
+                          rotate: isLeftCard ? -3.5 : 3.5,
+                        }
+                  }
+                  transition={{
+                    duration: 1.1,
+                    delay: isLeftCard ? 0.32 : 0.48,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  whileHover={{
+                    y: -6,
+                    transition: { duration: 0.25, ease: 'easeOut' },
+                  }}
+                >
+                  <div className="leadership-photo-frame">
+                    <img
+                      src={item.src}
+                      alt={item.name}
+                      className="leadership-photo"
+                    />
+                  </div>
+                  <div className="leadership-info">
+                    <h3 className="leadership-name">{item.name}</h3>
+                    {item.role && (
+                      <p className="leadership-role">{item.role}</p>
+                    )}
+                    {item.experience && (
+                      <p className="leadership-experience">{item.experience}</p>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Lower Tier: Remaining 1 Specialist Card (Entering from Bottom) */}
+          <div className="leadership-subordinate-grid">
+            {remainingLeadershipItems.map((item) => (
+              <motion.div
+                key={item.name}
+                className="leadership-card leadership-card--subordinate"
+                initial={{
+                  opacity: 0,
+                  y: 95,
+                  scale: 0.92,
+                }}
+                animate={
+                  isInView
+                    ? {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                      }
+                    : {
+                        opacity: 0,
+                        y: 95,
+                        scale: 0.92,
+                      }
+                }
+                transition={{
+                  duration: 1.05,
+                  delay: 0.65,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                whileHover={{
+                  y: -6,
+                  transition: { duration: 0.25, ease: 'easeOut' },
+                }}
+              >
+                <div className="leadership-photo-frame">
+                  <img
+                    src={item.src}
+                    alt={item.name}
+                    className="leadership-photo"
+                  />
+                </div>
+                <div className="leadership-info">
+                  <h3 className="leadership-name">{item.name}</h3>
+                  {item.role && (
+                    <p className="leadership-role">{item.role}</p>
+                  )}
+                  {item.experience && (
+                    <p className="leadership-experience">{item.experience}</p>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* Minimal Divider */}

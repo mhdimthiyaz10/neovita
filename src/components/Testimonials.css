@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
 .testimonials-section {
-  padding: 120px 0;
-  background-image: url('../assets/testimonials-bg.png');
+  padding: 120px 0 170px 0;
+  background-color: #F8F2FC;
+  background-image: 
+    radial-gradient(circle 800px at 15% 92%, rgba(220, 190, 245, 0.45) 0%, transparent 60%),
+    radial-gradient(circle 700px at 85% 95%, rgba(225, 200, 250, 0.45) 0%, transparent 60%),
+    url('../assets/testimonials-bg.png');
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -260,6 +264,361 @@
   }
   .testimonials-viewport {
     height: 550px;
+  }
+}
+
+/* =========================================================================
+   4 YouTube Video Testimonials Gallery Section (Same Lavender Background)
+   ========================================================================= */
+
+.youtube-videos-section {
+  margin-top: 100px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.youtube-videos-header {
+  max-width: 800px;
+  margin: 0 auto 48px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.youtube-videos-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.85rem;
+  color: #271f49;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.youtube-videos-title .highlight {
+  color: #8339b6;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.youtube-videos-description {
+  color: #6a7185;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  max-width: 620px;
+}
+
+/* 4-Column Responsive Cards Grid */
+.youtube-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 50px;
+}
+
+/* Frosted Luxury Video Card */
+.youtube-video-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(114, 64, 151, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  position: relative;
+}
+
+.youtube-video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(114, 64, 151, 0.14), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-color: rgba(131, 57, 182, 0.35);
+}
+
+.youtube-video-card.is-playing {
+  border-color: #8339b6;
+  box-shadow: 0 24px 50px rgba(114, 64, 151, 0.18);
+}
+
+/* 16:9 Aspect Ratio Video Media Container */
+.video-media-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #110e1f;
+  overflow: hidden;
+}
+
+.video-thumbnail-trigger {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.video-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.youtube-video-card:hover .video-thumb-img {
+  transform: scale(1.06);
+}
+
+.video-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 14, 31, 0.25) 0%, rgba(17, 14, 31, 0.65) 100%);
+  transition: opacity 0.3s ease;
+}
+
+.youtube-video-card:hover .video-thumb-overlay {
+  background: linear-gradient(180deg, rgba(17, 14, 31, 0.15) 0%, rgba(17, 14, 31, 0.55) 100%);
+}
+
+/* Category & Duration Tags */
+.video-category-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(94, 35, 157, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.video-duration-pill {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 2;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* YouTube Signature Play Button Badge */
+.youtube-play-btn-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.youtube-play-btn-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FF0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.45);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+
+.play-triangle-icon {
+  margin-left: 3px;
+}
+
+.youtube-video-card:hover .youtube-play-btn-circle {
+  transform: scale(1.15);
+  background: #E50000;
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.6);
+}
+
+/* Embedded YouTube iframe in place */
+.video-iframe-holder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.youtube-embedded-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.btn-close-video {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-close-video:hover {
+  background: #FF0000;
+  transform: scale(1.1);
+}
+
+/* Video Card Body Content */
+.video-card-body {
+  padding: 18px 18px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+}
+
+.video-patient-name {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #724097;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.video-card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #271f49;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.video-card-quote {
+  font-size: 0.80rem;
+  color: #64748b;
+  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.btn-watch-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.80rem;
+  font-weight: 600;
+  color: #5E239D;
+  background: rgba(94, 35, 157, 0.08);
+  border: 1px solid rgba(94, 35, 157, 0.22);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  width: fit-content;
+}
+
+.btn-watch-video:hover {
+  background: #5E239D;
+  color: #ffffff;
+  border-color: #5E239D;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(94, 35, 157, 0.25);
+}
+
+/* Official YouTube Channel Banner Footer */
+.youtube-channel-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.youtube-channel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(94, 35, 157, 0.2);
+  padding: 10px 24px;
+  border-radius: 9999px;
+  color: #271f49;
+  font-size: 0.88rem;
+  box-shadow: 0 6px 20px rgba(114, 64, 151, 0.08);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.youtube-channel-link:hover {
+  transform: translateY(-2px);
+  border-color: #5E239D;
+  box-shadow: 0 10px 28px rgba(114, 64, 151, 0.16);
+  color: #5E239D;
+}
+
+.yt-badge-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #FF0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.35);
+}
+
+.yt-badge-icon svg {
+  margin-left: 2px;
+}
+
+.yt-external-icon {
+  color: #724097;
+  transition: transform 0.2s ease;
+}
+
+.youtube-channel-link:hover .yt-external-icon {
+  transform: translate(2px, -2px);
+  color: #5E239D;
+}
+
+/* Responsive Breakpoints for YouTube Grid */
+@media (max-width: 1200px) {
+  .youtube-videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .youtube-videos-section {
+    margin-top: 70px;
+  }
+  .youtube-videos-title {
+    font-size: 2.1rem;
+  }
+  .youtube-videos-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .youtube-channel-link {
+    font-size: 0.80rem;
+    padding: 8px 18px;
+    text-align: center;
   }
 }
 

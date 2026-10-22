@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Microscope, User, HeartPulse, ArrowRight } from 'lucide-react';
 import './Hero.css';
 
-const Hero = ({ onFramesLoaded }) => {
+const Hero = ({ onFramesLoaded, onBookConsultation, onExplore }) => {
   const heroRef = useRef(null);
   const canvasRef = useRef(null);
   const contentRef = useRef(null); 
@@ -186,20 +186,34 @@ const Hero = ({ onFramesLoaded }) => {
 
         <div className="container hero-container">
           <div className="hero-content" ref={contentRef} style={{ opacity: 0, transition: 'opacity 0.1s linear, transform 0.1s linear' }}>
+            <div className="hero-eyebrow-badge">
+              <span className="eyebrow-pulse-dot"></span>
+              <span>NEOVITA FERTILITY CENTRE</span>
+            </div>
+
             <h1 className="hero-headline">
-              Your Journey to <br/>
-              <span className="highlight-purple">Parenthood</span> <br/>
-              Starts Here.
+              Your Journey to <br />
+              <span className="highlight-purple">Parenthood</span> Starts Here.
             </h1>
+
             <p className="hero-description">
-              Compassionate, advanced fertility care, personalised treatment, and world-class reproductive medicine — thoughtfully designed for your unique journey.
+              Advanced fertility care and personalised treatments, thoughtfully guided for your path to parenthood.
             </p>
+
             <div className="hero-actions">
-              <button className="btn btn-primary">
-                Book Consultation <ArrowRight className="btn-icon-svg" size={18} />
+              <button className="btn hero-btn-primary" onClick={onBookConsultation}>
+                <span>Book Consultation</span>
+                <ArrowRight className="btn-icon-svg" size={17} />
               </button>
-              <button className="btn btn-secondary">
-                Explore Fertility Care <ArrowRight className="btn-icon-svg" size={18} />
+              <button 
+                className="btn hero-btn-secondary" 
+                onClick={onExplore || (() => {
+                  const el = document.getElementById('treatments');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                })}
+              >
+                <span>Explore Care</span>
+                <ArrowRight className="btn-icon-svg" size={17} />
               </button>
             </div>
             

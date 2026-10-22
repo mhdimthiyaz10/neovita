@@ -104,7 +104,14 @@ function App() {
       <main>
         {activePage === 'home' && (
           <>
-            <Hero onFramesLoaded={() => setFramesLoaded(true)} />
+            <Hero 
+              onFramesLoaded={() => setFramesLoaded(true)} 
+              onBookConsultation={handleBookConsultation}
+              onExplore={() => {
+                const el = document.getElementById('treatments');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            />
             <div id="about"><AboutUs /></div>
             <div id="treatments"><Treatments onNavigate={handleNavigate} /></div>
             <div id="features"><Features /></div>
