@@ -1,24 +1,95 @@
-.treatments-section {
+/* ==========================================================================
+   Neovita Fertility Hospital - Fertility Services & Treatments
+   Lengthy Page Screen Size & Architectural Sticky Card Placement
+   ========================================================================== */
+
+/* Outer scroll track for desktop pinned interaction - Generous lengthy runway */
+.treatments-pinned-track {
   position: relative;
-  padding: 6rem 0 8rem;
+  /* 100vh sticky viewport + 3500px scroll runway for a relaxed, lengthy scroll feel */
+  height: calc(100vh + 3500px);
+}
+
+/* Sticky viewport that stays fixed on screen while scrolling */
+.treatments-sticky-frame {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image: url('/treatments-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
+  perspective: 1200px;
 }
 
-.treatments-section .container {
+/* Spacious, lengthy section padding as before */
+.treatments-section {
+  position: relative;
+  width: 100%;
+  padding: 4.5rem 0 5.5rem;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Smooth stage/camera transition when moving to remaining 5 cards */
+.treatments-stage {
+  width: 100%;
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Move the page down MORE to position the bottom 5 cards fully in center view */
+.treatments-stage.stage-shifted {
+  transform: translate3d(0, clamp(-440px, -45vh, -385px), 0);
+}
+
+.treatments-container {
   position: relative;
   z-index: 1;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .treatments-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.9s ease;
+}
+
+/* Soften top header and top grid when view shifts down to bottom 5 cards */
+.treatments-stage.stage-shifted .treatments-header {
+  opacity: 0.15;
+  transform: scale(0.92) translateY(-25px);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.treatments-grid-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.9s ease;
+}
+
+.treatments-stage.stage-shifted .treatments-grid-top {
+  opacity: 0.28;
+  transform: scale(0.96) translateY(-10px);
+  filter: blur(1.5px);
+  pointer-events: none;
 }
 
 .treatments-eyebrow {
@@ -26,47 +97,61 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  font-size: 0.8rem;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--color-primary-purple-light);
+  letter-spacing: 0.16em;
+  color: #853BC0;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .treatments-eyebrow .eyebrow-line {
   display: inline-block;
-  width: 50px;
+  width: 44px;
   height: 1px;
-  background-color: rgba(142, 68, 173, 0.3);
+  background-color: rgba(133, 59, 192, 0.35);
+}
+
+.services-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: #F8F4FD;
+  color: #853BC0;
+  border: 1px solid #EEDBFA;
+  padding: 0.2rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
+  box-shadow: 0 2px 6px rgba(133, 59, 192, 0.08);
 }
 
 .treatments-heading {
-  font-size: 3rem;
-  line-height: 1.2;
-  color: var(--color-primary-navy);
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-}
-
-@media (min-width: 768px) {
-  .treatments-heading {
-    font-size: 4rem;
-  }
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #10182B;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.03em;
 }
 
 .highlight-purple-gradient {
-  background: linear-gradient(90deg, #8E44AD 0%, #C06FE8 100%);
+  background: linear-gradient(135deg, #853BC0 0%, #A855F7 60%, #6E25A6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .treatments-description {
-  font-size: 1.1rem;
-  color: var(--color-text-muted);
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 1.05rem;
+  color: #5A6679;
   line-height: 1.6;
-  max-width: 700px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
@@ -87,7 +172,7 @@
 .treatments-grid-bottom {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 @media (min-width: 640px) {
@@ -99,95 +184,203 @@
 @media (min-width: 1024px) {
   .treatments-grid-bottom {
     grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
   }
 }
 
-/* Cards Shared */
-.treatment-card {
-  background-color: #FFFFFF;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
+/* Sub-heading banner that smoothly appears when shifted down */
+.bottom-grid-subhead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
-.treatment-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+.bottom-grid-subhead.subhead-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subhead-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #F8F4FD;
+  color: #853BC0;
+  border: 1px solid #EEDBFA;
+  padding: 0.35rem 1.25rem;
+  border-radius: 9999px;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(133, 59, 192, 0.08);
+}
+
+/* Shared Premium Card Styling - Simple, Clean, Lengthy & Refined */
+.treatment-card {
+  background-color: #FFFFFF;
+  border: 1px solid #EAE6F2;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px -4px rgba(16, 24, 43, 0.05), 0 2px 6px rgba(16, 24, 43, 0.02);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  will-change: transform, opacity;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s ease, 
+              border-color 0.3s ease;
+}
+
+/* Waiting offscreen to the right */
+.treatment-card.card-waiting {
+  opacity: 0;
+  transform: translate3d(100vw, 0, 0) scale(0.95);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Placed in its slot */
+.treatment-card.card-placed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* Subtle arrival pulse highlight when a card first docks into place */
+.treatment-card.card-placed.just-arrived {
+  animation: cardArrivalPulse 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardArrivalPulse {
+  0% {
+    box-shadow: 0 16px 36px rgba(133, 59, 192, 0.26), 0 0 0 2px #853BC0;
+    border-color: #853BC0;
+  }
+  100% {
+    box-shadow: 0 8px 24px -4px rgba(16, 24, 43, 0.05), 0 2px 6px rgba(16, 24, 43, 0.02);
+    border-color: #EAE6F2;
+  }
+}
+
+/* Interactive Hover (only on placed cards) */
+.treatment-card.card-placed:hover {
+  transform: translateY(-6px) translate3d(0, 0, 0) !important;
+  border-color: #853BC0 !important;
+  box-shadow: 0 20px 42px -8px rgba(133, 59, 192, 0.18), 0 4px 14px rgba(16, 24, 43, 0.04) !important;
 }
 
 .treatment-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+  width: 100%;
 }
 
+/* Card Sub-Heading / Category */
 .card-eyebrow {
-  font-size: 0.65rem;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--color-primary-purple-light);
+  letter-spacing: 0.08em;
+  color: #853BC0;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.45rem;
 }
 
+/* Modern Premium Standard Title (Replaces Serif) */
 .treatment-title {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  line-height: 1.25;
-  color: var(--color-primary-navy);
-  margin-bottom: 1rem;
-  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 1.24rem;
+  line-height: 1.35;
+  color: #10182B;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
+/* Clear, Legible Standard Description */
 .treatment-desc {
-  font-size: 0.9rem;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 0.88rem;
   line-height: 1.6;
-  color: var(--color-text-muted);
+  color: #5A6679;
   margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
+/* Modern Refined Learn More Button */
 .btn-learn-more {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  background-color: var(--color-primary-purple);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 0.5rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+  gap: 0.45rem;
+  background-color: #F8F4FD;
+  color: #853BC0;
+  border: 1px solid #EEDBFA;
+  border-radius: 9999px;
+  padding: 0.46rem 1.05rem;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
   cursor: pointer;
   width: max-content;
-  transition: background-color 0.2s;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   margin-top: auto;
 }
 
-.btn-learn-more:hover {
-  background-color: var(--color-primary-purple-light);
+.btn-learn-more .btn-arrow {
+  transition: transform 0.25s ease;
 }
 
-/* Top Cards Specific Layout */
+.treatment-card:hover .btn-learn-more,
+.btn-learn-more:hover {
+  background-color: #853BC0;
+  color: #ffffff;
+  border-color: #853BC0;
+  box-shadow: 0 4px 14px rgba(133, 59, 192, 0.25);
+}
+
+.treatment-card:hover .btn-learn-more .btn-arrow,
+.btn-learn-more:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Top Cards Specific Layout - Full Lengthy Padding as before */
 .top-card {
   display: flex;
   flex-direction: row;
-  gap: 1.5rem;
+  gap: 1.35rem;
+  padding: 1.85rem;
 }
 
 .treatment-icon-wrapper-large {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: #F8EEF8;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background-color: #F8F4FD;
+  border: 1px solid #EEDBFA;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary-purple);
+  color: #853BC0;
+  transition: all 0.3s ease;
+}
+
+.treatment-card:hover .treatment-icon-wrapper-large {
+  background-color: #853BC0;
+  color: #ffffff;
+  border-color: #853BC0;
+  transform: scale(1.05);
 }
 
 .card-leaf-decoration {
@@ -196,33 +389,96 @@
   right: -5%;
   width: 100px;
   height: 100px;
-  background-image: radial-gradient(circle, rgba(142, 68, 173, 0.05) 0%, transparent 70%);
+  background-image: radial-gradient(circle, rgba(133, 59, 192, 0.04) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
 
-/* Bottom Cards Specific Layout */
+/* Bottom Cards Specific Layout - Full Lengthy Padding as before */
 .bottom-card {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem; /* Less padding to give text more room */
+  padding: 1.45rem 1.25rem;
 }
 
 .treatment-icon-wrapper-small {
-  margin-bottom: 1rem;
-  color: var(--color-primary-purple);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #F8F4FD;
+  border: 1px solid #EEDBFA;
+  color: #853BC0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.treatment-card:hover .treatment-icon-wrapper-small {
+  background-color: #853BC0;
+  color: #ffffff;
+  border-color: #853BC0;
+  transform: scale(1.05);
 }
 
 .bottom-card .treatment-title {
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.06rem;
+  line-height: 1.35;
+  margin-bottom: 0.65rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  min-height: 2.75rem; /* Symmetrical title height across bottom 5 cards */
 }
 
 .bottom-card .treatment-desc {
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: 0.82rem;
+  line-height: 1.55;
   margin-bottom: 1.25rem;
+  color: #5A6679;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1023px) {
+  .treatments-pinned-track {
+    height: auto !important;
+  }
+
+  .treatments-sticky-frame {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .treatments-section {
+    padding: 4.5rem 0 5.5rem !important;
+    min-height: auto !important;
+  }
+
+  .treatments-stage {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .treatments-stage.stage-shifted {
+    transform: none !important;
+  }
+
+  .treatment-card {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+  }
+
+  .top-card {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .bottom-card .treatment-title {
+    min-height: auto;
+  }
 }

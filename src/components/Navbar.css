@@ -1,511 +1,522 @@
 /* ==========================================================================
-   Ultra-Premium Glassmorphism & Frosted Blur Navbar
-   - Structured spacing & uniform rhythmic gaps between navigation links
-   - Dedicated brand breathing room separating logo and navigation
-   - Deep translucent frosted blur backdrop
-   - High-contrast, crystal-clear user-viewable font colors
-   - Neovita luxury brand violet active & hover highlights
+   Neovita Ultra-Premium Floating Glassmorphism Pill Navbar
+   - Floating rounded capsule with dark translucent glass & backdrop blur
+   - Shiny Neon Neovita Logo with holographic sheen & multi-tier neon glow
+   - Thin vertical divider separating the radiant brand from navigation
+   - Crisp, small, white, medium-weight navigation links with soft glow hover
+   - Mobile responsive glass panel with touch accordions
    ========================================================================== */
 
-.navbar-wrapper {
+/* Outer floating positioning wrapper anchored horizontally near top with balanced margins */
+.tourera-navbar-wrapper {
   position: fixed;
-  top: 0;
+  top: 18px;
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 0;
-  margin: 0;
-  /* Ultra-sleek translucent frosted glassmorphism */
-  background: rgba(255, 255, 255, 0.80);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
-    0 4px 24px -2px rgba(15, 23, 42, 0.05);
-  transition: 
-    background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    -webkit-backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+  display: flex;
+  justify-content: center;
+  padding: 0 1.25rem;
+  pointer-events: none; /* Allows clicks around the pill */
+  animation: toureraNavbarEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Luminous Hairline Light-Beam at the screen-connected bottom border */
-.navbar-wrapper::after {
-  content: '';
+@keyframes toureraNavbarEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rounded capsule pill with dark translucent glass and backdrop blur */
+.tourera-navbar {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: max-content;
+  max-width: 1440px;
+  height: 52px;
+  padding: 0 16px 0 18px;
+  background: rgba(18, 22, 30, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 12px 36px -4px rgba(0, 0, 0, 0.38),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle elevation shadow & deeper tint when page is scrolled */
+.tourera-navbar-wrapper.scrolled .tourera-navbar {
+  background: rgba(14, 18, 25, 0.82);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+    0 16px 44px -6px rgba(0, 0, 0, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Left: Shiny Neon Neovita Logo & Thin Vertical Divider
+   ========================================================================== */
+.navbar-brand-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar-brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Neon logo container with ambient aura */
+.neovita-neon-logo-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Atmospheric Neon Glow Halo behind logo */
+.neovita-neon-halo {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140%;
+  height: 160%;
+  background: radial-gradient(ellipse at center, rgba(192, 132, 252, 0.45) 0%, rgba(232, 121, 249, 0.25) 45%, transparent 75%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Shiny Neon Neovita Logo using mask-image with multi-tone metallic neon sheen */
+.neovita-neon-logo {
+  position: relative;
+  z-index: 1;
+  width: 96px;
+  height: 32px;
   background: linear-gradient(
-    90deg, 
-    transparent 0%, 
-    rgba(94, 35, 157, 0.35) 25%, 
-    rgba(133, 59, 192, 0.3) 50%, 
-    rgba(94, 35, 157, 0.35) 75%, 
-    transparent 100%
+    120deg,
+    #FFFFFF 0%,
+    #F5D0FE 16%,
+    #E879F9 35%,
+    #C084FC 55%,
+    #818CF8 78%,
+    #38BDF8 100%
   );
   background-size: 200% 100%;
-  opacity: 0.7;
-  pointer-events: none;
-  animation: navbarGlowShimmer 8s linear infinite;
+  animation: neonLogoSheen 5s ease-in-out infinite alternate;
+  -webkit-mask-image: url('/logo.png');
+  mask-image: url('/logo.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  filter: 
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 8px rgba(232, 121, 249, 0.9))
+    drop-shadow(0 0 16px rgba(168, 85, 247, 0.7))
+    drop-shadow(0 0 24px rgba(129, 140, 248, 0.5));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
-@keyframes navbarGlowShimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
-}
-
-/* Scrolled State: Denser Glass Blur, Sophisticated Elevation Shadow */
-.navbar-wrapper.scrolled {
-  background: rgba(255, 255, 255, 0.90);
-  backdrop-filter: blur(28px) saturate(200%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
-  border-bottom: 1px solid rgba(94, 35, 157, 0.12);
-  box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.95),
-    0 12px 32px -8px rgba(15, 23, 42, 0.08), 
-    0 2px 6px rgba(0, 0, 0, 0.02);
-}
-
-.navbar-wrapper.scrolled::after {
-  opacity: 1;
-}
-
-/* Structured container with balanced responsive margins */
-.navbar-wrapper .container {
-  max-width: 100%;
-  width: 100%;
-  padding: 0 1.5rem;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .navbar-wrapper .container {
-    padding: 0 2rem;
+@keyframes neonLogoSheen {
+  0% {
+    background-position: 0% 50%;
+    filter: 
+      drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+      drop-shadow(0 0 8px rgba(232, 121, 249, 0.9))
+      drop-shadow(0 0 16px rgba(168, 85, 247, 0.7))
+      drop-shadow(0 0 24px rgba(129, 140, 248, 0.5));
+  }
+  100% {
+    background-position: 100% 50%;
+    filter: 
+      drop-shadow(0 0 4px rgba(255, 255, 255, 1))
+      drop-shadow(0 0 10px rgba(56, 189, 248, 0.9))
+      drop-shadow(0 0 18px rgba(192, 132, 252, 0.8))
+      drop-shadow(0 0 28px rgba(232, 121, 249, 0.6));
   }
 }
 
-@media (min-width: 1400px) {
-  .navbar-wrapper .container {
-    max-width: 1680px;
-    padding: 0 2.25rem;
-  }
+/* Interactive Hover on Neon Logo */
+.navbar-brand-link:hover .neovita-neon-logo {
+  transform: scale(1.05);
+  filter: 
+    drop-shadow(0 0 5px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 12px rgba(232, 121, 249, 1))
+    drop-shadow(0 0 22px rgba(192, 132, 252, 0.95))
+    drop-shadow(0 0 34px rgba(56, 189, 248, 0.7));
 }
 
-@media (min-width: 1650px) {
-  .navbar-wrapper .container {
-    max-width: 1780px;
-    padding: 0 2.75rem;
-  }
-}
-
-/* Internal flex header: Structured layout with dedicated breathing gaps */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
-  position: relative;
-  padding: 0.75rem 0;
-  gap: 1.5rem;
-  transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.navbar-wrapper.scrolled .navbar {
-  padding: 0.55rem 0;
-  box-shadow: none;
-}
-
-/* Logo - Guaranteed breathing room separating it from navigation */
-.navbar-logo {
+/* Thin Elegant Vertical Divider */
+.navbar-vertical-divider {
+  display: inline-block;
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.22);
+  margin: 0 16px 0 16px;
   flex-shrink: 0;
-  margin-right: clamp(1.25rem, 2.5vw, 2.75rem);
 }
 
-.navbar-logo a {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  text-decoration: none;
-}
-
-.logo-img {
-  height: 38px;
-  width: auto;
-  mix-blend-mode: multiply;
-  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.navbar-wrapper.scrolled .logo-img {
-  height: 33px;
-}
-
-.logo-tagline {
-  font-size: 0.44rem;
-  letter-spacing: 0.24em;
-  color: #334155;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-left: 2px;
-}
-
-/* Navigation Links - Right-aligned with balanced rhythm & uniform gaps */
-.navbar-links {
+/* Hide mobile brand on desktop */
+.navbar-mobile-brand {
   display: none;
 }
 
-@media (min-width: 1024px) {
-  .navbar-links {
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0;
-    min-width: 0;
-  }
-  
-  /* Strictly uniform, structured gap between each navigation item */
-  .navbar-links ul {
-    display: flex;
-    gap: 0.35rem;
-    align-items: center;
-    justify-content: flex-end;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  @media (min-width: 1200px) {
-    .navbar-links ul {
-      gap: 0.45rem;
-    }
-  }
-
-  @media (min-width: 1380px) {
-    .navbar-links ul {
-      gap: 0.60rem;
-    }
-  }
-
-  @media (min-width: 1550px) {
-    .navbar-links ul {
-      gap: 0.85rem;
-    }
-  }
-
-  @media (min-width: 1720px) {
-    .navbar-links ul {
-      gap: 1.1rem;
-    }
-  }
-
-  .nav-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  /* User-Viewable, High-Contrast Typography & Proportional Padding */
-  .navbar-links a.nav-link-anchor {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.28rem;
-    font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
-    font-size: 0.81rem;
-    color: #0F172A; /* Deep slate-black: maximum readability & high contrast */
-    font-weight: 550; /* Crisp, easily viewable text weight */
-    letter-spacing: -0.01em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    padding: 0.40rem 0.62rem;
-    border-radius: 9999px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    white-space: nowrap;
-    text-decoration: none;
-  }
-
-  @media (min-width: 1280px) {
-    .navbar-links a.nav-link-anchor {
-      font-size: 0.83rem;
-      padding: 0.42rem 0.68rem;
-    }
-  }
-
-  @media (min-width: 1440px) {
-    .navbar-links a.nav-link-anchor {
-      font-size: 0.85rem;
-      padding: 0.44rem 0.74rem;
-    }
-  }
-
-  @media (min-width: 1600px) {
-    .navbar-links a.nav-link-anchor {
-      font-size: 0.87rem;
-      padding: 0.46rem 0.82rem;
-    }
-  }
-
-  /* Hover state: Gentle frosted glow with violet accent */
-  .navbar-links a.nav-link-anchor:hover, 
-  .nav-item.dropdown-active a.nav-link-anchor {
-    color: #5E239D;
-    background: rgba(94, 35, 157, 0.07);
-    border-color: rgba(94, 35, 157, 0.16);
-    box-shadow: 0 2px 8px rgba(94, 35, 157, 0.05);
-  }
-
-  /* Active state: Luxury frosted active capsule with exact proportional padding */
-  .navbar-links a.nav-link-anchor.active {
-    color: #5E239D;
-    font-weight: 650;
-    background: rgba(94, 35, 157, 0.10);
-    border-color: rgba(94, 35, 157, 0.24);
-    box-shadow: 0 2px 8px -1px rgba(94, 35, 157, 0.10);
-  }
-
-  /* Special Highlight for Fertility Preservation Program: Distinctive Violet, Perfectly Balanced */
-  .navbar-links a.nav-link-anchor.special-preservation-link {
-    color: #5E239D;
-    font-weight: 650;
-    position: relative;
-  }
-
-  .navbar-links a.nav-link-anchor.special-preservation-link::before {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #5E239D;
-    margin-right: 4px;
-    flex-shrink: 0;
-    opacity: 0.85;
-  }
-
-  .navbar-links a.nav-link-anchor.special-preservation-link:hover {
-    color: #5E239D;
-    background: rgba(94, 35, 157, 0.08);
-    border-color: rgba(94, 35, 157, 0.20);
-    box-shadow: 0 2px 8px rgba(94, 35, 157, 0.08);
-  }
-
-  .navbar-links a.nav-link-anchor.special-preservation-link.active {
-    color: #5E239D;
-    background: rgba(94, 35, 157, 0.12);
-    border-color: rgba(94, 35, 157, 0.28);
-    box-shadow: 0 2px 10px rgba(94, 35, 157, 0.14);
-  }
-
-  /* Dropdown Chevron Icon */
-  .dropdown-icon {
-    color: #475569; /* Crisp slate gray, clearly viewable */
-    margin-top: 1px;
-    opacity: 0.9;
-    flex-shrink: 0;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease, opacity 0.2s ease;
-  }
-
-  .dropdown-icon.rotate {
-    transform: rotate(180deg);
-  }
-
-  .navbar-links a.nav-link-anchor:hover .dropdown-icon,
-  .nav-item.dropdown-active .dropdown-icon,
-  .navbar-links a.nav-link-anchor.active .dropdown-icon {
-    color: #5E239D;
-    opacity: 1;
-  }
-
-  /* Dropdown Menu Desktop Styling with High-End Frosted Blur */
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(12px);
-    background: rgba(255, 255, 255, 0.90);
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    box-shadow: 
-      0 20px 48px -10px rgba(15, 23, 42, 0.12), 
-      0 0 0 1px rgba(94, 35, 157, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.95);
-    padding: 12px 10px;
-    min-width: 320px;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
-    z-index: 100;
-  }
-
-  /* Single column width for short dropdowns */
-  .nav-item:nth-child(2) .dropdown-menu {
-    min-width: 250px;
-  }
-
-  .dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(6px);
-  }
-
-  .dropdown-menu-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .dropdown-item {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    padding: 10px 14px !important;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.22s ease !important;
-    border-left: 3px solid transparent;
-  }
-
-  .dropdown-item:hover, .dropdown-item.active-item {
-    background: rgba(94, 35, 157, 0.08);
-    border-left-color: #5E239D;
-    padding-left: 18px !important;
-  }
-
-  .dropdown-item .item-title {
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: #0F172A;
-    line-height: 1.3;
-    transition: color 0.2s ease;
-  }
-
-  .dropdown-item:hover .item-title, .dropdown-item.active-item .item-title {
-    color: #5E239D;
-  }
-
-  .dropdown-item .item-desc {
-    font-size: 0.76rem;
-    color: #475569;
-    font-weight: 450;
-    margin-top: 2px;
-    line-height: 1.3;
-  }
+/* ==========================================================================
+   Center: Navigation Links
+   ========================================================================== */
+.tourera-nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Mobile Toggle */
-.mobile-menu-toggle {
-  display: block;
-  color: #0F172A;
-  background: transparent;
-  border: none;
+.tourera-nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2px;
+}
+
+.tourera-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.tourera-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 9999px;
+  transition: color 0.2s ease, text-shadow 0.2s ease, background 0.2s ease;
   cursor: pointer;
-  padding: 0.4rem;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-  margin-left: auto;
+  background: transparent;
 }
 
-.mobile-menu-toggle:hover {
-  background: rgba(94, 35, 157, 0.08);
+.tourera-nav-link:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-@media (min-width: 1024px) {
-  .mobile-menu-toggle {
+.tourera-nav-link.active {
+  color: #FFFFFF;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tourera-chevron {
+  opacity: 0.7;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.tourera-nav-item:hover .tourera-chevron,
+.tourera-chevron.rotate {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu Glass Panel */
+.tourera-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 250px;
+  background: rgba(16, 20, 28, 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s;
+  z-index: 1010;
+}
+
+.tourera-dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Services Multi-column Grid Dropdown */
+.tourera-dropdown-menu.multi-column {
+  min-width: 520px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+.tourera-dropdown-item {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.tourera-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.tourera-dropdown-item .item-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.35;
+}
+
+.tourera-dropdown-item .item-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* Mobile Toggle Hamburger Button (Hidden on Desktop) */
+.tourera-mobile-toggle {
+  display: none;
+}
+
+/* ==========================================================================
+   Responsiveness
+   ========================================================================== */
+
+/* Medium Desktops / Laptops (1024px to 1340px) */
+@media (min-width: 1024px) and (max-width: 1340px) {
+  .tourera-navbar {
+    padding: 0 12px 0 14px;
+  }
+  .neovita-neon-logo {
+    width: 86px;
+    height: 28px;
+  }
+  .navbar-vertical-divider {
+    margin: 0 10px;
+  }
+  .tourera-nav-link {
+    font-size: 0.73rem;
+    padding: 5px 7px;
+    gap: 2px;
+  }
+}
+
+/* Tablet & Mobile Screens (< 1024px) */
+@media (max-width: 1023px) {
+  .tourera-navbar-wrapper {
+    top: 12px;
+    padding: 0 1rem;
+    justify-content: center;
+  }
+
+  .tourera-navbar {
+    width: 100%;
+    max-width: 440px;
+    height: 48px;
+    padding: 0 12px 0 16px;
+    justify-content: space-between;
+  }
+
+  .navbar-brand-group {
     display: none;
   }
-}
 
-/* Mobile Screen-Connected Blur Menu */
-@media (max-width: 1023px) {
-  .navbar-links.open {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
-    padding: 1.5rem 1.5rem;
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
-    border-top: 1px solid rgba(226, 232, 240, 0.9);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-    border-radius: 0 0 24px 24px;
-    margin-top: 0;
-    max-height: 80vh;
-    overflow-y: auto;
-    animation: mobileSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  .navbar-mobile-brand {
+    display: flex;
+    align-items: center;
   }
 
-  @keyframes mobileSlideDown {
-    from {
+  .navbar-mobile-brand a {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-logo {
+    width: 84px;
+    height: 26px;
+  }
+
+  .tourera-nav-center {
+    display: none;
+  }
+
+  .tourera-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tourera-mobile-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Mobile Dropdown Panel */
+  .tourera-mobile-panel {
+    position: fixed;
+    top: 68px;
+    left: 14px;
+    right: 14px;
+    max-height: calc(100vh - 86px);
+    overflow-y: auto;
+    background: rgba(14, 18, 26, 0.96);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 22px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: auto;
+    z-index: 1020;
+    animation: mobilePanelFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes mobilePanelFade {
+    0% {
       opacity: 0;
-      transform: translateY(-8px);
+      transform: translateY(-12px);
     }
-    to {
+    100% {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  .navbar-links.open ul {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .tourera-mobile-list {
     list-style: none;
-    padding: 0;
     margin: 0;
-  }
-
-  .navbar-links.open a.nav-link-anchor {
-    font-size: 1.05rem;
-    font-weight: 600;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0.6rem 0;
-    color: #0F172A;
-    text-decoration: none;
-  }
-
-  .navbar-links.open a.nav-link-anchor.active {
-    color: #5E239D;
-  }
-
-  .dropdown-menu {
-    display: none;
-    padding: 10px 0 10px 15px;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
   }
 
-  .dropdown-menu.show {
-    display: flex;
+  .tourera-mobile-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 4px;
   }
 
-  .dropdown-item {
+  .tourera-mobile-link-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 10px;
-    color: #0F172A;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .tourera-mobile-link {
+    flex: 1;
+    display: block;
+    padding: 10px 4px;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
     text-decoration: none;
+  }
+
+  .tourera-mobile-link:hover,
+  .tourera-mobile-link.active {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .tourera-mobile-chevron-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tourera-mobile-submenu {
+    padding: 4px 0 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tourera-mobile-sublink {
+    display: block;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+  }
+
+  .tourera-mobile-sublink:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-item-title {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  .mobile-item-desc {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 2px;
   }
 }

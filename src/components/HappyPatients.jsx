@@ -28,7 +28,7 @@ const testimonialPages = [
       text: "I recently visited Neovita Fertility Centre and had a wonderfully positive experience. Dr. Anju Madhavan was incredibly friendly and supportive, taking the time to listen and explain everything clearly.",
       author: "ATHIRA MONOHARAN",
       role: "Patient",
-      location: "Alappuzha, Kerala",
+      location: "Kollam, Kerala",
       rating: 5,
       isFeatured: false
     }

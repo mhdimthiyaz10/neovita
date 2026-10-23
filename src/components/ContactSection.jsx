@@ -24,17 +24,6 @@ const officeLocations = [
     mapLink: 'https://maps.google.com/?q=RCPM+Hospital+Changankulangara+Ochira+Kollam',
     placeholderTag: 'Ochira Branch (RCPM Hospital)',
     imageSrc: '/rcpm_hospital.png'
-  },
-  {
-    id: 'aleppy',
-    badge: 'Speciality Branch',
-    title: 'Office Address - Aleppy',
-    tagline: 'Regional Consultation Centre',
-    address: 'Kattanam – St. Thomas Hospital, Kattanam, Kayamkulam, Alappuzha, Kerala',
-    status: 'Consultations Open',
-    mapLink: 'https://maps.google.com/?q=St+Thomas+Hospital+Kattanam',
-    placeholderTag: 'Aleppy (Alappuzha) Branch',
-    imageSrc: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80'
   }
 ];
 

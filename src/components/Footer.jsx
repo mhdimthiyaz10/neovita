@@ -114,18 +114,6 @@ const Footer = ({ onNavigate }) => {
               </p>
             </div>
 
-            {/* Aleppy */}
-            <div className="footer-office-item">
-              <div className="footer-office-heading">
-                <MapPin size={13} className="footer-pin-icon" />
-                <span className="footer-office-name">ALEPPY</span>
-              </div>
-              <p className="footer-office-text">
-                Kattanam – St. Thomas Hospital, Kattanam,<br />
-                Kayamkulam, Alappuzha
-              </p>
-            </div>
-
           </div>
         </div>
 

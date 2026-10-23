@@ -1,288 +1,145 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'motion/react';
-import { Sparkles, Beaker, HeartPulse } from 'lucide-react';
-import { InteractivePhotoStack } from '@/components/ui/photo-stack';
+import React, { useState } from 'react';
 import './OurTeamPage.css';
 
-const priorityLeadershipItems = [
+const allTeamMembers = [
   {
-    src: "/team/dr_anju_madhavan.png",
+    id: 1,
     name: "Dr Anju Madhavan",
-    role: "Clinical Director, Senior Gynaecologist & Infertility Specialist, Laproscopic Surgeon",
+    role: "Clinical Director & Senior Gynaecologist",
     experience: "MBBS, MS, DGO, MRCOG- UK, Fellowship In Reproductive Medicine",
+    src: "/team/dr_anju_madhavan.png",
+    isPriority: true,
   },
   {
-    src: "/team/dr_antony_tobin.png",
+    id: 2,
     name: "Dr Antony Tobin Thomas",
-    role: "Scientific Director and Chief Embryologist",
+    role: "Scientific Director & Chief Embryologist",
     experience: "MSc Clinical Embryology (KMC, Manipal)",
+    src: "/team/dr_antony_tobin.png",
+    isPriority: true,
   },
-];
-
-const remainingLeadershipItems = [
   {
-    src: "/team/ms_greeshma_v_john.png",
+    id: 3,
     name: "Ms Greeshma V John",
-    role: "Embryologist",
-    experience: "Clinical Embryology",
+    role: "Embryologist & ART Specialist",
+    experience: "Clinical Embryology Specialist",
+    src: "/team/ms_greeshma_v_john.png",
   },
-];
-
-const embryologyPhotoItems = [
   {
-    src: "/team/mrs_shalu_thomas.png",
+    id: 4,
     name: "Mrs. Shalu Thomas",
-    role: "IVF Nurse",
+    role: "Senior IVF Nurse",
+    experience: "Clinical Operations & Patient Care",
+    src: "/team/mrs_shalu_thomas.png",
   },
   {
-    src: "/team/mrs_bindhu_joseph.png",
+    id: 5,
     name: "Mrs. Bindhu Joseph",
-    role: "IVF Nurse",
+    role: "Senior IVF Nurse",
+    experience: "Clinical Operations & Patient Care",
+    src: "/team/mrs_bindhu_joseph.png",
   },
   {
-    src: "/team/mr_jeeva_viswanathan.png",
+    id: 6,
     name: "Mr. Jeeva Viswanathan",
-    role: "Clinic Manager – Operations & Promotions",
+    role: "Clinic Manager",
+    experience: "Operations & Promotions",
+    src: "/team/mr_jeeva_viswanathan.png",
   },
   {
-    src: "/team/ms_hajara_beevi.png",
+    id: 7,
     name: "Ms. Hajara Beevi B.",
     role: "Andrology Technician",
+    experience: "Diagnostic & Andrology Lab",
+    src: "/team/ms_hajara_beevi.png",
   },
-];
-
-const patientCarePhotoItems = [
   {
-    src: "/team/mrs_aleesha_s.png",
+    id: 8,
     name: "Mrs. Aleesha S.",
-    role: "Pharmacist",
+    role: "Registered Pharmacist",
+    experience: "Clinical Pharmacy & Medication Care",
+    src: "/team/mrs_aleesha_s.png",
   },
   {
-    src: "/team/ms_jishna_jayakumar.png",
+    id: 9,
     name: "Ms. Jishna Jayakumar",
     role: "Receptionist",
+    experience: "Front Desk & Patient Relations",
+    src: "/team/ms_jishna_jayakumar.png",
   },
   {
-    src: "/team/mrs_shalini_v.png",
+    id: 10,
     name: "Mrs. Shalini V.",
-    role: "Janitor",
+    role: "Hospital Support",
+    experience: "Patient Care & Sanitation",
+    src: "/team/mrs_shalini_v.png",
   },
 ];
 
-const OurTeamPage = ({ onNavigateBack: _onNavigateBack }) => {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { amount: 0.08 });
-  const [isMobile, setIsMobile] = useState(false);
+// Duplicate list 3 times to guarantee a truly seamless continuous right-to-left loop
+const extendedMembersList = [...allTeamMembers, ...allTeamMembers, ...allTeamMembers];
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+const OurTeamPage = ({ onNavigateBack: _onNavigateBack }) => {
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
     <div className="our-team-page">
-      {/* Main Content */}
-      <main className="our-team-main-content">
-        
-        {/* Page Hero Header */}
-        <motion.header
-          className="team-hero-header"
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* Luminous Ambient Glow */}
-          <div className="hero-ambient-glow" aria-hidden="true" />
+      {/* Spacious Section with Page Heading at the Top & Flowing Cards Below */}
+      <section className="team-flow-section">
+        {/* Luminous Ambient Glow */}
+        <div className="hero-ambient-glow" aria-hidden="true" />
 
-          {/* Eyebrow Badge */}
-          <motion.div
-            className="team-hero-badge"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <Sparkles size={13} className="text-[#853BC0]" />
-            <span>CLINICAL EXCELLENCE & CARE</span>
-          </motion.div>
-
-          {/* Concise High-Impact Heading */}
-          <motion.h1
-            className="team-hero-title"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
+        {/* Page Heading Set at the Top */}
+        <header className="team-page-header">
+          <h1 className="team-hero-title team-scroll-hero-title">
             Meet Our <span className="hero-gradient-text">Specialists</span>
-          </motion.h1>
-        </motion.header>
+          </h1>
 
-        {/* Section 1: Clinical Leadership & Directors */}
-        <section ref={sectionRef} className="team-leadership-section">
-          <motion.div
-            className="team-section-badge"
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Sparkles size={13} className="text-[#853BC0]" />
-            <span>CLINICAL LEADERSHIP & DIRECTORS</span>
-          </motion.div>
-          
-          {/* Upper Tier: 2 Priority Leadership Cards Sweeping In From Two Different Sides */}
-          <div className="leadership-priority-grid">
-            {priorityLeadershipItems.map((item, index) => {
-              const isLeftCard = index === 0; // Dr Anju (Left side) vs Dr Antony (Right side)
-              const offsetDistance = isMobile ? 130 : 230;
+          <p className="team-flow-subtitle">
+            Our dedicated team of doctors, embryologists & healthcare specialists
+          </p>
+        </header>
 
-              return (
-                <motion.div
-                  key={item.name}
-                  className="leadership-card leadership-card--priority"
-                  initial={{
-                    opacity: 0,
-                    x: isLeftCard ? -offsetDistance : offsetDistance,
-                    y: 20,
-                    scale: 0.91,
-                    rotate: isLeftCard ? -3.5 : 3.5,
-                  }}
-                  animate={
-                    isInView
-                      ? {
-                          opacity: 1,
-                          x: 0,
-                          y: 0,
-                          scale: 1,
-                          rotate: 0,
-                        }
-                      : {
-                          opacity: 0,
-                          x: isLeftCard ? -offsetDistance : offsetDistance,
-                          y: 20,
-                          scale: 0.91,
-                          rotate: isLeftCard ? -3.5 : 3.5,
-                        }
-                  }
-                  transition={{
-                    duration: 1.1,
-                    delay: isLeftCard ? 0.32 : 0.48,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  whileHover={{
-                    y: -6,
-                    transition: { duration: 0.25, ease: 'easeOut' },
-                  }}
-                >
-                  <div className="leadership-photo-frame">
-                    <img
-                      src={item.src}
-                      alt={item.name}
-                      className="leadership-photo"
-                    />
-                  </div>
-                  <div className="leadership-info">
-                    <h3 className="leadership-name">{item.name}</h3>
-                    {item.role && (
-                      <p className="leadership-role">{item.role}</p>
-                    )}
-                    {item.experience && (
-                      <p className="leadership-experience">{item.experience}</p>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-
-          {/* Lower Tier: Remaining 1 Specialist Card (Entering from Bottom) */}
-          <div className="leadership-subordinate-grid">
-            {remainingLeadershipItems.map((item) => (
-              <motion.div
-                key={item.name}
-                className="leadership-card leadership-card--subordinate"
-                initial={{
-                  opacity: 0,
-                  y: 95,
-                  scale: 0.92,
-                }}
-                animate={
-                  isInView
-                    ? {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                      }
-                    : {
-                        opacity: 0,
-                        y: 95,
-                        scale: 0.92,
-                      }
-                }
-                transition={{
-                  duration: 1.05,
-                  delay: 0.65,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                whileHover={{
-                  y: -6,
-                  transition: { duration: 0.25, ease: 'easeOut' },
-                }}
+        {/* Carousel Stream: Flowing from Right to Left through the Center */}
+        <div 
+          className="team-flow-carousel-wrapper"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => {
+            setTimeout(() => setIsPaused(false), 2400);
+          }}
+        >
+          <div className={`team-flow-track ${isPaused ? 'paused' : ''}`}>
+            {extendedMembersList.map((member, index) => (
+              <div 
+                key={`${member.id}-${index}`} 
+                className={`specialist-scroll-card specialist-flow-card ${
+                  member.isPriority ? 'specialist-flow-card--priority' : ''
+                }`}
+                tabIndex={0}
               >
-                <div className="leadership-photo-frame">
+                {member.isPriority && <div className="specialist-card-top-bar" />}
+                <div className="specialist-photo-frame">
                   <img
-                    src={item.src}
-                    alt={item.name}
-                    className="leadership-photo"
+                    src={member.src}
+                    alt={member.name}
+                    className="specialist-photo"
+                    loading="lazy"
                   />
                 </div>
-                <div className="leadership-info">
-                  <h3 className="leadership-name">{item.name}</h3>
-                  {item.role && (
-                    <p className="leadership-role">{item.role}</p>
-                  )}
-                  {item.experience && (
-                    <p className="leadership-experience">{item.experience}</p>
+                <div className="specialist-info">
+                  <h3 className="specialist-name">{member.name}</h3>
+                  <p className="specialist-role">{member.role}</p>
+                  {member.experience && (
+                    <p className="specialist-experience">{member.experience}</p>
                   )}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </section>
-
-        {/* Minimal Divider */}
-        <div className="team-section-divider" />
-
-        {/* Section 2: Clinical Operations & IVF Nursing */}
-        <section className="team-photo-stack-section">
-          <div className="team-section-badge">
-            <Beaker size={13} className="text-[#853BC0]" />
-            <span>CLINICAL OPERATIONS & IVF NURSING</span>
-          </div>
-          
-          <InteractivePhotoStack
-            items={embryologyPhotoItems}
-            className="my-2"
-          />
-        </section>
-
-        {/* Minimal Divider */}
-        <div className="team-section-divider" />
-
-        {/* Section 3: Patient Care & Hospital Support */}
-        <section className="team-photo-stack-section">
-          <div className="team-section-badge">
-            <HeartPulse size={13} className="text-[#853BC0]" />
-            <span>PATIENT CARE & HOSPITAL SUPPORT</span>
-          </div>
-          
-          <InteractivePhotoStack
-            items={patientCarePhotoItems}
-            className="my-2"
-          />
-        </section>
-        
-      </main>
+        </div>
+      </section>
     </div>
   );
 };

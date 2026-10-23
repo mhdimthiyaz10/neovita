@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import './Navbar.css';
 
-const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
+const Navbar = ({ activePage = 'home', onNavigate }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [isPinned, setIsPinned] = useState(false); // Keeps dropdown stuck open when clicked
+  const [isPinned, setIsPinned] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState({});
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -85,7 +86,6 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       dropdownItems: [
         { name: 'Kollam Clinic', page: 'contact', href: '#kollam', desc: 'Ayathil, Kallumthazham, Kollam' },
         { name: 'Ochira Clinic', page: 'contact', href: '#ochira', desc: 'RCPM Hospital, Ochira' },
-        { name: 'Aleppy Clinic', page: 'contact', href: '#aleppy', desc: 'Kattanam, Alappuzha' },
       ]
     },
   ];
@@ -101,11 +101,9 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
       e.preventDefault();
       e.stopPropagation();
       if (openDropdown === link.name && isPinned) {
-        // Toggle closed if already pinned open
         setOpenDropdown(null);
         setIsPinned(false);
       } else {
-        // Pin/Stuck open when clicked
         setOpenDropdown(link.name);
         setIsPinned(true);
       }
@@ -141,90 +139,197 @@ const Navbar = ({ activePage = 'home', onNavigate, onBookConsultation }) => {
     }
   };
 
+  const toggleMobileSubmenu = (e, linkName) => {
+    e.stopPropagation();
+    setMobileExpanded((prev) => ({
+      ...prev,
+      [linkName]: !prev[linkName]
+    }));
+  };
+
   return (
-    <div className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container">
-        <header className="navbar" ref={dropdownRef}>
-          
-          <div className="navbar-logo">
-            <a href="#" onClick={(e) => { e.preventDefault(); setOpenDropdown(null); setIsPinned(false); if(onNavigate) onNavigate('home'); }}>
-              <img src="/logo.png" alt="Neovita" className="logo-img" />
-              <div className="logo-tagline">THE FERTILITY EXPERT</div>
-            </a>
-          </div>
+    <div className={`tourera-navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
+      <header className="tourera-navbar" ref={dropdownRef}>
+        
+        {/* Left: Shiny Neon Neovita Logo + Thin Vertical Divider */}
+        <div className="navbar-brand-group">
+          <a 
+            href="#" 
+            className="navbar-brand-link"
+            onClick={(e) => { 
+              e.preventDefault(); 
+              setOpenDropdown(null); 
+              setIsPinned(false); 
+              setIsMobileMenuOpen(false); 
+              if (onNavigate) onNavigate('home'); 
+            }}
+            title="Neovita Fertility Clinic"
+          >
+            <div className="neovita-neon-logo-wrap">
+              <div className="neovita-neon-halo" aria-hidden="true" />
+              <div className="neovita-neon-logo" />
+            </div>
+          </a>
+          <div className="navbar-vertical-divider" aria-hidden="true" />
+        </div>
 
-          <nav className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}>
-            <ul>
-              {navLinks.map((link) => {
-                const isDropdownOpen = openDropdown === link.name;
-                const isCurrentActive = 
-                  (link.name === 'Home' && activePage === 'home') ||
-                  (link.name === 'About' && (activePage === 'about' || activePage === 'faq' || activePage === 'why-choose-us' || activePage === 'stacked-services')) ||
-                  (link.name === 'Our Team' && activePage === 'our-team') ||
-                  (link.name === 'Events' && activePage === 'events') ||
-                  (link.name === 'Contact' && activePage === 'contact') ||
-                  (link.name === 'Services' && (activePage === 'services' || activePage === 'treatments')) ||
-                  (link.name === 'International Patient Service' && activePage === 'international') ||
-                  (link.name === 'Fertility Preservation Program' && activePage === 'egg-sperm-embryo-freezing') ||
-                  (link.name === 'Academy' && activePage === 'academy') ||
-                  (link.name === 'Our Locations' && activePage === 'locations');
-                const isSpecial = link.isSpecial || link.name === 'Fertility Preservation Program';
+        {/* Mobile-only brand */}
+        <div className="navbar-mobile-brand">
+          <a 
+            href="#" 
+            onClick={(e) => { 
+              e.preventDefault(); 
+              if (onNavigate) onNavigate('home'); 
+            }}
+          >
+            <div className="neovita-neon-logo-wrap mobile-wrap">
+              <div className="neovita-neon-halo" aria-hidden="true" />
+              <div className="neovita-neon-logo mobile-logo" />
+            </div>
+          </a>
+        </div>
 
-                return (
-                  <li 
-                    key={link.name} 
-                    className={`nav-item ${link.hasDropdown ? 'has-dropdown' : ''} ${isDropdownOpen ? 'dropdown-active' : ''}`}
-                    onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.name)}
-                    onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
+        {/* Center: Navigation Links */}
+        <nav className="tourera-nav-center">
+          <ul className="tourera-nav-list">
+            {navLinks.map((link) => {
+              const isDropdownOpen = openDropdown === link.name;
+              const isCurrentActive = 
+                (link.name === 'Home' && activePage === 'home') ||
+                (link.name === 'About' && (activePage === 'about' || activePage === 'faq')) ||
+                (link.name === 'Our Team' && activePage === 'our-team') ||
+                (link.name === 'Events' && activePage === 'events') ||
+                (link.name === 'Contact' && activePage === 'contact') ||
+                (link.name === 'Services' && (activePage === 'services' || activePage === 'treatments')) ||
+                (link.name === 'International Patient Service' && activePage === 'international') ||
+                (link.name === 'Fertility Preservation Program' && activePage === 'egg-sperm-embryo-freezing') ||
+                (link.name === 'Academy' && activePage === 'academy') ||
+                (link.name === 'Our Locations' && activePage === 'locations');
+
+              return (
+                <li 
+                  key={link.name} 
+                  className={`tourera-nav-item ${link.hasDropdown ? 'has-dropdown' : ''}`}
+                  onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.name)}
+                  onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
+                >
+                  <a 
+                    href={link.href} 
+                    target={link.isExternal ? '_blank' : undefined}
+                    rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                    className={`tourera-nav-link ${isCurrentActive ? 'active' : ''}`}
+                    onClick={(e) => handleLinkClick(e, link)}
                   >
+                    <span>{link.name}</span>
+                    {link.hasDropdown && (
+                      <ChevronDown size={11} className={`tourera-chevron ${isDropdownOpen ? 'rotate' : ''}`} />
+                    )}
+                  </a>
+
+                  {/* Dropdown Menu */}
+                  {link.hasDropdown && link.dropdownItems && (
+                    <div className={`tourera-dropdown-menu ${link.dropdownItems.length > 4 ? 'multi-column' : ''} ${isDropdownOpen ? 'show' : ''}`}>
+                      {link.dropdownItems.map((item, idx) => (
+                        <a
+                          key={idx}
+                          href={item.href}
+                          className="tourera-dropdown-item"
+                          onClick={(e) => handleDropdownItemClick(e, item)}
+                        >
+                          <span className="item-title">{item.name}</span>
+                          {item.desc && <span className="item-desc">{item.desc}</span>}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Mobile Menu Hamburger Button */}
+        <button 
+          className="tourera-mobile-toggle" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+          type="button"
+        >
+          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+
+      </header>
+
+      {/* Mobile/Tablet Elegant Glass Dropdown Panel */}
+      {isMobileMenuOpen && (
+        <div className="tourera-mobile-panel">
+          <ul className="tourera-mobile-list">
+            {navLinks.map((link) => {
+              const isExpanded = !!mobileExpanded[link.name];
+              const isCurrentActive = 
+                (link.name === 'Home' && activePage === 'home') ||
+                (link.name === 'About' && (activePage === 'about' || activePage === 'faq')) ||
+                (link.name === 'Our Team' && activePage === 'our-team') ||
+                (link.name === 'Events' && activePage === 'events') ||
+                (link.name === 'Contact' && activePage === 'contact') ||
+                (link.name === 'Services' && (activePage === 'services' || activePage === 'treatments')) ||
+                (link.name === 'International Patient Service' && activePage === 'international') ||
+                (link.name === 'Fertility Preservation Program' && activePage === 'egg-sperm-embryo-freezing') ||
+                (link.name === 'Academy' && activePage === 'academy') ||
+                (link.name === 'Our Locations' && activePage === 'locations');
+
+              return (
+                <li key={link.name} className="tourera-mobile-item">
+                  <div className="tourera-mobile-link-row">
                     <a 
-                      href={link.href} 
+                      href={link.href}
                       target={link.isExternal ? '_blank' : undefined}
                       rel={link.isExternal ? 'noopener noreferrer' : undefined}
-                      className={`nav-link-anchor ${isCurrentActive ? 'active' : ''} ${isSpecial ? 'special-preservation-link' : ''}`}
-                      onClick={(e) => handleLinkClick(e, link)}
+                      className={`tourera-mobile-link ${isCurrentActive ? 'active' : ''}`}
+                      onClick={(e) => {
+                        if (link.hasDropdown) {
+                          e.preventDefault();
+                          toggleMobileSubmenu(e, link.name);
+                        } else {
+                          handleLinkClick(e, link);
+                        }
+                      }}
                     >
-                      <span>{link.name}</span>
-                      {link.hasDropdown && <ChevronDown size={14} className={`dropdown-icon ${isDropdownOpen ? 'rotate' : ''}`} />}
+                      {link.name}
                     </a>
-
-                    {/* Dropdown Menu */}
-                    {link.hasDropdown && link.dropdownItems && (
-                      <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
-                        <div className="dropdown-menu-inner">
-                          {link.dropdownItems.map((item, idx) => {
-                            return (
-                              <a
-                                key={idx}
-                                href={item.href}
-                                className={`dropdown-item ${activePage === item.page && ((item.name === 'FAQ' && activePage === 'faq') || (item.name === 'About Us' && activePage === 'about')) ? 'active-item' : ''}`}
-                                onClick={(e) => handleDropdownItemClick(e, item)}
-                              >
-                                <span className="item-title">{item.name}</span>
-                                {item.desc && <span className="item-desc">{item.desc}</span>}
-                              </a>
-                            );
-                          })}
-                        </div>
-                      </div>
+                    {link.hasDropdown && (
+                      <button 
+                        className="tourera-mobile-chevron-btn"
+                        onClick={(e) => toggleMobileSubmenu(e, link.name)}
+                        type="button"
+                      >
+                        <ChevronDown size={16} className={`tourera-chevron ${isExpanded ? 'rotate' : ''}`} />
+                      </button>
                     )}
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+                  </div>
 
+                  {link.hasDropdown && isExpanded && link.dropdownItems && (
+                    <div className="tourera-mobile-submenu">
+                      {link.dropdownItems.map((item, idx) => (
+                        <a
+                          key={idx}
+                          href={item.href}
+                          className="tourera-mobile-sublink"
+                          onClick={(e) => handleDropdownItemClick(e, item)}
+                        >
+                          <span className="mobile-item-title">{item.name}</span>
+                          {item.desc && <span className="mobile-item-desc">{item.desc}</span>}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
 
-          <button 
-            className="mobile-menu-toggle" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-
-        </header>
-      </div>
     </div>
   );
 };

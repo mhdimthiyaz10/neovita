@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Users, Monitor, TestTube, Activity, Stethoscope, Syringe, Zap, Dna, ArrowRight } from 'lucide-react';
 import './Treatments.css';
 
@@ -65,85 +65,176 @@ const bottomCards = [
 ];
 
 const Treatments = ({ onNavigate }) => {
+  const trackRef = useRef(null);
+  const [placedCount, setPlacedCount] = useState(0);
+  const [isShifted, setIsShifted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      const desktop = window.innerWidth >= 1024;
+      setIsDesktop(desktop);
+      if (!desktop) {
+        setPlacedCount(8);
+        setIsShifted(false);
+      }
+    };
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop, { passive: true });
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
+    const handleScroll = () => {
+      if (!trackRef.current) return;
+      const rect = trackRef.current.getBoundingClientRect();
+      const scrolled = -rect.top;
+
+      // 150px initial buffer before card 1 starts
+      if (scrolled < 150) {
+        setPlacedCount(0);
+        setIsShifted(false);
+      } else if (scrolled < 450) {
+        // Card 1: Evaluation of Infertile Couple
+        setPlacedCount(1);
+        setIsShifted(false);
+      } else if (scrolled < 750) {
+        // Card 2: Follicular Monitoring
+        setPlacedCount(2);
+        setIsShifted(false);
+      } else if (scrolled < 1050) {
+        // Card 3: Semen Analysis is reached!
+        setPlacedCount(3);
+        setIsShifted(false);
+      } else {
+        // After reaching Semen Analysis, next scrolling moves the page down MORE
+        setIsShifted(true);
+
+        if (scrolled < 1450) {
+          // Transition zone: page moves down more so remaining 5 cards are fully centered
+          setPlacedCount(3);
+        } else {
+          // Remaining 5 cards enter one by one into the bottom row fully
+          const bottomCardIndex = Math.min(5, Math.floor((scrolled - 1450) / 320) + 1);
+          setPlacedCount(3 + bottomCardIndex);
+        }
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isDesktop]);
+
   return (
-    <section className="treatments-section">
-      <div className="container">
-        <div className="treatments-header">
-          <div className="treatments-eyebrow">
-            <span className="eyebrow-line"></span>
-            OUR FERTILITY SERVICES
-            <span className="eyebrow-line"></span>
+    <div className="treatments-pinned-track" ref={trackRef}>
+      <div className="treatments-sticky-frame">
+        <section className="treatments-section">
+          <div className={`treatments-stage ${isShifted ? 'stage-shifted' : ''}`}>
+            <div className="container treatments-container">
+              <div className="treatments-header">
+                <div className="treatments-eyebrow">
+                  <span className="eyebrow-line"></span>
+                  <span>OUR FERTILITY SERVICES</span>
+                  {isDesktop && (
+                    <span className="services-counter-badge">
+                      {placedCount}/8 Services
+                    </span>
+                  )}
+                  <span className="eyebrow-line"></span>
+                </div>
+                <h2 className="treatments-heading">
+                  Advanced <span className="highlight-purple-gradient">Fertility Care</span>
+                </h2>
+                <p className="treatments-description">
+                  Cutting-edge technology, expert care and personalised treatment plans<br className="hidden md:block" /> to help you build the family you dream of.
+                </p>
+              </div>
+            
+            {/* Top Grid: 3 Cards (indices 0, 1, 2) */}
+            <div className="treatments-grid-top">
+              {topCards.map((card, index) => {
+                const cardIndex = index; // 0, 1, 2
+                const isPlaced = !isDesktop || placedCount >= (cardIndex + 1);
+                const isJustArrived = isDesktop && placedCount === (cardIndex + 1);
+
+                return (
+                  <div 
+                    className={`treatment-card top-card ${isPlaced ? 'card-placed' : 'card-waiting'} ${isJustArrived ? 'just-arrived' : ''}`}
+                    key={index}
+                    onClick={() => card.page && onNavigate && onNavigate(card.page)}
+                    style={{ cursor: card.page ? 'pointer' : 'default' }}
+                  >
+                    <div className="treatment-icon-wrapper-large">
+                      {card.icon}
+                    </div>
+                    <div className="treatment-content">
+                      <div className="card-eyebrow">{card.eyebrow}</div>
+                      <h3 className="treatment-title">{card.title}</h3>
+                      <p className="treatment-desc">{card.description}</p>
+                      <button 
+                        className="btn-learn-more"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (card.page && onNavigate) onNavigate(card.page);
+                        }}
+                      >
+                        Learn more <ArrowRight size={14} className="btn-arrow" />
+                      </button>
+                    </div>
+                    <div className="card-leaf-decoration"></div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Sub-heading for Bottom Grid that smoothly fades in when shifted */}
+            <div className={`bottom-grid-subhead ${isShifted ? 'subhead-visible' : ''}`}>
+              <span className="subhead-pill">SPECIALIZED PROCEDURES & ART TREATMENTS</span>
+            </div>
+
+            {/* Bottom Grid: 5 Cards (indices 3, 4, 5, 6, 7) */}
+            <div className="treatments-grid-bottom">
+              {bottomCards.map((card, index) => {
+                const cardIndex = 3 + index; // 3, 4, 5, 6, 7
+                const isPlaced = !isDesktop || placedCount >= (cardIndex + 1);
+                const isJustArrived = isDesktop && placedCount === (cardIndex + 1);
+
+                return (
+                  <div 
+                    className={`treatment-card bottom-card ${isPlaced ? 'card-placed' : 'card-waiting'} ${isJustArrived ? 'just-arrived' : ''}`}
+                    key={index}
+                    onClick={() => card.page && onNavigate && onNavigate(card.page)}
+                    style={{ cursor: card.page ? 'pointer' : 'default' }}
+                  >
+                    <div className="treatment-icon-wrapper-small">
+                      {card.icon}
+                    </div>
+                    <div className="treatment-content">
+                      <div className="card-eyebrow">{card.eyebrow}</div>
+                      <h3 className="treatment-title">{card.title}</h3>
+                      <p className="treatment-desc">{card.description}</p>
+                      <button 
+                        className="btn-learn-more"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (card.page && onNavigate) onNavigate(card.page);
+                        }}
+                      >
+                        Learn more <ArrowRight size={14} className="btn-arrow" />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            </div>
           </div>
-          <h2 className="treatments-heading">
-            Advanced <span className="highlight-purple-gradient">Fertility Care</span>
-          </h2>
-          <p className="treatments-description">
-            Cutting-edge technology, expert care and personalised treatment plans<br className="hidden md:block" /> to help you build the family you dream of.
-          </p>
-        </div>
-        
-        <div className="treatments-grid-top">
-          {topCards.map((card, index) => (
-            <div 
-              className="treatment-card top-card" 
-              key={index}
-              onClick={() => card.page && onNavigate && onNavigate(card.page)}
-              style={{ cursor: card.page ? 'pointer' : 'default' }}
-            >
-              <div className="treatment-icon-wrapper-large">
-                {card.icon}
-              </div>
-              <div className="treatment-content">
-                <div className="card-eyebrow">{card.eyebrow}</div>
-                <h3 className="treatment-title">{card.title}</h3>
-                <p className="treatment-desc">{card.description}</p>
-                <button 
-                  className="btn-learn-more"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (card.page && onNavigate) onNavigate(card.page);
-                  }}
-                >
-                  Learn more <ArrowRight size={14} className="btn-arrow" />
-                </button>
-              </div>
-              <div className="card-leaf-decoration"></div>
-            </div>
-          ))}
-        </div>
-
-        <div className="treatments-grid-bottom">
-          {bottomCards.map((card, index) => (
-            <div 
-              className="treatment-card bottom-card" 
-              key={index}
-              onClick={() => card.page && onNavigate && onNavigate(card.page)}
-              style={{ cursor: card.page ? 'pointer' : 'default' }}
-            >
-              <div className="treatment-icon-wrapper-small">
-                {card.icon}
-              </div>
-              <div className="treatment-content">
-                <div className="card-eyebrow">{card.eyebrow}</div>
-                <h3 className="treatment-title">{card.title}</h3>
-                <p className="treatment-desc">{card.description}</p>
-                <div className="spacer"></div>
-                <button 
-                  className="btn-learn-more"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (card.page && onNavigate) onNavigate(card.page);
-                  }}
-                >
-                  Learn more <ArrowRight size={14} className="btn-arrow" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
+        </section>
       </div>
-    </section>
+    </div>
   );
 };
 

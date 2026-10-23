@@ -1,6 +1,8 @@
 /* ==========================================================================
    Neovita Fertility Hospital - Medical Team Page
-   Premium Healthcare Editorial Aesthetics
+   Spacious Editorial Page: Top Page Heading + Continuous 10 Cards Flow
+   Priority Given EXCLUSIVELY to Leadership (Dr Anju & Dr Antony)
+   All Other Cards are Completely Uniform and Identical to Each Other
    ========================================================================== */
 
 :root {
@@ -14,103 +16,84 @@
   --neo-text-body: #5A6679;
   --neo-text-muted: #7E8B9E;
   --neo-font-standard: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --neo-font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --neo-font-serif: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Page Root Canvas */
+/* Page Root Canvas - Increased Length */
 .our-team-page {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 125vh;
   box-sizing: border-box;
-  padding-top: 6.25rem;
-  padding-bottom: 6rem;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
   background-color: var(--neo-bg-ivory);
   background-image: 
     radial-gradient(ellipse 80% 50% at 50% -10%, var(--neo-bg-lavender) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 45% at 90% 30%, rgba(242, 236, 248, 0.75) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 45% at 10% 60%, rgba(242, 236, 248, 0.65) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 45% at 90% 25%, rgba(242, 236, 248, 0.75) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 45% at 10% 65%, rgba(242, 236, 248, 0.65) 0%, transparent 60%),
     radial-gradient(ellipse 70% 40% at 50% 100%, rgba(245, 239, 251, 0.8) 0%, transparent 70%);
   color: var(--neo-navy-dark);
   font-family: var(--neo-font-standard);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Main Content Area */
-.our-team-main-content {
+/* Spacious Section Container */
+.team-flow-section {
   position: relative;
+  width: 100%;
+  min-height: 120vh;
+  padding: 100px 0 140px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Luminous Ambient Glow behind the Page Heading */
+.hero-ambient-glow {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 760px;
+  max-width: 95vw;
+  height: 380px;
+  background: radial-gradient(ellipse, rgba(133, 59, 192, 0.18) 0%, rgba(242, 236, 248, 0.55) 50%, transparent 75%);
+  filter: blur(55px);
+  pointer-events: none;
   z-index: 1;
-  flex: 1;
+}
+
+/* ==========================================================================
+   Page Heading Set at the Top
+   ========================================================================== */
+
+.team-page-header {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto 3.5rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  text-align: center;
+  z-index: 5;
   padding: 0 1.5rem;
   box-sizing: border-box;
 }
 
-/* Hero Section */
-.team-hero-header {
-  position: relative;
-  width: 100%;
-  max-width: 820px;
-  margin: 1.25rem auto 1.75rem auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 2;
-}
-
-/* Luminous Ambient Glow */
-.hero-ambient-glow {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 540px;
-  max-width: 90vw;
-  height: 220px;
-  background: radial-gradient(ellipse, rgba(133, 59, 192, 0.14) 0%, rgba(242, 236, 248, 0.45) 50%, transparent 75%);
-  filter: blur(42px);
-  pointer-events: none;
-  z-index: -1;
-}
-
-.team-hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.42rem 1.15rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--neo-lavender-border);
-  color: var(--neo-violet-accent);
+.team-scroll-hero-title {
   font-family: var(--neo-font-standard);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 1.1rem;
-  box-shadow: 0 2px 8px rgba(133, 59, 192, 0.05);
-}
-
-.team-hero-title {
-  font-family: var(--neo-font-standard);
-  font-size: clamp(2.4rem, 4.8vw, 3.6rem);
-  font-weight: 750;
+  font-size: clamp(3.2rem, 6.4vw, 5.2rem);
+  font-weight: 800;
   color: var(--neo-navy-dark);
-  line-height: 1.12;
-  letter-spacing: -0.035em;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
   margin: 0 auto;
-  max-width: 780px;
+  text-shadow: 0 2px 10px rgba(16, 24, 43, 0.04);
 }
 
 .hero-gradient-text {
@@ -120,96 +103,101 @@
   display: inline-block;
 }
 
+.team-flow-subtitle {
+  color: var(--neo-text-body);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 1rem auto 0 auto;
+  max-width: 620px;
+  line-height: 1.55;
+}
+
 /* ==========================================================================
-   Section 1: Clinical Leadership & Directors (Priority Grid Layout)
+   Horizontal Flowing Stream Track
    ========================================================================== */
-.team-leadership-section {
+
+.team-flow-carousel-wrapper {
   position: relative;
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem 1rem 2rem 1rem;
+  z-index: 10;
+  padding: 24px 0 20px 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+  cursor: grab;
+}
+
+.team-flow-carousel-wrapper:active {
+  cursor: grabbing;
+}
+
+@keyframes flowCardsRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+.team-flow-track {
   display: flex;
-  flex-direction: column;
+  gap: 26px;
+  width: max-content;
   align-items: center;
-  box-sizing: border-box;
-  overflow-x: clip;
+  animation: flowCardsRightToLeft 48s linear infinite;
+  will-change: transform;
+  padding: 16px 0;
 }
 
-/* Upper Tier Grid: 2 Priority Leadership Cards Side-by-Side */
-.leadership-priority-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 400px));
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  margin-top: 0.75rem;
-  margin-bottom: 2rem;
+.team-flow-track.paused {
+  animation-play-state: paused;
 }
 
-/* Lower Tier: Remaining Specialist Card Centered */
-.leadership-subordinate-grid {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+/* ==========================================================================
+   Regular Cards: All 8 Other Cards are COMPLETELY UNIFORM & IDENTICAL
+   Clean, neutral, same dimensions, same styling
+   ========================================================================== */
 
-/* Leadership Card Base */
-.leadership-card {
+.specialist-flow-card {
+  width: 270px;
+  height: 375px;
+  flex-shrink: 0;
   background: var(--neo-bg-white);
-  border: 1px solid var(--neo-lavender-border);
-  border-radius: 22px;
+  border: 1px solid #E2E8F0; /* Clean uniform neutral border */
+  border-radius: 20px;
   padding: 0.85rem;
-  box-shadow: 0 10px 30px -6px rgba(16, 24, 43, 0.07), 0 2px 8px rgba(16, 24, 43, 0.03);
+  box-shadow: 0 8px 22px -6px rgba(16, 24, 43, 0.06), 0 2px 6px rgba(16, 24, 43, 0.02);
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease;
   position: relative;
   overflow: hidden;
-  will-change: transform, opacity;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease;
 }
 
-.leadership-card:hover {
-  box-shadow: 0 18px 38px -8px rgba(133, 59, 192, 0.15), 0 4px 14px rgba(16, 24, 43, 0.06);
-  border-color: #D5C2EB;
+/* Hover and Touch Interaction for Regular Cards */
+.specialist-flow-card:hover,
+.specialist-flow-card:active,
+.specialist-flow-card:focus-visible {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 38px -8px rgba(16, 24, 43, 0.12), 0 4px 12px rgba(16, 24, 43, 0.04);
+  border-color: #CBD5E1;
+  z-index: 15;
 }
 
-/* Priority Card Sizing */
-.leadership-card--priority {
-  width: 100%;
-  max-width: 400px;
-}
-
-.leadership-card--priority .leadership-photo-frame {
-  height: 295px;
-}
-
-.leadership-card--priority .leadership-name {
-  font-size: 1.52rem;
-}
-
-/* Subordinate / Down Card Sizing */
-.leadership-card--subordinate {
-  width: 100%;
-  max-width: 360px;
-}
-
-.leadership-card--subordinate .leadership-photo-frame {
-  height: 265px;
-}
-
-.leadership-card--subordinate .leadership-name {
-  font-size: 1.38rem;
-}
-
-/* Inner Photo Frame */
-.leadership-photo-frame {
+.specialist-photo-frame {
   position: relative;
   width: 100%;
-  border-radius: 16px;
+  height: 230px;
+  border-radius: 14px;
   overflow: hidden;
   background: #F7F5FA;
   border: 1px solid #F0EBF7;
@@ -218,171 +206,158 @@
   justify-content: center;
 }
 
-.leadership-photo {
+.specialist-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  border-radius: 16px;
+  border-radius: 14px;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
 }
 
-.leadership-card:hover .leadership-photo {
-  transform: scale(1.025);
+.specialist-flow-card:hover .specialist-photo,
+.specialist-flow-card:active .specialist-photo {
+  transform: scale(1.03);
 }
 
-/* Doctor & Specialist Information */
-.leadership-info {
+.specialist-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1.2rem 0.85rem 0.75rem 0.85rem;
+  padding: 0.85rem 0.4rem 0.2rem 0.4rem;
   width: 100%;
   flex-grow: 1;
 }
 
-.leadership-name {
-  font-family: var(--neo-font-serif);
-  font-weight: 600;
+.specialist-name {
+  font-family: var(--neo-font-standard);
+  font-size: 1.18rem;
+  font-weight: 700;
   color: var(--neo-navy-dark);
   letter-spacing: -0.015em;
   line-height: 1.25;
-  margin: 0 0 0.45rem 0;
+  margin: 0 0 0.3rem 0;
 }
 
-.leadership-role {
-  font-family: var(--neo-font-sans);
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--neo-violet-accent);
-  line-height: 1.38;
-  margin: 0 0 0.45rem 0;
+.specialist-role {
+  font-family: var(--neo-font-standard);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4A1570;
+  line-height: 1.35;
+  margin: 0 0 0.35rem 0;
   max-width: 95%;
 }
 
-.leadership-experience {
-  font-family: var(--neo-font-sans);
-  font-size: 0.82rem;
+.specialist-experience {
+  font-family: var(--neo-font-standard);
+  font-size: 0.76rem;
   font-weight: 500;
   color: var(--neo-text-body);
-  line-height: 1.48;
+  line-height: 1.4;
   margin: 0;
-  max-width: 90%;
+  max-width: 95%;
 }
 
-/* Individual Section Container */
-.team-photo-stack-section {
-  position: relative;
-  width: 100%;
-  padding: 1.25rem 0 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/* ==========================================================================
+   Priority Leadership Cards ONLY: Dr Anju Madhavan & Dr Antony Tobin Thomas
+   Exclusively given Priority: Increased Size, Signature Purple Border & Glow
+   ========================================================================== */
+
+.specialist-flow-card--priority {
+  width: 340px;
+  height: 440px;
+  border: 2px solid #853BC0; /* Signature purple border */
+  box-shadow: 0 18px 46px -6px rgba(133, 59, 192, 0.32), 0 0 0 1.5px rgba(133, 59, 192, 0.22);
+  background: #ffffff;
+  padding: 1rem;
 }
 
-/* Section Eyebrow Badges */
-.team-section-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.38rem 1.05rem;
-  border-radius: 9999px;
-  font-family: var(--neo-font-sans);
-  font-size: 0.72rem;
+.specialist-flow-card--priority .specialist-photo-frame {
+  height: 285px; /* Taller, prominent portrait */
+}
+
+.specialist-flow-card--priority .specialist-card-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #4A1570 0%, #853BC0 50%, #C084FC 100%);
+}
+
+.specialist-flow-card--priority .specialist-name {
+  font-size: 1.38rem;
+  font-weight: 800;
+  color: #10182B;
+  margin-bottom: 0.4rem;
+}
+
+.specialist-flow-card--priority .specialist-role {
+  font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  background: var(--neo-violet-light);
-  border: 1px solid var(--neo-lavender-border);
-  color: var(--neo-violet-accent);
-  box-shadow: 0 2px 6px rgba(133, 59, 192, 0.03);
+  color: #853BC0;
+  margin-bottom: 0.45rem;
 }
 
-/* Section Headings Below Stack */
-.team-section-title {
-  font-family: var(--neo-font-serif);
-  font-size: clamp(2rem, 3.2vw, 2.5rem);
-  font-weight: 500;
-  color: var(--neo-navy-dark);
-  letter-spacing: -0.015em;
-  line-height: 1.25;
-  text-align: center;
-  margin: 0;
+.specialist-flow-card--priority .specialist-experience {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4A1570;
+  line-height: 1.45;
 }
 
-.team-section-title .accent-violet {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--neo-violet-accent);
-}
-
-.team-section-subtitle {
-  font-family: var(--neo-font-sans);
-  color: var(--neo-text-body);
-  font-size: clamp(0.925rem, 1.1vw, 1rem);
-  font-weight: 400;
-  line-height: 1.7;
-  max-width: 650px;
-  text-align: center;
-  margin: 0.85rem auto 0 auto;
-  padding: 0 1rem;
-}
-
-/* Minimal Refined Section Separator */
-.team-section-divider {
-  width: 100%;
-  max-width: 240px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(133, 59, 192, 0.2), transparent);
-  margin: 1.5rem auto;
+/* Touch and Hover Interaction for Priority Cards */
+.specialist-flow-card--priority:hover,
+.specialist-flow-card--priority:active,
+.specialist-flow-card--priority:focus-visible {
+  transform: translateY(-14px) scale(1.04);
+  box-shadow: 0 32px 64px -10px rgba(133, 59, 192, 0.48), 0 0 28px rgba(133, 59, 192, 0.38);
+  border-color: #A855F7;
+  z-index: 25;
 }
 
 /* Responsive Overrides */
 @media (max-width: 768px) {
   .our-team-page {
-    padding-top: 5.5rem;
-    padding-bottom: 4rem;
-  }
-  
-  .team-hero-header {
-    margin: 1rem auto 1.5rem auto;
+    min-height: 110vh;
   }
 
-  .team-hero-title {
-    font-size: 2.25rem;
-  }
-  
-  .team-photo-stack-section {
-    padding: 1.5rem 0 2rem 0;
+  .team-flow-section {
+    min-height: 100vh;
+    padding: 85px 0 100px 0;
   }
 
-  .leadership-priority-grid {
-    grid-template-columns: 1fr;
-    max-width: 380px;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+  .team-page-header {
+    margin-bottom: 2.25rem;
   }
 
-  .leadership-subordinate-grid {
-    max-width: 380px;
+  .team-scroll-hero-title {
+    font-size: 2.35rem;
   }
 
-  .leadership-card--priority,
-  .leadership-card--subordinate {
-    max-width: 100%;
+  .specialist-flow-card {
+    width: 240px;
+    height: 345px;
   }
 
-  .leadership-card--priority .leadership-photo-frame {
-    height: 275px;
+  .specialist-photo-frame {
+    height: 210px;
   }
 
-  .leadership-card--subordinate .leadership-photo-frame {
-    height: 250px;
+  .specialist-flow-card--priority {
+    width: 295px;
+    height: 405px;
+  }
+
+  .specialist-flow-card--priority .specialist-photo-frame {
+    height: 255px;
+  }
+
+  .team-flow-track {
+    animation-duration: 38s;
   }
 }
-
