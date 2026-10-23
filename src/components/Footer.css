@@ -1,0 +1,233 @@
+/* =========================================================================
+   Global Footer Bar - Exact Magenta-Violet Color (#940bac)
+   ========================================================================= */
+
+.site-footer {
+  background-color: #940bac;
+  background: linear-gradient(180deg, #940bac 0%, #85079c 100%);
+  color: #ffffff;
+  padding: 60px 0 0 0;
+  margin-top: 0;
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 -10px 40px rgba(148, 11, 172, 0.15);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.8fr 1.5fr;
+  gap: 48px;
+  align-items: flex-start;
+  padding-bottom: 50px;
+}
+
+/* -------------------------------------------------------------------------
+   Column 1: Brand Logo & Bio
+   ------------------------------------------------------------------------- */
+.footer-col-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+
+.footer-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  /* Filter makes the logo pure crisp white on purple */
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s ease;
+}
+
+.footer-logo-img:hover {
+  opacity: 0.9;
+}
+
+.footer-logo-tagline {
+  font-size: 0.58rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 4px;
+}
+
+.footer-bio {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
+  max-width: 340px;
+}
+
+.footer-email-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.footer-email-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.footer-email-link {
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-email-link:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* -------------------------------------------------------------------------
+   Columns 2 & 3: Link Lists
+   ------------------------------------------------------------------------- */
+.footer-col-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-links-list li a {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links-list li a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* -------------------------------------------------------------------------
+   Column 4: Office Addresses
+   ------------------------------------------------------------------------- */
+.footer-col-addresses .footer-col-title {
+  margin-bottom: 22px;
+}
+
+.footer-offices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-office-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-office-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-pin-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-office-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.footer-office-text {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  padding-left: 19px;
+}
+
+/* -------------------------------------------------------------------------
+   Bottom Copyright Sub-bar
+   ------------------------------------------------------------------------- */
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.08);
+  padding: 18px 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-copyright {
+  font-size: 0.80rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Responsive Breakpoints
+   ------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    padding-top: 45px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-bio {
+    max-width: 100%;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

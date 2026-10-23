@@ -27,6 +27,8 @@ import PgsPgdPage from './components/PgsPgdPage';
 import OurTeamPage from './components/OurTeamPage';
 import AcademyPage from './components/AcademyPage';
 import EventsPage from './components/EventsPage';
+import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   const [framesLoaded, setFramesLoaded] = useState(false);
@@ -254,6 +256,8 @@ function App() {
           />
         )}
       </main>
+      <Footer onNavigate={handleNavigate} />
+      <WhatsAppButton phoneNumber="918089957682" />
     </div>
   );
 }

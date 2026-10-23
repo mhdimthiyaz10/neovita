@@ -1,0 +1,147 @@
+/* =========================================================================
+   Floating WhatsApp Button - Premium Circular Logo Toggle with Neon Reflection
+   ========================================================================= */
+
+.whatsapp-floating-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  animation: neonPillPulse 5.5s infinite;
+}
+
+/* Periodic Neon Reflection Pulse on the Outer Edge */
+@keyframes neonPillPulse {
+  0%, 65%, 100% {
+    box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 255, 255, 0.95);
+  }
+  73%, 83% {
+    box-shadow: 0 12px 30px -2px rgba(37, 211, 102, 0.35), 0 0 22px rgba(37, 211, 102, 0.45), 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: rgba(37, 211, 102, 0.55);
+  }
+}
+
+.whatsapp-floating-pill:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 16px 36px -4px rgba(37, 211, 102, 0.42), 0 0 26px rgba(37, 211, 102, 0.5), 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: rgba(37, 211, 102, 0.7);
+}
+
+.whatsapp-floating-pill:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* -------------------------------------------------------------------------
+   Neon Reflection Light Beam (Glides across the white background periodically)
+   ------------------------------------------------------------------------- */
+.neon-reflection-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(37, 211, 102, 0.08) 15%,
+    rgba(37, 211, 102, 0.4) 42%,
+    rgba(255, 255, 255, 0.95) 50%,
+    rgba(148, 11, 172, 0.3) 58%,
+    rgba(37, 211, 102, 0.12) 80%,
+    transparent 100%
+  );
+  transform: translateX(-200%) skewX(-25deg);
+  pointer-events: none;
+  z-index: 1;
+  animation: neonReflectSweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.whatsapp-floating-pill:hover .neon-reflection-beam {
+  animation: neonReflectSweep 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes neonReflectSweep {
+  0%, 65% {
+    transform: translateX(-200%) skewX(-25deg);
+    opacity: 0;
+  }
+  68% {
+    opacity: 1;
+  }
+  83% {
+    transform: translateX(320%) skewX(-25deg);
+    opacity: 1;
+  }
+  86%, 100% {
+    transform: translateX(320%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Green WhatsApp Circle Icon
+   ------------------------------------------------------------------------- */
+.whatsapp-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #25D366;
+  background: radial-gradient(circle at 35% 35%, #2FE674 0%, #20BA56 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.45);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.whatsapp-floating-pill:hover .whatsapp-icon-circle {
+  transform: rotate(6deg);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.65);
+}
+
+.whatsapp-svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* -------------------------------------------------------------------------
+   Mobile Responsiveness
+   ------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .whatsapp-floating-pill {
+    width: 44px;
+    height: 44px;
+    bottom: 18px;
+    right: 18px;
+  }
+
+  .whatsapp-icon-circle {
+    width: 33px;
+    height: 33px;
+  }
+
+  .whatsapp-svg {
+    width: 18px;
+    height: 18px;
+  }
+}

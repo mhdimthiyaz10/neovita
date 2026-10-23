@@ -6,44 +6,43 @@ import './Testimonials.css';
 export const youtubeVideosData = [
   {
     id: 'yt-1',
-    title: 'Our Miracle Baby Journey: Overcoming Infertility',
-    patient: 'Priya & Rahul M.',
-    category: 'IVF SUCCESS STORY',
-    duration: '4:15',
-    // Replace with your YouTube video ID (e.g. 'dQw4w9WgXcQ' from youtube.com/watch?v=dQw4w9WgXcQ)
-    youtubeId: 'dQw4w9WgXcQ',
-    thumbnail: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=800&q=80',
-    quote: 'After 6 years of waiting, we held our healthy baby boy in our arms thanks to Neovita.'
+    title: 'IVF Rules and Regulations',
+    patient: 'Neovita - The Fertility Expert',
+    category: 'IVF GUIDANCE & RULES',
+    duration: 'Expert Guide',
+    youtubeId: 'xppOpDPGxxM',
+    thumbnail: 'https://i.ytimg.com/vi/xppOpDPGxxM/maxresdefault.jpg',
+    quote: 'Essential rules, guidelines, and expert medical advice on fertility treatments from Neovita.'
   },
   {
     id: 'yt-2',
-    title: 'Miracle After 8 Years: The Power of Advanced ICSI',
-    patient: 'Deepa & Manoj Kumar',
-    category: 'PATIENT TESTIMONIAL',
-    duration: '5:30',
-    youtubeId: 'M7lc1UVf-VE',
-    thumbnail: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80',
-    quote: 'The personalized care and precision embryology made all the difference for us.'
+    title: 'Rights in IVF Treatment',
+    patient: 'Neovita - The Fertility Expert',
+    category: 'PATIENT RIGHTS & IVF',
+    duration: 'Expert Guide',
+    youtubeId: 'lx3TBcH49Ds',
+    thumbnail: 'https://i.ytimg.com/vi/lx3TBcH49Ds/maxresdefault.jpg',
+    quote: 'Understanding your legal rights, medical choices, and critical aspects of IVF treatment at Neovita.'
   },
   {
     id: 'yt-3',
     title: 'Inside Neovita IVF Lab: Precision & Care Standards',
-    patient: 'Dr. Antony Tobin Thomas',
+    patient: 'Neovita - The Fertility Expert',
     category: 'EXPERT LAB TOUR',
-    duration: '6:45',
-    youtubeId: 'tgbNymZ7vqY',
-    thumbnail: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
-    quote: 'A detailed look inside our cleanroom embryology suite and advanced incubators.'
+    duration: 'Lab Tour',
+    youtubeId: 'bBNKVWuq2x4',
+    thumbnail: 'https://i.ytimg.com/vi/bBNKVWuq2x4/maxresdefault.jpg',
+    quote: 'A detailed look inside our cleanroom embryology suite, advanced incubators, and IVF lab processes.'
   },
   {
     id: 'yt-4',
-    title: 'Our Twin Blessings: Compassionate Care at Neovita',
-    patient: 'Sreelekha & Akhil',
-    category: 'TWIN SUCCESS STORY',
-    duration: '3:50',
-    youtubeId: 'L_LUpnjgPso',
-    thumbnail: 'https://images.unsplash.com/photo-1544126592-807ade215a0b?auto=format&fit=crop&w=800&q=80',
-    quote: 'The doctors and nurses became family. We are blessed with healthy twins today.'
+    title: 'Struggling to Conceive? Understanding IVF Options',
+    patient: 'Neovita - The Fertility Expert',
+    category: 'IVF & PREGNANCY GUIDE',
+    duration: 'Expert Guide',
+    youtubeId: 'ngR-ef9evWc',
+    thumbnail: 'https://i.ytimg.com/vi/ngR-ef9evWc/maxresdefault.jpg',
+    quote: 'Guidance and clarity on when to consider IVF, overcoming conception challenges, and healthy pregnancy steps.'
   }
 ];
 
@@ -192,15 +191,12 @@ const Testimonials = () => {
           <div className="youtube-videos-header">
             <div className="testimonials-subtitle-wrapper">
               <span className="testimonials-line"></span>
-              <span className="testimonials-subtitle">PATIENT VIDEO STORIES &bull; REAL VOICES</span>
+              <span className="testimonials-subtitle">VIDEOS</span>
               <span className="testimonials-line"></span>
             </div>
             <h3 className="youtube-videos-title">
-              Watch Inspiring <span className="highlight">Video Journeys</span>
+              Featured <span className="highlight">Videos</span>
             </h3>
-            <p className="youtube-videos-description">
-              Real stories, heartfelt emotions, and real hope — watch our patients share their path to parenthood with Neovita.
-            </p>
           </div>
 
           {/* 4 YouTube Video Cards Grid */}
@@ -209,22 +205,42 @@ const Testimonials = () => {
               const isPlaying = activeVideoId === video.id;
 
               return (
-                <div key={video.id} className={`youtube-video-card ${isPlaying ? 'is-playing' : ''}`}>
+                <div 
+                  key={video.id} 
+                  className={`youtube-video-card ${isPlaying ? 'is-playing' : ''}`}
+                  onClick={() => {
+                    if (!isPlaying) setActiveVideoId(video.id);
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if ((e.key === 'Enter' || e.key === ' ') && !isPlaying) {
+                      e.preventDefault();
+                      setActiveVideoId(video.id);
+                    }
+                  }}
+                  style={{ cursor: isPlaying ? 'default' : 'pointer' }}
+                  aria-label={`Video: ${video.title}`}
+                >
                   
                   {/* 16:9 Video Player / Thumbnail Facade */}
                   <div className="video-media-wrapper">
                     {isPlaying ? (
                       <div className="video-iframe-holder">
                         <iframe
-                          src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+                          src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0&playsinline=1&enablejsapi=1`}
                           title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
                           allowFullScreen
                           className="youtube-embedded-iframe"
                         />
                         <button 
                           className="btn-close-video" 
-                          onClick={() => setActiveVideoId(null)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveVideoId(null);
+                          }}
                           title="Close Video"
                           aria-label="Close Video"
                         >
@@ -234,7 +250,10 @@ const Testimonials = () => {
                     ) : (
                       <div 
                         className="video-thumbnail-trigger"
-                        onClick={() => setActiveVideoId(video.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveVideoId(video.id);
+                        }}
                         role="button"
                         tabIndex={0}
                         aria-label={`Play ${video.title}`}
@@ -244,6 +263,11 @@ const Testimonials = () => {
                           alt={video.title} 
                           className="video-thumb-img" 
                           loading="lazy" 
+                          onError={(e) => {
+                            if (video.youtubeId && !e.target.src.includes('hqdefault')) {
+                              e.target.src = `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`;
+                            }
+                          }}
                         />
                         <div className="video-thumb-overlay"></div>
                         
@@ -268,16 +292,6 @@ const Testimonials = () => {
                     <span className="video-patient-name">{video.patient}</span>
                     <h4 className="video-card-title">{video.title}</h4>
                     <p className="video-card-quote">"{video.quote}"</p>
-                    
-                    {!isPlaying && (
-                      <button 
-                        className="btn-watch-video"
-                        onClick={() => setActiveVideoId(video.id)}
-                      >
-                        <Play size={13} fill="currentColor" />
-                        <span>Watch Journey</span>
-                      </button>
-                    )}
                   </div>
 
                 </div>
